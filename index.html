@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Great Books Portfolio | Digital Anthology</title>
+
+  <!-- Google Fonts for Classical & Typewriter Scrapbook Aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+  <!-- Bulletin Board Container -->
+  <main class="bulletin-board" role="main">
+
+    <!-- Paper Note Pinned to the Bulletin Board -->
+    <header class="pinned-paper-note">
+      <!-- 3D Red Pushpin -->
+      <div class="pushpin" aria-hidden="true"></div>
+
+      <div class="ex-libris-tag">
+        <span>&#10022; Ex Libris &#10022;</span>
+      </div>
+
+      <h1 class="main-title">Great Books Digital Portfolio</h1>
+
+      <div class="ornamental-divider" aria-hidden="true">
+        <span class="divider-line"></span>
+        <span class="divider-icon">&#10045;</span>
+        <span class="divider-line"></span>
+      </div>
+
+      <!-- Description Placeholder on Pinned Paper -->
+      <div class="description-box">
+        <p>
+          Welcome to my Great Books anthology and learning scrapbook. Here lies an exploratory collection of literary
+          insights, historical commentaries, timeless masterpieces, and reflective thoughts gathered across the
+          semester. Select any volume below to open its chapter.
+        </p>
+      </div>
+    </header>
+
+    <!-- Classical Bookshelf Section (Preserved) -->
+    <section class="shelf-section" aria-label="Portfolio Volumes">
+      <!-- <div class="section-label">
+        <span>Selected Volumes & Chapters</span>
+      </div> -->
+
+      <!-- 5 Interactive Tilted Book Buttons -->
+      <div class="books-container">
+
+        <!-- Book 1: Student Profile -->
+        <a href="student-profile.html" class="book-card book-1 book-burgundy" aria-label="Open Student Profile volume">
+          <span class="ribbon-bookmark" aria-hidden="true"></span>
+          <div class="cover-inner-border">
+            <span class="volume-tag">Tome I</span>
+            <div class="book-emblem" aria-hidden="true">&#9743;</div>
+            <h2 class="book-title">Student Profile</h2>
+            <span class="open-prompt">Open <span class="arrow">&rarr;</span></span>
+          </div>
+        </a>
+
+        <!-- Book 2: 7 Literary Analyses -->
+        <a href="literary-analyses.html" class="book-card book-2 book-forest"
+          aria-label="Open 7 Literary Analyses volume">
+          <span class="ribbon-bookmark" aria-hidden="true"></span>
+          <div class="cover-inner-border">
+            <span class="volume-tag">Tome II</span>
+            <div class="book-emblem" aria-hidden="true">&#10020;</div>
+            <h2 class="book-title">7 Literary Analyses</h2>
+            <span class="open-prompt">Open <span class="arrow">&rarr;</span></span>
+          </div>
+        </a>
+
+        <!-- Book 3: Favorite Literary Masterpiece -->
+        <a href="favorite-masterpiece.html" class="book-card book-3 book-navy"
+          aria-label="Open Favorite Literary Masterpiece volume">
+          <span class="ribbon-bookmark" aria-hidden="true"></span>
+          <div class="cover-inner-border">
+            <span class="volume-tag">Tome III</span>
+            <div class="book-emblem" aria-hidden="true">&#9813;</div>
+            <h2 class="book-title">Favorite Literary Masterpiece</h2>
+            <span class="open-prompt">Open <span class="arrow">&rarr;</span></span>
+          </div>
+        </a>
+
+        <!-- Book 4: Summary of Learning -->
+        <a href="summary-of-learning.html" class="book-card book-4 book-leather"
+          aria-label="Open Summary of Learning volume">
+          <span class="ribbon-bookmark" aria-hidden="true"></span>
+          <div class="cover-inner-border">
+            <span class="volume-tag">Tome IV</span>
+            <div class="book-emblem" aria-hidden="true">&#10022;</div>
+            <h2 class="book-title">Summary of Learning</h2>
+            <span class="open-prompt">Open <span class="arrow">&rarr;</span></span>
+          </div>
+        </a>
+
+        <!-- Book 5: Personal Reflection -->
+        <a href="personal-reflection.html" class="book-card book-5 book-plum"
+          aria-label="Open Personal Reflection volume">
+          <span class="ribbon-bookmark" aria-hidden="true"></span>
+          <div class="cover-inner-border">
+            <span class="volume-tag">Tome V</span>
+            <div class="book-emblem" aria-hidden="true">&#10038;</div>
+            <h2 class="book-title">Personal Reflection</h2>
+            <span class="open-prompt">Open <span class="arrow">&rarr;</span></span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Shelf Ledge beneath the books -->
+      <div class="bookshelf-ledge" aria-hidden="true"></div>
+    </section>
+
+    <!-- Pinned Footer Note -->
+    <footer class="pinned-footer-note">
+      <span class="corner-pin left" aria-hidden="true"></span>
+      <span class="corner-pin right" aria-hidden="true"></span>
+      <p class="footer-quote">&ldquo;A reader lives a thousand lives before he dies.&rdquo;</p>
+      <p class="footer-credits">Great Books Final Project &bull; Digital Portfolio</p>
+    </footer>
+
+  </main>
+
+</body>
+
+</html>
