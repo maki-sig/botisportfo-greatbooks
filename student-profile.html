@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tome I &bull; Student Profile | Great Books</title>
+
+  <!-- Google Fonts for Classical & Typewriter Aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="student-profile.css">
+</head>
+
+<body>
+
+  <!-- Top Navigation Pinned to the Bulletin Board -->
+  <nav class="board-top-nav" aria-label="Page Navigation">
+    <a href="index.html" class="back-button" aria-label="Return to Great Books bookshelf">
+      &larr; Bookshelf
+    </a>
+  </nav>
+
+  <!-- Open Book Component (Fits Screen Height) -->
+  <article class="open-book-container" aria-label="Student Profile Open Book">
+
+    <!-- Center Hanging Silk Bookmark Ribbon -->
+    <div class="center-silk-ribbon" aria-hidden="true"></div>
+
+    <div class="book-spreads-wrapper">
+
+      <!-- ========================================================
+           SPREAD 1: Pages 1 & 2
+           ======================================================== -->
+      <div class="book-spread active-spread" id="spread-1" role="tabpanel" aria-labelledby="tab-spread-1">
+
+        <!-- PAGE 1: Identity & Brief Personal Introduction -->
+        <section class="book-page page-left" aria-label="Part 1: Student Identity and Personal Introduction">
+          <div class="page-inner-border">
+
+            <header class="page-header">
+              <span class="chapter-badge">Chapter I &bull; Tome I</span>
+              <h1 class="page-title">Student Profile</h1>
+              <div class="page-divider" aria-hidden="true">&#10045;</div>
+            </header>
+
+            <!-- Portrait & Metadata -->
+            <div class="profile-card-layout">
+              <div class="photo-frame-wrapper">
+                <span class="photo-corner top-left" aria-hidden="true"></span>
+                <img src="images/Profile.png" alt="Portrait photo of Marc Neljohn R. Botis" class="portrait-photo"
+                  onerror="this.style.display='none'">
+                <span class="photo-corner bottom-right" aria-hidden="true"></span>
+              </div>
+
+              <div class="identity-meta">
+                <div class="meta-field">
+                  <span class="meta-label">Full Name</span>
+                  <p class="meta-value">Marc Neljohn R. Botis</p>
+                </div>
+
+                <div class="meta-field">
+                  <span class="meta-label">Known As</span>
+                  <p class="meta-value-sub">&ldquo;Marc&rdquo; or &ldquo;Macky&rdquo;</p>
+                </div>
+
+                <div class="meta-field">
+                  <span class="meta-label">Program of Study</span>
+                  <p class="meta-value-sub">Bachelor of Science in Computer Science</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Brief Personal Introduction -->
+            <div class="content-section">
+              <h2 class="section-heading">&#9998; Brief Personal Introduction</h2>
+              <p class="section-text">
+                Hello! I’m Marc Botis. My friends call me Marc or Macky. I like to have fun and learn useful and
+                practical knowledge.
+              </p>
+            </div>
+
+            <!-- Page 1 Footer -->
+            <footer class="page-footer">
+              <span class="page-num">Folio &bull; Page 1</span>
+              <span class="page-num">&#10022;</span>
+            </footer>
+
+          </div>
+        </section>
+
+        <!-- PAGE 2: Literary Interests & Takehiko Inoue Works -->
+        <section class="book-page page-right" aria-label="Part 2: Literary Interests and Experiences">
+          <div class="page-inner-border">
+
+            <header class="page-header">
+              <span class="chapter-badge">Literary Horizons</span>
+              <h2 class="page-title">Literary Interests</h2>
+              <div class="page-divider" aria-hidden="true">&#10045;</div>
+            </header>
+
+            <div class="content-section">
+              <h3 class="section-heading">&#10020; Personal Interests in Literature</h3>
+              <p class="section-text">
+                In literature, my interests include reading Mangas with great and in-depth story, dialogues, and good
+                looking artstyle. Mangas written and illustrated by <strong>Takehiko Inoue</strong> are one of my
+                preferences, his works include: <em>Slam Dunk</em>, <em>Vagabond</em>, and <em>Real</em>.
+              </p>
+
+              <!-- Gallery of Works Taped to the Page -->
+              <div class="manga-gallery" aria-label="Gallery of Takehiko Inoue and Works">
+                <figure class="gallery-card tape-1">
+                  <img src="images/Takehiko Inoue.webp" alt="Takehiko Inoue portrait" class="gallery-thumb"
+                    onerror="this.style.display='none'">
+                  <figcaption class="gallery-caption">Takehiko Inoue</figcaption>
+                </figure>
+
+                <figure class="gallery-card tape-2">
+                  <img src="images/Vagabond Cover.png" alt="Vagabond manga volume cover" class="gallery-thumb"
+                    onerror="this.style.display='none'">
+                  <figcaption class="gallery-caption">Vagabond</figcaption>
+                </figure>
+
+                <figure class="gallery-card tape-3">
+                  <img src="images/Real Cover.jpg" alt="Real manga volume cover" class="gallery-thumb"
+                    onerror="this.style.display='none'">
+                  <figcaption class="gallery-caption">Real</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <!-- Page 2 Footer with Folded Paper Dog-Ear Corner -->
+            <footer class="page-footer">
+              <span class="page-num">Folio &bull; Page 2</span>
+              <button class="page-corner-fold fold-right" onclick="switchSpread(2)" aria-label="Turn page forward"
+                title="Folded corner: click to turn page"></button>
+            </footer>
+
+          </div>
+        </section>
+
+      </div>
+
+
+      <!-- ========================================================
+           SPREAD 2: Pages 3 & 4
+           ======================================================== -->
+      <div class="book-spread" id="spread-2" role="tabpanel" aria-labelledby="spread-2">
+
+        <!-- PAGE 3: Great Books Course Expectations & Learning Goals -->
+        <section class="book-page page-left" aria-label="Part 3: Expectations in Great Books">
+          <div class="page-inner-border">
+
+            <header class="page-header">
+              <span class="chapter-badge">Academic Horizons</span>
+              <h2 class="page-title">Course Expectations</h2>
+              <div class="page-divider" aria-hidden="true">&#10045;</div>
+            </header>
+
+            <div class="content-section">
+              <h3 class="section-heading">&#9881; Statement of Learning Expectations</h3>
+              <div class="highlight-quote-card">
+                <p>
+                  &ldquo;My expectation for the subject Great Books is to cultivate critical thinking and analytical
+                  reading for myself, and as I read more books in this subject I also hope to improve my english
+                  communication.&rdquo;
+                </p>
+              </div>
+
+              <h3 class="section-heading" style="margin-top: 0.75rem;">&#10038; Core Objectives</h3>
+              <ul class="goals-list">
+                <li>
+                  <span class="goal-icon">&#10003;</span>
+                  <span><strong>Critical Thinking:</strong> Engaging deep analytical inquiries into literary motifs and
+                    authorial philosophy.</span>
+                </li>
+                <li>
+                  <span class="goal-icon">&#10003;</span>
+                  <span><strong>Analytical Reading:</strong> Dissecting complex narratives, dialogues, and historical
+                    contexts.</span>
+                </li>
+                <li>
+                  <span class="goal-icon">&#10003;</span>
+                  <span><strong>English Communication:</strong> Refining vocabulary, essay articulation, and discourse
+                    confidence.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Page 3 Footer with Folded Paper Dog-Ear Corner -->
+            <footer class="page-footer">
+              <button class="page-corner-fold fold-left" onclick="switchSpread(1)" aria-label="Turn page back"
+                title="Folded corner: click to turn back"></button>
+              <span class="page-num">Folio &bull; Page 3</span>
+            </footer>
+
+          </div>
+        </section>
+
+        <!-- PAGE 4: Reflections & The Computer Science Perspective -->
+        <section class="book-page page-right" aria-label="Part 4: Personal Reflections and Philosophy">
+          <div class="page-inner-border">
+
+            <header class="page-header">
+              <span class="chapter-badge">Epilogue &bull; Synthesis</span>
+              <h2 class="page-title">Personal Reflection</h2>
+              <div class="page-divider" aria-hidden="true">&#10045;</div>
+            </header>
+
+            <div class="content-section">
+              <div class="philosophy-card">
+                <span class="creed-tag">Intersection &bull; Tech &amp; Humanities</span>
+                <p class="section-text">
+                  As a Computer Science student, studying the Great Books offers a vital counterbalance to algorithms
+                  and code. Where programming teaches logical structure and problem-solving, world literature
+                  illuminates the human condition, empathy, and moral depth.
+                </p>
+              </div>
+
+              <div class="philosophy-card" style="border-style: solid; border-color: rgba(198, 156, 78, 0.25);">
+                <span class="creed-tag">Personal Study Creed</span>
+                <p class="section-text">
+                  Combining practical knowledge with timeless literature builds well-rounded wisdom&mdash;grounding
+                  technological innovation with timeless philosophical insights.
+                </p>
+              </div>
+            </div>
+
+            <!-- Page 4 Footer (Final Page) -->
+            <footer class="page-footer">
+              <span class="page-num">Folio &bull; Page 4</span>
+              <span class="page-num" aria-hidden="true">&#10022;</span>
+            </footer>
+
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+  </article>
+
+  <!-- Interactive Spread Switcher: Text Fade-Out -> Curved Page Turn -> Text Fade-In -->
+  <script>
+    let isTurning = false;
+
+    function switchSpread(targetSpread) {
+      if (isTurning) return;
+      const spread1 = document.getElementById('spread-1');
+      const spread2 = document.getElementById('spread-2');
+      const currentSpreadNum = spread1.classList.contains('active-spread') ? 1 : 2;
+
+      if (targetSpread === currentSpreadNum) return;
+
+      isTurning = true;
+      const outgoingSpread = targetSpread === 2 ? spread1 : spread2;
+      const incomingSpread = targetSpread === 2 ? spread2 : spread1;
+
+      // 1. Text fades out smoothly before the page turns
+      outgoingSpread.classList.add('content-fading-out');
+
+      // 2. Once texts have faded out (220ms), trigger the physical curving page turn
+      setTimeout(() => {
+        incomingSpread.classList.add('under-spread');
+
+        if (targetSpread === 2) {
+          outgoingSpread.classList.add('turning-forward');
+        } else {
+          outgoingSpread.classList.add('turning-backward');
+        }
+
+        // 3. Once curving page lands flat (540ms), activate incoming spread and fade in new text
+        setTimeout(() => {
+          incomingSpread.classList.remove('under-spread');
+          incomingSpread.classList.add('active-spread', 'content-fading-in');
+          outgoingSpread.classList.remove('active-spread', 'content-fading-out', 'turning-forward', 'turning-backward');
+
+          // 4. Clean up fade-in class after transition
+          setTimeout(() => {
+            incomingSpread.classList.remove('content-fading-in');
+            isTurning = false;
+          }, 380);
+        }, 540);
+      }, 220);
+    }
+  </script>
+
+</body>
+
+</html>
