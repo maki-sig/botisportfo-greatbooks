@@ -260,6 +260,9 @@
     </div>
   </article>
 
+  <!-- Sound Effect on Page Turn -->
+  <audio id="page-turn-sound" src="assets/page turn.mp3" preload="auto"></audio>
+
   <!-- Interactive Spread Switcher: Text Fade-Out -> Curved Page Turn -> Text Fade-In -->
   <script>
     let isTurning = false;
@@ -282,6 +285,19 @@
       return { page2Clone, page3Clone };
     }
 
+    function playPageTurnSound() {
+      const turnAudio = document.getElementById('page-turn-sound');
+      if (!turnAudio) return;
+      try {
+        const sound = turnAudio.cloneNode();
+        sound.volume = 0.85;
+        sound.play().catch(() => {});
+      } catch (e) {
+        turnAudio.currentTime = 0;
+        turnAudio.play().catch(() => {});
+      }
+    }
+
     function switchSpread(targetSpread) {
       if (isTurning) return;
       const spread1 = document.getElementById('spread-1');
@@ -294,6 +310,9 @@
       const flippingLeaf = document.getElementById('flipping-leaf');
       const leafFront = document.getElementById('leaf-front');
       const leafBack = document.getElementById('leaf-back');
+
+      // Play page turn audio sound effect
+      playPageTurnSound();
 
       // Momentarily disappear corner folds on click
       if (bookContainer) {

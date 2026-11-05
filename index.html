@@ -132,6 +132,36 @@
 
   </main>
 
+  <!-- Sound Effect on Book Hover -->
+  <audio id="book-hover-sound" src="assets/book.mp3" preload="auto"></audio>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hoverAudio = document.getElementById('book-hover-sound');
+      const bookCards = document.querySelectorAll('.book-card');
+
+      function playBookSound() {
+        if (!hoverAudio) return;
+        try {
+          // Clone node allows smooth overlapping sound effects when sweeping across multiple books
+          const sound = hoverAudio.cloneNode();
+          sound.volume = 0.75;
+          sound.play().catch(() => {
+            // Silently handle browser autoplay policy if gesture is required
+          });
+        } catch (e) {
+          hoverAudio.currentTime = 0;
+          hoverAudio.play().catch(() => {});
+        }
+      }
+
+      bookCards.forEach((card) => {
+        card.addEventListener('mouseenter', playBookSound);
+        card.addEventListener('focus', playBookSound);
+      });
+    });
+  </script>
+
 </body>
 
 </html>
