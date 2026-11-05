@@ -290,9 +290,15 @@
 
       if (targetSpread === currentSpreadNum) return;
 
+      const bookContainer = document.querySelector('.open-book-container');
       const flippingLeaf = document.getElementById('flipping-leaf');
       const leafFront = document.getElementById('leaf-front');
       const leafBack = document.getElementById('leaf-back');
+
+      // Momentarily disappear corner folds on click
+      if (bookContainer) {
+        bookContainer.classList.add('turning-in-progress');
+      }
 
       // Fallback for mobile / small screens where pages stack vertically
       if (window.innerWidth <= 768 || !flippingLeaf || !leafFront || !leafBack) {
@@ -301,7 +307,10 @@
         const incomingSpread = targetSpread === 2 ? spread2 : spread1;
         outgoingSpread.classList.remove('active-spread');
         incomingSpread.classList.add('active-spread');
-        isTurning = false;
+        setTimeout(() => {
+          if (bookContainer) bookContainer.classList.remove('turning-in-progress');
+          isTurning = false;
+        }, 280);
         return;
       }
 
@@ -329,6 +338,9 @@
           spread1.classList.remove('active-spread');
           spread2.classList.remove('spread-underneath');
           spread2.classList.add('active-spread');
+          if (bookContainer) {
+            bookContainer.classList.remove('turning-in-progress');
+          }
           isTurning = false;
         };
 
@@ -358,6 +370,9 @@
           spread2.classList.remove('active-spread');
           spread1.classList.remove('spread-underneath');
           spread1.classList.add('active-spread');
+          if (bookContainer) {
+            bookContainer.classList.remove('turning-in-progress');
+          }
           isTurning = false;
         };
 
