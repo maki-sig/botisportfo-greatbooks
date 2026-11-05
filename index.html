@@ -138,32 +138,78 @@
 
   </main>
 
-  <!-- Sound Effect on Book Hover -->
+  <!-- Sound Effects -->
   <audio id="book-hover-sound" src="assets/book.mp3" preload="auto"></audio>
+  <audio id="book-slide-sound" src="assets/book slide.mp3" preload="auto"></audio>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const hoverAudio = document.getElementById('book-hover-sound');
+      const slideAudio = document.getElementById('book-slide-sound');
       const interactiveSlots = document.querySelectorAll('.book-slot');
 
-      function playBookSound() {
+      // Suppress hover sound when a click is imminent (mousedown → click)
+      let suppressHover = false;
+      let hoverSoundTimeout = null;
+
+      function scheduleHoverSound() {
         if (!hoverAudio) return;
+        clearTimeout(hoverSoundTimeout);
+        // Small delay so mousedown can cancel before the sound actually starts
+        hoverSoundTimeout = setTimeout(() => {
+          if (suppressHover) return;
+          try {
+            const sound = hoverAudio.cloneNode();
+            sound.volume = 0.75;
+            sound.play().catch(() => {});
+          } catch (e) {
+            hoverAudio.currentTime = 0;
+            hoverAudio.play().catch(() => {});
+          }
+        }, 80);
+      }
+
+      function playSlideAndNavigate(e) {
+        const href = this.href;
+        if (!slideAudio || !href) return;
+        e.preventDefault();
+
+        // Hover sound already suppressed by mousedown; play only the slide SFX
         try {
-          // Clone node allows smooth overlapping sound effects when sweeping across multiple books
-          const sound = hoverAudio.cloneNode();
-          sound.volume = 0.75;
-          sound.play().catch(() => {
-            // Silently handle browser autoplay policy if gesture is required
-          });
-        } catch (e) {
-          hoverAudio.currentTime = 0;
-          hoverAudio.play().catch(() => {});
+          const sound = slideAudio.cloneNode();
+          sound.volume = 0.85;
+          sound.play().catch(() => {});
+          // Guard flag: only navigate once, whichever fires first
+          let navigated = false;
+          const navigate = () => {
+            if (navigated) return;
+            navigated = true;
+            clearTimeout(timer);
+            window.location.href = href;
+          };
+          sound.addEventListener('ended', navigate);
+          const timer = setTimeout(navigate, 420);
+        } catch (err) {
+          window.location.href = href;
         }
       }
 
       interactiveSlots.forEach((slot) => {
-        slot.addEventListener('mouseenter', playBookSound);
-        slot.addEventListener('focus', playBookSound);
+        slot.addEventListener('mouseenter', () => {
+          suppressHover = false;
+          scheduleHoverSound();
+        });
+        slot.addEventListener('mouseleave', () => {
+          suppressHover = false;
+          clearTimeout(hoverSoundTimeout);
+        });
+        // mousedown fires before click — cancel the pending hover sound immediately
+        slot.addEventListener('mousedown', () => {
+          suppressHover = true;
+          clearTimeout(hoverSoundTimeout);
+        });
+        slot.addEventListener('focus', scheduleHoverSound);
+        slot.addEventListener('click', playSlideAndNavigate);
       });
     });
   </script>
