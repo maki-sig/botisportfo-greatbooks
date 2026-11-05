@@ -261,11 +261,28 @@ body {
   perspective: 1000px;
 }
 
-/* Individual Book Cards */
+/* Static Invisible Interactive Area for Each Book (Eliminates Hover Glitch) */
+.book-slot {
+  display: block;
+  position: relative;
+  height: clamp(195px, 26vh, 225px);
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.book-slot:nth-child(1) { z-index: 1; }
+.book-slot:nth-child(2) { z-index: 2; }
+.book-slot:nth-child(3) { z-index: 3; }
+.book-slot:nth-child(4) { z-index: 2; }
+.book-slot:nth-child(5) { z-index: 1; }
+
+/* Individual Book Cards (Visual Animated Content) */
 .book-card {
   display: flex;
   flex-direction: column;
-  height: clamp(195px, 26vh, 225px);
+  width: 100%;
+  height: 100%;
   text-decoration: none;
   position: relative;
   border-radius: 3px 8px 8px 3px;
@@ -274,10 +291,10 @@ body {
   cursor: pointer;
   transition: 
     transform 0.32s cubic-bezier(0.2, 0.8, 0.25, 1),
-    box-shadow 0.32s ease,
-    z-index 0.32s;
+    box-shadow 0.32s ease;
   user-select: none;
   transform-origin: bottom center;
+  pointer-events: none;
 }
 
 /* Tilts & Angles (Preserved) */
@@ -306,12 +323,18 @@ body {
   z-index: 1;
 }
 
-/* Hover & Focus state */
+/* Hover & Focus state: only the inner book scales up, while the slot stays stationary */
+.book-slot:hover .book-card,
+.book-slot:focus-visible .book-card,
 .book-card:hover,
 .book-card:focus-visible {
-  transform: rotate(0deg) translateY(-14px) scale(1.05);
-  z-index: 10 !important;
+  transform: rotate(0deg) scale(1.08);
   outline: none;
+}
+
+.book-slot:hover,
+.book-slot:focus-visible {
+  z-index: 10 !important;
 }
 
 /* Book Spines */
@@ -380,21 +403,26 @@ body {
   box-shadow: 2px 5px 12px rgba(25, 10, 22, 0.3), inset 0 0 16px rgba(0, 0, 0, 0.45);
 }
 
-/* Hover glow shadows */
+/* Hover glow shadows (scaled in place) */
+.book-slot:hover .book-burgundy, .book-slot:focus-visible .book-burgundy,
 .book-burgundy:hover, .book-burgundy:focus-visible {
-  box-shadow: 4px 14px 22px rgba(35, 8, 12, 0.45), 0 0 14px rgba(229, 185, 103, 0.3);
+  box-shadow: 2px 8px 20px rgba(35, 8, 12, 0.45), 0 0 16px rgba(229, 185, 103, 0.35);
 }
+.book-slot:hover .book-forest, .book-slot:focus-visible .book-forest,
 .book-forest:hover, .book-forest:focus-visible {
-  box-shadow: 4px 14px 22px rgba(10, 30, 18, 0.45), 0 0 14px rgba(229, 185, 103, 0.3);
+  box-shadow: 2px 8px 20px rgba(10, 30, 18, 0.45), 0 0 16px rgba(229, 185, 103, 0.35);
 }
+.book-slot:hover .book-navy, .book-slot:focus-visible .book-navy,
 .book-navy:hover, .book-navy:focus-visible {
-  box-shadow: 4px 14px 22px rgba(9, 22, 40, 0.45), 0 0 14px rgba(229, 185, 103, 0.3);
+  box-shadow: 2px 8px 20px rgba(9, 22, 40, 0.45), 0 0 16px rgba(229, 185, 103, 0.35);
 }
+.book-slot:hover .book-leather, .book-slot:focus-visible .book-leather,
 .book-leather:hover, .book-leather:focus-visible {
-  box-shadow: 4px 14px 22px rgba(45, 20, 8, 0.45), 0 0 14px rgba(229, 185, 103, 0.3);
+  box-shadow: 2px 8px 20px rgba(45, 20, 8, 0.45), 0 0 16px rgba(229, 185, 103, 0.35);
 }
+.book-slot:hover .book-plum, .book-slot:focus-visible .book-plum,
 .book-plum:hover, .book-plum:focus-visible {
-  box-shadow: 4px 14px 22px rgba(35, 12, 30, 0.45), 0 0 14px rgba(229, 185, 103, 0.3);
+  box-shadow: 2px 8px 20px rgba(35, 12, 30, 0.45), 0 0 16px rgba(229, 185, 103, 0.35);
 }
 
 /* Gilded Frame Inset on Cover */
@@ -443,6 +471,8 @@ body {
 .book-leather .ribbon-bookmark { background: #264a3b; }
 .book-plum .ribbon-bookmark { background: #b88231; }
 
+.book-slot:hover .ribbon-bookmark,
+.book-slot:focus-visible .ribbon-bookmark,
 .book-card:hover .ribbon-bookmark,
 .book-card:focus-visible .ribbon-bookmark {
   height: 30px;
@@ -497,12 +527,16 @@ body {
   transition: transform 0.25s ease;
 }
 
+.book-slot:hover .open-prompt,
+.book-slot:focus-visible .open-prompt,
 .book-card:hover .open-prompt,
 .book-card:focus-visible .open-prompt {
   opacity: 1;
   color: #ffffff;
 }
 
+.book-slot:hover .open-prompt .arrow,
+.book-slot:focus-visible .open-prompt .arrow,
 .book-card:hover .open-prompt .arrow,
 .book-card:focus-visible .open-prompt .arrow {
   transform: translateX(2px);
@@ -599,8 +633,11 @@ body {
     padding: 0.6rem 1rem;
     border-width: 8px;
   }
-  .book-card {
+  .book-slot {
     height: 175px;
+  }
+  .book-card {
+    height: 100%;
   }
   .pinned-paper-note {
     padding: 0.5rem 1.2rem;
@@ -622,8 +659,11 @@ body {
   .books-container {
     gap: 0.75rem;
   }
-  .book-card {
+  .book-slot {
     height: 185px;
+  }
+  .book-card {
+    height: 100%;
     padding: 0.7rem 0.5rem;
   }
   .book-title {
@@ -681,10 +721,21 @@ body {
     perspective: none;
   }
 
+  .book-slot {
+    width: 100%;
+    height: 52px;
+  }
+
+  .book-slot:nth-child(1) { z-index: 5; }
+  .book-slot:nth-child(2) { z-index: 4; }
+  .book-slot:nth-child(3) { z-index: 3; }
+  .book-slot:nth-child(4) { z-index: 2; }
+  .book-slot:nth-child(5) { z-index: 1; }
+
   /* Each book becomes a horizontal stacked spine/side */
   .book-card {
     width: 100%;
-    height: 52px;
+    height: 100%;
     border-radius: 4px 6px 6px 4px;
     padding: 0.25rem 0.4rem;
     flex-direction: row;
@@ -720,10 +771,18 @@ body {
   }
 
   /* Interaction: Slide out from the stack when tapped/hovered */
+  .book-slot:hover .book-card,
+  .book-slot:focus-visible .book-card,
+  .book-slot:active .book-card,
   .book-card:hover,
   .book-card:focus-visible,
   .book-card:active {
     transform: rotate(0deg) translateX(8px) scale(1.02);
+  }
+
+  .book-slot:hover,
+  .book-slot:focus-visible,
+  .book-slot:active {
     z-index: 10 !important;
   }
 
@@ -854,8 +913,12 @@ body {
 }
 
 @media (max-width: 420px) {
-  .book-card {
+  .book-slot {
     height: 48px;
+  }
+
+  .book-card {
+    height: 100%;
     padding: 0.2rem 0.3rem;
   }
 
