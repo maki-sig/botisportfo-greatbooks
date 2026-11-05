@@ -72,17 +72,20 @@ body {
 }
 
 /* ==========================================================================
-   Top Navigation (Pinned to the Cork Board)
+   Top Navigation (Pinned to the Cork Board behind the book)
    ========================================================================== */
 
 .board-top-nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   max-width: 1220px;
-  margin: 0 auto 0.6rem;
-  z-index: 40;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2; /* Strictly BEHIND .open-book-container (z-index: 10) */
+  margin-bottom: -16px; /* Tucks the bottom portion of the card neatly behind the top edge of the book */
+  padding-left: 0.5rem;
 }
 
 /* Pinned "Back to Bookshelf" Button */
@@ -103,6 +106,7 @@ body {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
   position: relative;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 2; /* Sits behind the book */
 }
 
 .back-button::before {
@@ -133,6 +137,7 @@ body {
 
 .open-book-container {
   position: relative;
+  z-index: 10; /* Ensures the book sits IN FRONT of the bookshelf button */
   width: 100%;
   max-width: 1220px;
   min-height: 560px;
@@ -154,18 +159,55 @@ body {
   transition: transform 0.3s ease;
 }
 
-/* Central Hanging Silk Bookmark Ribbon */
+/* Central Hanging Silk Bookmark Ribbon - Repositioned BEHIND the book pages */
 .center-silk-ribbon {
   position: absolute;
-  top: -8px;
+  top: -16px;
+  bottom: -40px;
   left: 50%;
-  transform: translateX(-50%);
-  width: 22px;
-  height: 56px;
-  background: #a32228;
-  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.45);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
-  z-index: 35;
+  transform: translateX(-50%) rotate(2deg);
+  transform-origin: top center;
+  width: 24px;
+  background: linear-gradient(90deg,
+      #6c1216 0%,
+      #991f24 22%,
+      #c42e35 50%,
+      #991f24 78%,
+      #6c1216 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 15px), 0 100%);
+  z-index: 1; /* Positioned strictly BEHIND .book-spreads-wrapper (z-index: 5) and all pages */
+  pointer-events: none;
+  filter: drop-shadow(2px 6px 8px rgba(0, 0, 0, 0.45));
+}
+
+/* Embroidered silk headband stitch at top spine */
+.center-silk-ribbon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #a8792c 0%, #f5da82 50%, #a8792c 100%);
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Fine vertical weave sheen across the ribbon */
+.center-silk-ribbon::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 1px,
+    rgba(255, 255, 255, 0.08) 1px,
+    rgba(0, 0, 0, 0.12) 2px
+  );
   pointer-events: none;
 }
 
@@ -175,9 +217,9 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 3px;
-  overflow: hidden;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
-  perspective: 2000px;
+  perspective: 2200px;
+  z-index: 5; /* In front of bookmark ribbon */
 }
 
 /* 3D Center Spine Gutter Shadow */
@@ -220,95 +262,248 @@ body {
   z-index: 10;
 }
 
-.book-spread.under-spread {
-  opacity: 1;
+/* Underlying Spread Stacking during Turn */
+.book-spread.spread-underneath {
+  opacity: 1 !important;
   pointer-events: none;
-  z-index: 5;
+  z-index: 4 !important;
+  transition: none !important;
 }
 
-/* Page Turn Animation Classes with Realistic Paper Curvature */
-.turning-forward .page-right {
-  animation: flipRightToLeftCurved 0.65s cubic-bezier(0.4, 0.08, 0.25, 1) forwards;
+/* ==========================================================================
+   Realistic & Ultra-Smooth 3D Page Turn System (GPU Compositor Accelerated)
+   ========================================================================== */
+
+.flipping-page-leaf {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  z-index: 30;
+  display: none;
+  will-change: transform;
+}
+
+.flipping-page-leaf.flip-forward {
+  display: block;
+  right: 0;
   transform-origin: left center;
-  z-index: 30;
-  box-shadow: -15px 0 35px rgba(0, 0, 0, 0.55);
+  animation: smoothFlipForward 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-.turning-backward .page-left {
-  animation: flipLeftToRightCurved 0.65s cubic-bezier(0.4, 0.08, 0.25, 1) forwards;
+.flipping-page-leaf.flip-backward {
+  display: block;
+  left: 0;
   transform-origin: right center;
-  z-index: 30;
-  box-shadow: 15px 0 35px rgba(0, 0, 0, 0.55);
+  animation: smoothFlipBackward 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-@keyframes flipRightToLeftCurved {
+/* Two-sided page leaf faces */
+.leaf-side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: translateZ(0); /* Hardware acceleration layer */
+}
+
+.leaf-side .book-page {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.leaf-side .page-corner-fold {
+  display: none !important;
+}
+
+.leaf-side .book-page::after {
+  display: none !important;
+}
+
+.leaf-front {
+  transform: rotateY(0deg) translateZ(1px);
+  background-color: var(--page-right-bg);
+  box-shadow: inset -2px 0 4px rgba(0, 0, 0, 0.08);
+}
+
+.leaf-back {
+  transform: rotateY(180deg) translateZ(1px);
+  background-color: var(--page-left-bg);
+  box-shadow: inset 2px 0 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Fixed sheen gradients with pure GPU opacity transitions (Zero paint thrashing) */
+.leaf-side::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0;
+  will-change: opacity;
+}
+
+.leaf-front::after {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.22) 0%, rgba(255, 255, 255, 0.25) 55%, rgba(0, 0, 0, 0.12) 100%);
+}
+
+.leaf-back::after {
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.22) 0%, rgba(255, 255, 255, 0.25) 55%, rgba(0, 0, 0, 0.12) 100%);
+}
+
+.flip-forward .leaf-front::after {
+  animation: frontSheenForward 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.flip-forward .leaf-back::after {
+  animation: backSheenForward 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.flip-backward .leaf-front::after {
+  animation: frontSheenBackward 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.flip-backward .leaf-back::after {
+  animation: backSheenBackward 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Smooth, Jitter-Free 3D Curving Keyframes (Pure Transform on GPU) */
+@keyframes smoothFlipForward {
   0% {
-    transform: rotateY(0deg) skewY(0deg) scaleX(1);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-    filter: brightness(1);
+    transform: rotateY(0deg) skewY(0deg);
   }
 
-  25% {
-    /* Page curls inward, arching dynamically */
-    transform: rotateY(-38deg) skewY(-5deg) scaleX(0.93);
-    box-shadow: -18px 0 28px rgba(0, 0, 0, 0.38);
-    filter: brightness(0.92);
+  28% {
+    transform: rotateY(-48deg) skewY(-2.8deg);
   }
 
   50% {
-    /* Peak bend & curve across the spine */
-    transform: rotateY(-88deg) skewY(-8deg) scaleX(0.85);
-    box-shadow: -32px 0 45px rgba(0, 0, 0, 0.55);
-    filter: brightness(0.8);
+    transform: rotateY(-90deg) skewY(-3.2deg);
   }
 
-  75% {
-    /* Arching down toward the left side */
-    transform: rotateY(-138deg) skewY(-3deg) scaleX(0.94);
-    box-shadow: -18px 0 30px rgba(0, 0, 0, 0.35);
-    filter: brightness(0.9);
+  72% {
+    transform: rotateY(-136deg) skewY(-1.6deg);
   }
 
   100% {
-    /* Flattens out on the left page */
-    transform: rotateY(-180deg) skewY(0deg) scaleX(1);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    filter: brightness(0.96);
-    opacity: 0;
+    transform: rotateY(-180deg) skewY(0deg);
   }
 }
 
-@keyframes flipLeftToRightCurved {
+@keyframes smoothFlipBackward {
   0% {
-    transform: rotateY(0deg) skewY(0deg) scaleX(1);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-    filter: brightness(1);
+    transform: rotateY(0deg) skewY(0deg);
   }
 
-  25% {
-    transform: rotateY(38deg) skewY(5deg) scaleX(0.93);
-    box-shadow: 18px 0 28px rgba(0, 0, 0, 0.38);
-    filter: brightness(0.92);
+  28% {
+    transform: rotateY(48deg) skewY(2.8deg);
   }
 
   50% {
-    transform: rotateY(88deg) skewY(8deg) scaleX(0.85);
-    box-shadow: 32px 0 45px rgba(0, 0, 0, 0.55);
-    filter: brightness(0.8);
+    transform: rotateY(90deg) skewY(3.2deg);
   }
 
-  75% {
-    transform: rotateY(138deg) skewY(3deg) scaleX(0.94);
-    box-shadow: 18px 0 30px rgba(0, 0, 0, 0.35);
-    filter: brightness(0.9);
+  72% {
+    transform: rotateY(136deg) skewY(1.6deg);
   }
 
   100% {
-    transform: rotateY(180deg) skewY(0deg) scaleX(1);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    filter: brightness(0.96);
-    opacity: 0;
+    transform: rotateY(180deg) skewY(0deg);
   }
+}
+
+/* GPU Opacity-Only Keyframes (No gradient recomputations) */
+@keyframes frontSheenForward {
+  0% { opacity: 0; }
+  35% { opacity: 0.75; }
+  50% { opacity: 0.9; }
+  100% { opacity: 0.9; }
+}
+
+@keyframes backSheenForward {
+  0% { opacity: 0.9; }
+  50% { opacity: 0.75; }
+  80% { opacity: 0.25; }
+  100% { opacity: 0; }
+}
+
+@keyframes frontSheenBackward {
+  0% { opacity: 0; }
+  35% { opacity: 0.75; }
+  50% { opacity: 0.9; }
+  100% { opacity: 0.9; }
+}
+
+@keyframes backSheenBackward {
+  0% { opacity: 0.9; }
+  50% { opacity: 0.75; }
+  80% { opacity: 0.25; }
+  100% { opacity: 0; }
+}
+
+/* Static Ambient Shadows (Opacity-Only on GPU) */
+.page-turning-shadow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  pointer-events: none;
+  z-index: 15;
+  opacity: 0;
+  will-change: opacity;
+}
+
+.shadow-left {
+  left: 0;
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 40%, transparent 80%);
+}
+
+.shadow-right {
+  right: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 40%, transparent 80%);
+}
+
+.flip-forward ~ .shadow-right {
+  animation: shadowLift 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.flip-forward ~ .shadow-left {
+  animation: shadowLand 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.flip-backward ~ .shadow-left {
+  animation: shadowLift 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.flip-backward ~ .shadow-right {
+  animation: shadowLand 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes shadowLift {
+  0% { opacity: 0.15; }
+  35% { opacity: 0.55; }
+  70% { opacity: 0.2; }
+  100% { opacity: 0; }
+}
+
+@keyframes shadowLand {
+  0% { opacity: 0; }
+  45% { opacity: 0; }
+  75% { opacity: 0.45; }
+  100% { opacity: 0; }
 }
 
 /* Book Page Base */
@@ -841,35 +1036,7 @@ body {
   border-width: 0 50px 50px 0;
 }
 
-/* Smooth Content Fade-In Animation Once Page is Turned */
-/* Fade-Out Animation: Texts fade out before the page turns */
-.content-fading-out .page-inner-border {
-  opacity: 0 !important;
-  transform: translateY(-4px);
-  transition: opacity 0.22s ease-out, transform 0.22s ease-out;
-}
-
-/* Incoming spread content stays hidden while page is flipping */
-.under-spread .page-inner-border {
-  opacity: 0 !important;
-}
-
-/* Fade-In Animation: New texts smoothly fade in once page has turned */
-@keyframes contentFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.content-fading-in .page-inner-border {
-  animation: contentFadeIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
+/* Text content remains visible throughout page turns */
 
 /* ==========================================================================
    Responsive Adaptations
@@ -920,9 +1087,13 @@ body {
   }
 
   .center-silk-ribbon {
-    left: 20px;
+    left: 24px;
     transform: none;
-    height: 38px;
+    top: -12px;
+    bottom: auto;
+    height: 44px;
+    z-index: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 10px), 0 100%);
   }
 
   .manga-gallery {

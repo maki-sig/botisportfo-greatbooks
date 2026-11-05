@@ -247,12 +247,40 @@
 
       </div>
 
+      <!-- Realistic 3D Flipping Leaf Overlay -->
+      <div class="flipping-page-leaf" id="flipping-leaf" aria-hidden="true">
+        <div class="leaf-side leaf-front" id="leaf-front"></div>
+        <div class="leaf-side leaf-back" id="leaf-back"></div>
+      </div>
+
+      <!-- Dynamic Ambient Page Shadows -->
+      <div class="page-turning-shadow shadow-left" id="shadow-left" aria-hidden="true"></div>
+      <div class="page-turning-shadow shadow-right" id="shadow-right" aria-hidden="true"></div>
+
     </div>
   </article>
 
   <!-- Interactive Spread Switcher: Text Fade-Out -> Curved Page Turn -> Text Fade-In -->
   <script>
     let isTurning = false;
+    let page2Clone = null;
+    let page3Clone = null;
+
+    function getOrCreateClones() {
+      if (!page2Clone || !page3Clone) {
+        const spread1 = document.getElementById('spread-1');
+        const spread2 = document.getElementById('spread-2');
+        if (spread1 && spread2) {
+          const p2 = spread1.querySelector('.page-right');
+          const p3 = spread2.querySelector('.page-left');
+          if (p2 && p3) {
+            page2Clone = p2.cloneNode(true);
+            page3Clone = p3.cloneNode(true);
+          }
+        }
+      }
+      return { page2Clone, page3Clone };
+    }
 
     function switchSpread(targetSpread) {
       if (isTurning) return;
@@ -262,37 +290,100 @@
 
       if (targetSpread === currentSpreadNum) return;
 
+      const flippingLeaf = document.getElementById('flipping-leaf');
+      const leafFront = document.getElementById('leaf-front');
+      const leafBack = document.getElementById('leaf-back');
+
+      // Fallback for mobile / small screens where pages stack vertically
+      if (window.innerWidth <= 768 || !flippingLeaf || !leafFront || !leafBack) {
+        isTurning = true;
+        const outgoingSpread = targetSpread === 2 ? spread1 : spread2;
+        const incomingSpread = targetSpread === 2 ? spread2 : spread1;
+        outgoingSpread.classList.remove('active-spread');
+        incomingSpread.classList.add('active-spread');
+        isTurning = false;
+        return;
+      }
+
       isTurning = true;
-      const outgoingSpread = targetSpread === 2 ? spread1 : spread2;
-      const incomingSpread = targetSpread === 2 ? spread2 : spread1;
+      const { page2Clone: p2c, page3Clone: p3c } = getOrCreateClones();
 
-      // 1. Text fades out smoothly before the page turns
-      outgoingSpread.classList.add('content-fading-out');
+      if (targetSpread === 2) {
+        // Turning Forward: Page 2 flips left over the spine to become Page 3
+        const page2Source = spread1.querySelector('.page-right');
 
-      // 2. Once texts have faded out (220ms), trigger the physical curving page turn
-      setTimeout(() => {
-        incomingSpread.classList.add('under-spread');
+        leafFront.replaceChildren(p2c);
+        leafBack.replaceChildren(p3c);
 
-        if (targetSpread === 2) {
-          outgoingSpread.classList.add('turning-forward');
-        } else {
-          outgoingSpread.classList.add('turning-backward');
-        }
+        spread2.classList.add('spread-underneath');
+        page2Source.style.visibility = 'hidden';
 
-        // 3. Once curving page lands flat (540ms), activate incoming spread and fade in new text
-        setTimeout(() => {
-          incomingSpread.classList.remove('under-spread');
-          incomingSpread.classList.add('active-spread', 'content-fading-in');
-          outgoingSpread.classList.remove('active-spread', 'content-fading-out', 'turning-forward', 'turning-backward');
+        // Prime the GPU layer and trigger animation
+        requestAnimationFrame(() => {
+          flippingLeaf.className = 'flipping-page-leaf flip-forward';
+        });
 
-          // 4. Clean up fade-in class after transition
-          setTimeout(() => {
-            incomingSpread.classList.remove('content-fading-in');
-            isTurning = false;
-          }, 380);
-        }, 540);
-      }, 220);
+        const completeTurn = () => {
+          flippingLeaf.className = 'flipping-page-leaf';
+          page2Source.style.visibility = '';
+          spread1.classList.remove('active-spread');
+          spread2.classList.remove('spread-underneath');
+          spread2.classList.add('active-spread');
+          isTurning = false;
+        };
+
+        const timer = setTimeout(completeTurn, 660);
+        flippingLeaf.addEventListener('animationend', () => {
+          clearTimeout(timer);
+          completeTurn();
+        }, { once: true });
+
+      } else {
+        // Turning Backward: Page 3 flips right over the spine to become Page 2
+        const page3Source = spread2.querySelector('.page-left');
+
+        leafFront.replaceChildren(p3c);
+        leafBack.replaceChildren(p2c);
+
+        spread1.classList.add('spread-underneath');
+        page3Source.style.visibility = 'hidden';
+
+        requestAnimationFrame(() => {
+          flippingLeaf.className = 'flipping-page-leaf flip-backward';
+        });
+
+        const completeTurn = () => {
+          flippingLeaf.className = 'flipping-page-leaf';
+          page3Source.style.visibility = '';
+          spread2.classList.remove('active-spread');
+          spread1.classList.remove('spread-underneath');
+          spread1.classList.add('active-spread');
+          isTurning = false;
+        };
+
+        const timer = setTimeout(completeTurn, 660);
+        flippingLeaf.addEventListener('animationend', () => {
+          clearTimeout(timer);
+          completeTurn();
+        }, { once: true });
+      }
     }
+
+    // Pre-cache clones as soon as DOM is ready for zero latency on first turn
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', getOrCreateClones);
+    } else {
+      getOrCreateClones();
+    }
+
+    // Keyboard navigation (Arrow keys and Page Up/Down)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+        switchSpread(2);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        switchSpread(1);
+      }
+    });
   </script>
 
 </body>
