@@ -327,24 +327,27 @@
         spread2.classList.add('spread-underneath');
         page2Source.style.visibility = 'hidden';
 
-        // Prime the GPU layer and trigger animation
-        requestAnimationFrame(() => {
-          flippingLeaf.className = 'flipping-page-leaf flip-forward';
-        });
+        // Synchronous activation prevents any 1-frame blank gap
+        flippingLeaf.className = 'flipping-page-leaf flip-forward';
 
         const completeTurn = () => {
-          flippingLeaf.className = 'flipping-page-leaf';
-          page2Source.style.visibility = '';
-          spread1.classList.remove('active-spread');
-          spread2.classList.remove('spread-underneath');
+          // 1. Activate Spread 2 first so destination pages are rendered before leaf is hidden
           spread2.classList.add('active-spread');
-          if (bookContainer) {
-            bookContainer.classList.remove('turning-in-progress');
-          }
-          isTurning = false;
+          spread2.classList.remove('spread-underneath');
+          spread1.classList.remove('active-spread');
+          page2Source.style.visibility = '';
+
+          // 2. Hide leaf on next animation frame for seamless gapless handoff
+          requestAnimationFrame(() => {
+            flippingLeaf.className = 'flipping-page-leaf';
+            if (bookContainer) {
+              bookContainer.classList.remove('turning-in-progress');
+            }
+            isTurning = false;
+          });
         };
 
-        const timer = setTimeout(completeTurn, 660);
+        const timer = setTimeout(completeTurn, 780);
         flippingLeaf.addEventListener('animationend', () => {
           clearTimeout(timer);
           completeTurn();
@@ -360,23 +363,27 @@
         spread1.classList.add('spread-underneath');
         page3Source.style.visibility = 'hidden';
 
-        requestAnimationFrame(() => {
-          flippingLeaf.className = 'flipping-page-leaf flip-backward';
-        });
+        // Synchronous activation prevents any 1-frame blank gap
+        flippingLeaf.className = 'flipping-page-leaf flip-backward';
 
         const completeTurn = () => {
-          flippingLeaf.className = 'flipping-page-leaf';
-          page3Source.style.visibility = '';
-          spread2.classList.remove('active-spread');
-          spread1.classList.remove('spread-underneath');
+          // 1. Activate Spread 1 first so destination pages are rendered before leaf is hidden
           spread1.classList.add('active-spread');
-          if (bookContainer) {
-            bookContainer.classList.remove('turning-in-progress');
-          }
-          isTurning = false;
+          spread1.classList.remove('spread-underneath');
+          spread2.classList.remove('active-spread');
+          page3Source.style.visibility = '';
+
+          // 2. Hide leaf on next animation frame for seamless gapless handoff
+          requestAnimationFrame(() => {
+            flippingLeaf.className = 'flipping-page-leaf';
+            if (bookContainer) {
+              bookContainer.classList.remove('turning-in-progress');
+            }
+            isTurning = false;
+          });
         };
 
-        const timer = setTimeout(completeTurn, 660);
+        const timer = setTimeout(completeTurn, 780);
         flippingLeaf.addEventListener('animationend', () => {
           clearTimeout(timer);
           completeTurn();

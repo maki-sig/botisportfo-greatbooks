@@ -253,7 +253,6 @@ body {
   opacity: 0;
   pointer-events: none;
   transform-style: preserve-3d;
-  transition: opacity 0.35s ease;
 }
 
 .book-spread.active-spread {
@@ -290,14 +289,14 @@ body {
   display: block;
   right: 0;
   transform-origin: left center;
-  animation: smoothFlipForward 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: smoothFlipForward 0.76s forwards;
 }
 
 .flipping-page-leaf.flip-backward {
   display: block;
   left: 0;
   transform-origin: right center;
-  animation: smoothFlipBackward 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: smoothFlipBackward 0.76s forwards;
 }
 
 /* Two-sided page leaf faces */
@@ -312,7 +311,6 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transform: translateZ(0); /* Hardware acceleration layer */
 }
 
 .leaf-side .book-page {
@@ -334,12 +332,16 @@ body {
   transform: rotateY(0deg) translateZ(1px);
   background-color: var(--page-right-bg);
   box-shadow: inset -2px 0 4px rgba(0, 0, 0, 0.08);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .leaf-back {
   transform: rotateY(180deg) translateZ(1px);
   background-color: var(--page-left-bg);
   box-shadow: inset 2px 0 4px rgba(0, 0, 0, 0.08);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Fixed sheen gradients with pure GPU opacity transitions (Zero paint thrashing) */
@@ -365,37 +367,31 @@ body {
 }
 
 .flip-forward .leaf-front::after {
-  animation: frontSheenForward 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: frontSheenForward 0.76s forwards;
 }
 
 .flip-forward .leaf-back::after {
-  animation: backSheenForward 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: backSheenForward 0.76s forwards;
 }
 
 .flip-backward .leaf-front::after {
-  animation: frontSheenBackward 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: frontSheenBackward 0.76s forwards;
 }
 
 .flip-backward .leaf-back::after {
-  animation: backSheenBackward 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: backSheenBackward 0.76s forwards;
 }
 
-/* Smooth, Jitter-Free 3D Curving Keyframes (Pure Transform on GPU) */
+/* Continuous 2-Phase Physical Motion Curve (Zero intermediate velocity bumps) */
 @keyframes smoothFlipForward {
   0% {
     transform: rotateY(0deg) skewY(0deg);
-  }
-
-  28% {
-    transform: rotateY(-48deg) skewY(-2.8deg);
+    animation-timing-function: cubic-bezier(0.38, 0, 0.65, 0.7);
   }
 
   50% {
-    transform: rotateY(-90deg) skewY(-3.2deg);
-  }
-
-  72% {
-    transform: rotateY(-136deg) skewY(-1.6deg);
+    transform: rotateY(-90deg) skewY(-2.2deg);
+    animation-timing-function: cubic-bezier(0.2, 0.35, 0.25, 1);
   }
 
   100% {
@@ -406,18 +402,12 @@ body {
 @keyframes smoothFlipBackward {
   0% {
     transform: rotateY(0deg) skewY(0deg);
-  }
-
-  28% {
-    transform: rotateY(48deg) skewY(2.8deg);
+    animation-timing-function: cubic-bezier(0.38, 0, 0.65, 0.7);
   }
 
   50% {
-    transform: rotateY(90deg) skewY(3.2deg);
-  }
-
-  72% {
-    transform: rotateY(136deg) skewY(1.6deg);
+    transform: rotateY(90deg) skewY(2.2deg);
+    animation-timing-function: cubic-bezier(0.2, 0.35, 0.25, 1);
   }
 
   100% {
@@ -425,33 +415,61 @@ body {
   }
 }
 
-/* GPU Opacity-Only Keyframes (No gradient recomputations) */
+/* GPU Opacity-Only Keyframes */
 @keyframes frontSheenForward {
-  0% { opacity: 0; }
-  35% { opacity: 0.75; }
-  50% { opacity: 0.9; }
-  100% { opacity: 0.9; }
+  0% {
+    opacity: 0;
+    animation-timing-function: ease-in-out;
+  }
+  50% {
+    opacity: 0.65;
+    animation-timing-function: ease-out;
+  }
+  100% {
+    opacity: 0.65;
+  }
 }
 
 @keyframes backSheenForward {
-  0% { opacity: 0.9; }
-  50% { opacity: 0.75; }
-  80% { opacity: 0.25; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 0.65;
+    animation-timing-function: ease-in;
+  }
+  50% {
+    opacity: 0.65;
+    animation-timing-function: cubic-bezier(0.2, 0.35, 0.25, 1);
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes frontSheenBackward {
-  0% { opacity: 0; }
-  35% { opacity: 0.75; }
-  50% { opacity: 0.9; }
-  100% { opacity: 0.9; }
+  0% {
+    opacity: 0;
+    animation-timing-function: ease-in-out;
+  }
+  50% {
+    opacity: 0.65;
+    animation-timing-function: ease-out;
+  }
+  100% {
+    opacity: 0.65;
+  }
 }
 
 @keyframes backSheenBackward {
-  0% { opacity: 0.9; }
-  50% { opacity: 0.75; }
-  80% { opacity: 0.25; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 0.65;
+    animation-timing-function: ease-in;
+  }
+  50% {
+    opacity: 0.65;
+    animation-timing-function: cubic-bezier(0.2, 0.35, 0.25, 1);
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 /* Static Ambient Shadows (Opacity-Only on GPU) */
@@ -477,33 +495,53 @@ body {
 }
 
 .flip-forward ~ .shadow-right {
-  animation: shadowLift 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: shadowLift 0.76s forwards;
 }
 
 .flip-forward ~ .shadow-left {
-  animation: shadowLand 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: shadowLand 0.76s forwards;
 }
 
 .flip-backward ~ .shadow-left {
-  animation: shadowLift 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: shadowLift 0.76s forwards;
 }
 
 .flip-backward ~ .shadow-right {
-  animation: shadowLand 0.64s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: shadowLand 0.76s forwards;
 }
 
 @keyframes shadowLift {
-  0% { opacity: 0.15; }
-  35% { opacity: 0.55; }
-  70% { opacity: 0.2; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 0.15;
+    animation-timing-function: ease-out;
+  }
+  45% {
+    opacity: 0.5;
+    animation-timing-function: ease-in;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes shadowLand {
-  0% { opacity: 0; }
-  45% { opacity: 0; }
-  75% { opacity: 0.45; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+    animation-timing-function: ease-out;
+  }
+  85% {
+    opacity: 0.45;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 /* Book Page Base */
