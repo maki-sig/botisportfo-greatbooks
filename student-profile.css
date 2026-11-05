@@ -536,13 +536,18 @@ body {
    PAGE 2: Literary Interests & Taped Scrapbook Gallery (Enlarged)
    ========================================================================== */
 
+/* ==========================================================================
+   PAGE 2: Literary Interests & Taped Scrapbook 2x2 Grid
+   ========================================================================== */
+
 .manga-gallery {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
-  gap: 0.95rem;
-  margin: 0.8rem 0 0.35rem;
-  padding: 0.75rem 0.2rem 0.2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem 1.1rem;
+  margin: 0.65rem auto 0.15rem;
+  padding: 0.45rem 0.2rem 0.2rem;
+  max-width: 440px;
+  width: 100%;
 }
 
 .gallery-card {
@@ -551,16 +556,17 @@ body {
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 2px;
-  padding: 6px 6px 7px;
+  padding: 5px 6px 6px;
   box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.2),
+    0 4px 10px rgba(0, 0, 0, 0.18),
     0 1px 3px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  flex: 1;
-  max-width: 165px;
+  width: 100%;
+  max-width: 175px;
+  margin: 0 auto;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -568,10 +574,10 @@ body {
 .gallery-card::before {
   content: "";
   position: absolute;
-  top: -9px;
+  top: -8px;
   left: 50%;
-  width: 52px;
-  height: 18px;
+  width: 46px;
+  height: 16px;
   background: rgba(235, 222, 195, 0.85);
   backdrop-filter: blur(1px);
   border-left: 1px dashed rgba(160, 140, 110, 0.5);
@@ -581,46 +587,54 @@ body {
   pointer-events: none;
 }
 
-/* Unique Tilts & Individual Tape Angles */
+/* Unique Tilts for 2x2 Grid placement */
 .gallery-card.tape-1 {
-  transform: rotate(-3.5deg) translateY(2px);
+  transform: rotate(-2.5deg) translateY(1px);
 }
 
 .gallery-card.tape-1::before {
-  transform: translateX(-50%) rotate(-2.5deg);
+  transform: translateX(-50%) rotate(-2deg);
 }
 
 .gallery-card.tape-2 {
-  transform: rotate(2.8deg) translateY(-4px);
+  transform: rotate(2.2deg) translateY(-2px);
 }
 
 .gallery-card.tape-2::before {
-  transform: translateX(-50%) rotate(3deg);
+  transform: translateX(-50%) rotate(2.5deg);
 }
 
 .gallery-card.tape-3 {
-  transform: rotate(-2deg) translateY(3px);
+  transform: rotate(1.8deg) translateY(-1px);
 }
 
 .gallery-card.tape-3::before {
-  transform: translateX(-50%) rotate(-1.5deg);
+  transform: translateX(-50%) rotate(1.5deg);
+}
+
+.gallery-card.tape-4 {
+  transform: rotate(-2.2deg) translateY(2px);
+}
+
+.gallery-card.tape-4::before {
+  transform: translateX(-50%) rotate(-2deg);
 }
 
 /* Hover: straightens and lifts from the tape */
 .gallery-card:hover {
-  transform: rotate(0deg) translateY(-6px) scale(1.05);
+  transform: rotate(0deg) translateY(-5px) scale(1.04);
   z-index: 20;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
 }
 
-/* Default aspect ratio enlarged without cropping */
+/* Default aspect ratio fitting 2x2 grid */
 .gallery-thumb {
   width: auto;
   max-width: 100%;
-  max-height: 140px;
+  max-height: 105px;
   object-fit: contain;
   display: block;
-  margin: 0 auto 0.35rem;
+  margin: 0 auto 0.25rem;
   border-radius: 1px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
@@ -628,7 +642,7 @@ body {
 .gallery-caption {
   font-family: var(--font-typewriter);
   font-size: 0.74rem;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   color: #2c1e14;
   font-weight: 700;
   margin-top: auto;
@@ -912,11 +926,13 @@ body {
   }
 
   .manga-gallery {
-    gap: 0.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+    max-width: 320px;
   }
 
   .gallery-card {
-    max-width: 120px;
+    max-width: 145px;
     padding: 4px 4px 6px;
   }
 
@@ -927,12 +943,13 @@ body {
 
 @media (max-width: 440px) {
   .manga-gallery {
-    flex-wrap: wrap;
-    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    max-width: 290px;
   }
 
   .gallery-card {
-    max-width: 140px;
+    max-width: 135px;
   }
 
   .profile-card-layout {
