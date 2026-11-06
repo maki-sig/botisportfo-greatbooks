@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tome II &bull; 7 Literary Analyses | Great Books</title>
+
+  <!-- Google Fonts for Classical & Typewriter Aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Caveat:wght@400;600&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="literary-analyses.css">
+</head>
+
+<body>
+
+  <!-- Top Navigation Pinned to the Bulletin Board -->
+  <nav class="board-top-nav" aria-label="Page Navigation">
+    <a href="index.html" class="back-button" aria-label="Return to Great Books bookshelf">
+      &larr; Bookshelf
+    </a>
+  </nav>
+
+  <!-- Open Book Component (Fits Screen Height) -->
+  <article class="open-book-container" aria-label="7 Literary Analyses Open Book">
+
+    <!-- Center Hanging Silk Bookmark Ribbon -->
+    <div class="center-silk-ribbon" aria-hidden="true"></div>
+
+    <div class="book-spreads-wrapper">
+
+      <!-- Spread: Page 1 (Introduction) & Page 2 (7 Image Postcards) -->
+      <div class="book-spread active-spread" id="spread-1" role="tabpanel">
+
+        <!-- PAGE 1: Introduction -->
+        <section class="book-page page-left" aria-label="Introduction to the Seven Literary Analyses">
+          <div class="page-inner-border">
+
+            <header class="page-header">
+              <span class="chapter-badge">Chapter I &bull; Tome II</span>
+              <h1 class="page-title">Literary Analyses</h1>
+              <div class="page-divider" aria-hidden="true">&#10045;</div>
+            </header>
+
+            <div class="content-section">
+              <h2 class="section-heading">&#9998; Introduction</h2>
+              <p class="section-text">
+                This tome documents seven literary analyses composed across the Great Books course. Each analysis
+                examines a canonical work of world literature&mdash;probing its themes, characters, and enduring
+                philosophical significance.
+              </p>
+            </div>
+
+            <div class="content-section">
+              <h3 class="section-heading">&#10038; The Seven Works</h3>
+              <ul class="goals-list">
+                <li><span class="goal-icon">A</span><span><em>Voice out the Whirlwind</em> &mdash; Anonymous</span></li>
+                <li><span class="goal-icon">B</span><span><em>Ramayana</em> &mdash; Maharishi Valmiki</span></li>
+                <li><span class="goal-icon">C</span><span><em>Mahabharata</em> &mdash; Maharishi Ved Vyasa</span></li>
+                <li><span class="goal-icon">D</span><span><em>The Iliad</em> &mdash; Homer</span></li>
+                <li><span class="goal-icon">E</span><span><em>The Odyssey</em> &mdash; Homer</span></li>
+                <li><span class="goal-icon">F</span><span><em>The Song of Roland</em> &mdash; Anonymous</span></li>
+                <li><span class="goal-icon">G</span><span><em>The Tale of Genji</em> &mdash; Murasaki Shikibu</span></li>
+              </ul>
+            </div>
+
+            <footer class="page-footer">
+              <span class="page-num">Folio &bull; Page 1</span>
+              <span class="page-num">&#10022;</span>
+            </footer>
+
+          </div>
+        </section>
+
+        <!-- PAGE 2: 7 Image-Only Postcards (4:3 ratio) -->
+        <section class="book-page page-right" aria-label="Gallery of Seven Works">
+          <div class="page-inner-border">
+
+            <header class="page-header">
+              <span class="chapter-badge">The Works &bull; Tome II</span>
+              <h2 class="page-title">Seven Volumes</h2>
+              <div class="page-divider" aria-hidden="true">&#10045;</div>
+            </header>
+
+            <div class="postcard-grid">
+
+              <!-- pc-1: has dedicated analysis — click to open -->
+              <figure class="postcard pc-1" role="button" tabindex="0"
+                onclick="switchSpread(2)" onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(2)"
+                aria-label="Open Voice out the Whirlwind analysis" title="Voice out the Whirlwind — Click to read analysis">
+                <span class="tape">Voice out the Whirlwind</span>
+                <img src="images/Voice of the Whirlwind.jpg" alt="Voice out the Whirlwind" class="postcard-img" onerror="this.style.display='none'">
+              </figure>
+
+              <!-- pc-2: Ramayana — click to open -->
+              <figure class="postcard pc-2" role="button" tabindex="0"
+                onclick="switchSpread(3)" onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(3)"
+                aria-label="Open Ramayana analysis" title="Ramayana — Click to read analysis">
+                <span class="tape">Ramayana</span>
+                <img src="images/Ramayana.jpg" alt="Ramayana" class="postcard-img" onerror="this.style.display='none'">
+              </figure>
+
+              <figure class="postcard pc-3" title="Mahabharata">
+                <span class="tape">Mahabharata</span>
+                <img src="images/Mahabharata.jpg" alt="Mahabharata" class="postcard-img" onerror="this.style.display='none'">
+              </figure>
+
+              <figure class="postcard pc-4" title="The Iliad">
+                <span class="tape">The Iliad</span>
+                <img src="images/The Iliad.webp" alt="The Iliad" class="postcard-img" onerror="this.style.display='none'">
+              </figure>
+
+              <figure class="postcard pc-5" title="The Odyssey">
+                <span class="tape">The Odyssey</span>
+                <img src="images/The Odyssey.jpg" alt="The Odyssey" class="postcard-img" onerror="this.style.display='none'">
+              </figure>
+
+              <figure class="postcard pc-6" title="The Song of Roland">
+                <span class="tape">The Song of Roland</span>
+                <img src="images/The Song of Roland.webp" alt="The Song of Roland" class="postcard-img" onerror="this.style.display='none'">
+              </figure>
+
+              <figure class="postcard pc-7" title="The Tale of Genji">
+                <span class="tape">The Tale of Genji</span>
+                <img src="images/The Tale of Genji.webp" alt="The Tale of Genji" class="postcard-img" onerror="this.style.display='none'">
+              </figure>
+
+            </div>
+
+            <footer class="page-footer">
+              <span class="page-num">Folio &bull; Page 2</span>
+              <button class="page-corner-fold fold-right" onclick="switchSpread(2)"
+                aria-label="Turn page forward" title="Turn to Voice out the Whirlwind"></button>
+            </footer>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- ========================================================
+           SPREAD 2: Pages 3 & 4 — Voice out the Whirlwind
+           ======================================================== -->
+      <div class="book-spread" id="spread-2" role="tabpanel" aria-labelledby="spread-2">
+
+        <!-- PAGE 3: Story overview — image, author, literary lens -->
+        <section class="book-page page-left" aria-label="Voice out the Whirlwind — Overview">
+          <div class="page-inner-border">
+
+            <header class="page-header">
+              <span class="chapter-badge">Analysis A &bull; Tome II</span>
+              <h2 class="page-title">Voice out the Whirlwind</h2>
+              <div class="page-divider" aria-hidden="true">&#10045;</div>
+            </header>
+
+            <!-- Book cover image — gallery card style (matches Tome 1 Page 2) -->
+            <figure class="analysis-cover-wrap">
+              <img
+                src="images/Voice of the Whirlwind.jpg"
+                alt="Voice out the Whirlwind book cover"
+                class="analysis-cover-img"
+                onerror="this.style.display='none'"
+              >
+            </figure>
+
+            <!-- Author & lens block structured with Tome 1 section-heading styling -->
+            <div class="content-section">
+              <h3 class="section-heading"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:middle;flex-shrink:0"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 12.5a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg> Ecocritical Lens</h3>
+              <p class="section-text">
+                God speaks directly out of a fierce whirlwind, using the raw power of the natural world
+                to humble Job. Rather than debating human rules or morals, the text directs attention to
+                the mysteries of ocean tides, weather patterns, and untamed beasts like the Leviathan.
+                This lens reveals that humans are not the centre of the universe, reminding us to respect
+                cosmic forces far beyond our control.
+              </p>
+            </div>
+
+            <footer class="page-footer">
+              <button class="page-corner-fold fold-left" onclick="switchSpread(1)"
+                aria-label="Turn page back" title="Return to postcards"></button>
+              <span class="page-num">Folio &bull; Page 3</span>
+            </footer>
+
+          </div>
+        </section>
+
+        <!-- PAGE 4: Literary analysis & personal insight -->
+        <section class="book-page page-right" aria-label="Voice out the Whirlwind — Analysis">
+          <div class="page-inner-border">
+
+            <header class="page-header">
+              <span class="chapter-badge">Literary Analysis</span>
+              <h2 class="page-title">Analysis &amp; Insight</h2>
+              <div class="page-divider" aria-hidden="true">&#10045;</div>
+            </header>
+
+            <div class="content-section">
+              <h3 class="section-heading">&#10020; Literary Analysis</h3>
+              <p class="section-text">
+                The passage shows that we cannot always understand or control the hardships that
+                happen to us in life. When God highlights the massive design of the earth and the
+                heavens, it makes Job&rsquo;s personal complaints feel tiny in comparison. In the
+                end, it reminds us that when life gets overwhelming, practising humility and
+                accepting our personal limits is often the healthiest response.
+              </p>
+            </div>
+
+            <div class="content-section">
+              <h3 class="section-heading">&#10038; My Insight</h3>
+              <p class="section-text" style="font-style: italic;">
+                The story made me realise that every struggle or minor setback that I face is a
+                test of my character. The challenges and sufferings that I face as a student also
+                made me realise that such minor issues don&rsquo;t matter at all &mdash; because
+                there are bigger pictures than things I have experienced, and also some people
+                suffer more than I do. Ultimately, the story taught me to have faith in the
+                Lord&rsquo;s plans for me and just be grateful for what I have today.
+              </p>
+            </div>
+
+            <footer class="page-footer">
+              <span class="page-num">Folio &bull; Page 4</span>
+              <button class="page-corner-fold fold-right" onclick="switchSpread(3)"
+                aria-label="Turn page forward" title="Turn to Ramayana"></button>
+            </footer>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- ========================================================
+           SPREAD 3: Pages 5 & 6 — Ramayana
+           ======================================================== -->
+      <div class="book-spread" id="spread-3" role="tabpanel" aria-labelledby="spread-3">
+
+        <!-- PAGE 5: Story overview — side-by-side images (story & author) & literary lens -->
+        <section class="book-page page-left" aria-label="Ramayana — Overview">
+          <div class="page-inner-border">
+
+            <header class="page-header">
+              <span class="chapter-badge">Analysis B &bull; Tome II</span>
+              <h2 class="page-title">Ramayana</h2>
+              <div class="page-divider" aria-hidden="true">&#10045;</div>
+            </header>
+
+            <!-- Side-by-side photo cards: Author portrait (left) & Story cover (right) -->
+            <div class="analysis-duo-gallery" aria-label="Maharishi Valmiki and Ramayana">
+              <figure class="duo-card duo-author">
+                <span class="tape">Maharishi Valmiki</span>
+                <img
+                  src="images/Maharishi Valmiki.jpg"
+                  alt="Portrait of Maharishi Valmiki"
+                  class="duo-thumb"
+                  onerror="this.style.display='none'"
+                >
+              </figure>
+
+              <figure class="duo-card duo-story">
+                <span class="tape" aria-hidden="true"></span>
+                <img
+                  src="images/Ramayana.jpg"
+                  alt="Ramayana epic illustration"
+                  class="duo-thumb"
+                  onerror="this.style.display='none'"
+                >
+              </figure>
+            </div>
+
+            <!-- Literary lens block -->
+            <div class="content-section">
+              <h3 class="section-heading"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:middle;flex-shrink:0"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> Archetypal Lens</h3>
+              <p class="section-text">
+                The Archetypal Lens works best here because the story is built around familiar character
+                types and a classic hero&rsquo;s quest. Rama fits the mold of the noble hero who must
+                endure an unjust exile, while Ravana represents the ultimate villain who instigates
+                the conflict by abducting Sita. Looking at the epic through these recurring story patterns
+                helps us see how ancient literature used clear symbols of good and evil to teach moral duty.
+              </p>
+            </div>
+
+            <footer class="page-footer">
+              <button class="page-corner-fold fold-left" onclick="switchSpread(2)"
+                aria-label="Turn page back" title="Return to Voice out the Whirlwind"></button>
+              <span class="page-num">Folio &bull; Page 5</span>
+            </footer>
+
+          </div>
+        </section>
+
+        <!-- PAGE 6: Literary analysis & personal insight -->
+        <section class="book-page page-right" aria-label="Ramayana — Analysis">
+          <div class="page-inner-border">
+
+            <header class="page-header">
+              <span class="chapter-badge">Literary Analysis</span>
+              <h2 class="page-title">Analysis &amp; Insight</h2>
+              <div class="page-divider" aria-hidden="true">&#10045;</div>
+            </header>
+
+            <div class="content-section">
+              <h3 class="section-heading">&#10020; Literary Analysis</h3>
+              <p class="section-text">
+                The main point of this epic is that sticking to your moral duty, or <em>dharma</em>,
+                matters much more than your own personal comfort. Rama gives up his right to the throne
+                without complaining and heads into the wilderness for fourteen years just to honour his
+                family&rsquo;s word. It delivers a strong message that staying honest and loyal will help
+                you get through tough trials, even when other people try to derail your life.
+              </p>
+            </div>
+
+            <div class="content-section">
+              <h3 class="section-heading">&#10038; My Insight</h3>
+              <p class="section-text" style="font-style: italic;">
+                Ramayana taught me that sometimes upholding integrity and personal morals requires
+                self-sacrifice. Just like Captain America, doing the right thing is hard, especially
+                against difficult odds. As a student, it reminds me that honour, loyalty, and integrity
+                are values that I should always apply in my life.
+              </p>
+            </div>
+
+            <footer class="page-footer">
+              <span class="page-num">Folio &bull; Page 6</span>
+              <span class="page-num">&#10022;</span>
+            </footer>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Realistic 3D Flipping Leaf Overlay -->
+      <div class="flipping-page-leaf" id="flipping-leaf" aria-hidden="true">
+        <div class="leaf-side leaf-front" id="leaf-front"></div>
+        <div class="leaf-side leaf-back" id="leaf-back"></div>
+      </div>
+
+      <!-- Dynamic Ambient Page Shadows -->
+      <div class="page-turning-shadow shadow-left" id="shadow-left" aria-hidden="true"></div>
+      <div class="page-turning-shadow shadow-right" id="shadow-right" aria-hidden="true"></div>
+
+
+    </div>
+  </article>
+
+
+  <!-- Sound Effect on Page Turn -->
+  <audio id="page-turn-sound" src="assets/page turn.mp3" preload="auto"></audio>
+
+  <!-- Interactive Spread Switcher: Text Fade-Out -> Curved Page Turn -> Text Fade-In -->
+  <script>
+    let isTurning = false;
+
+    function playPageTurnSound() {
+      const turnAudio = document.getElementById('page-turn-sound');
+      if (!turnAudio) return;
+      try {
+        const sound = turnAudio.cloneNode();
+        sound.volume = 0.85;
+        sound.play().catch(() => {});
+      } catch (e) {
+        turnAudio.currentTime = 0;
+        turnAudio.play().catch(() => {});
+      }
+    }
+
+    function switchSpread(targetSpread) {
+      if (isTurning) return;
+      const currentSpreadEl = document.querySelector('.book-spread.active-spread');
+      const currentSpreadNum = currentSpreadEl ? parseInt(currentSpreadEl.id.replace('spread-', '')) : 1;
+
+      if (targetSpread === currentSpreadNum) return;
+
+      const targetSpreadEl = document.getElementById('spread-' + targetSpread);
+      if (!targetSpreadEl) return;
+
+      const bookContainer = document.querySelector('.open-book-container');
+      const flippingLeaf = document.getElementById('flipping-leaf');
+      const leafFront = document.getElementById('leaf-front');
+      const leafBack = document.getElementById('leaf-back');
+
+      // Play page turn audio sound effect
+      playPageTurnSound();
+
+      // Momentarily disappear corner folds on click
+      if (bookContainer) {
+        bookContainer.classList.add('turning-in-progress');
+      }
+
+      // Fallback for mobile / small screens where pages stack vertically
+      if (window.innerWidth <= 768 || !flippingLeaf || !leafFront || !leafBack) {
+        isTurning = true;
+        currentSpreadEl.classList.remove('active-spread');
+        targetSpreadEl.classList.add('active-spread');
+        setTimeout(() => {
+          if (bookContainer) bookContainer.classList.remove('turning-in-progress');
+          isTurning = false;
+        }, 280);
+        return;
+      }
+
+      isTurning = true;
+      const isForward = targetSpread > currentSpreadNum;
+
+      let sourcePageToHide;
+      if (isForward) {
+        // Turning Forward: right page flips left over the spine
+        sourcePageToHide = currentSpreadEl.querySelector('.page-right');
+        const frontClone = sourcePageToHide.cloneNode(true);
+        const backClone = targetSpreadEl.querySelector('.page-left').cloneNode(true);
+
+        leafFront.replaceChildren(frontClone);
+        leafBack.replaceChildren(backClone);
+
+        targetSpreadEl.classList.add('spread-underneath');
+        sourcePageToHide.style.visibility = 'hidden';
+
+        flippingLeaf.className = 'flipping-page-leaf flip-forward';
+      } else {
+        // Turning Backward: left page flips right over the spine
+        sourcePageToHide = currentSpreadEl.querySelector('.page-left');
+        const frontClone = targetSpreadEl.querySelector('.page-right').cloneNode(true);
+        const backClone = sourcePageToHide.cloneNode(true);
+
+        leafFront.replaceChildren(backClone);
+        leafBack.replaceChildren(frontClone);
+
+        targetSpreadEl.classList.add('spread-underneath');
+        sourcePageToHide.style.visibility = 'hidden';
+
+        flippingLeaf.className = 'flipping-page-leaf flip-backward';
+      }
+
+      const completeTurn = () => {
+        targetSpreadEl.classList.add('active-spread');
+        targetSpreadEl.classList.remove('spread-underneath');
+        currentSpreadEl.classList.remove('active-spread');
+        if (sourcePageToHide) sourcePageToHide.style.visibility = '';
+
+        requestAnimationFrame(() => {
+          flippingLeaf.className = 'flipping-page-leaf';
+          if (bookContainer) {
+            bookContainer.classList.remove('turning-in-progress');
+          }
+          isTurning = false;
+        });
+      };
+
+      const timer = setTimeout(completeTurn, 780);
+      flippingLeaf.addEventListener('animationend', () => {
+        clearTimeout(timer);
+        completeTurn();
+      }, { once: true });
+    }
+
+    // Keyboard navigation (Arrow keys and Page Up/Down)
+    document.addEventListener('keydown', (e) => {
+      const activeSpread = document.querySelector('.book-spread.active-spread');
+      const currentSpreadNum = activeSpread ? parseInt(activeSpread.id.replace('spread-', '')) : 1;
+      const totalSpreads = document.querySelectorAll('.book-spread').length;
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+        if (currentSpreadNum < totalSpreads) switchSpread(currentSpreadNum + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        if (currentSpreadNum > 1) switchSpread(currentSpreadNum - 1);
+      }
+    });
+
+    // Book slide sound on Back to Bookshelf click
+    (function () {
+      const slideAudio = new Audio('assets/book slide.mp3');
+      slideAudio.preload = 'auto';
+      const backBtn = document.querySelector('.back-button');
+      if (backBtn) {
+        backBtn.addEventListener('click', function (e) {
+          const href = this.href;
+          e.preventDefault();
+          try {
+            const sound = slideAudio.cloneNode();
+            sound.volume = 0.85;
+            sound.play().catch(() => {});
+            let navigated = false;
+            const navigate = () => {
+              if (navigated) return;
+              navigated = true;
+              clearTimeout(timer);
+              window.location.href = href;
+            };
+            sound.addEventListener('ended', navigate);
+            const timer = setTimeout(navigate, 420);
+          } catch (err) {
+            window.location.href = href;
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+
+</html>

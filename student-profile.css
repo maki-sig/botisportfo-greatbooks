@@ -23,8 +23,8 @@
   --font-serif-display: 'Cinzel', serif;
   --font-serif-title: 'Playfair Display', Georgia, serif;
   --font-serif-classic: 'Cormorant Garamond', Garamond, serif;
-  --font-serif-body: 'Lora', Georgia, serif;
-  --font-typewriter: 'Courier Prime', 'Courier New', Courier, monospace;
+  --font-serif-body: 'Cormorant Garamond', Garamond, serif;
+  --font-typewriter: var(--font-serif-classic);
 }
 
 /* Reset & Base */
@@ -45,7 +45,7 @@ body {
 
 /* Fullscreen Cork Bulletin Board Background */
 body {
-  font-family: var(--font-serif-body);
+  font-family: var(--font-serif-classic);
   background-color: #ba8c58;
   /* Seamless Cork Surface Covering Entire Screen */
   background-image:
@@ -72,20 +72,14 @@ body {
 }
 
 /* ==========================================================================
-   Top Navigation (Pinned to the Cork Board behind the book)
+   Top Navigation (Fixed to top-left corner of the bulletin board)
    ========================================================================== */
 
 .board-top-nav {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  max-width: 1220px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2; /* Strictly BEHIND .open-book-container (z-index: 10) */
-  margin-bottom: -16px; /* Tucks the bottom portion of the card neatly behind the top edge of the book */
-  padding-left: 0.5rem;
+  position: fixed;
+  top: calc(14px + 0.6rem); /* Offset by body border (14px) + inner padding */
+  left: calc(14px + 0.75rem);
+  z-index: 2; /* Behind the open book (z-index: 10) */
 }
 
 /* Pinned "Back to Bookshelf" Button */
@@ -106,7 +100,7 @@ body {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
   position: relative;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  z-index: 2; /* Sits behind the book */
+  z-index: 2; /* Behind the open book */
 }
 
 .back-button::before {
@@ -669,7 +663,7 @@ body {
   display: flex;
   gap: 1.4rem;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.65rem;
 }
 
 .photo-frame-wrapper {
@@ -712,12 +706,12 @@ body {
 }
 
 .meta-field {
-  margin-bottom: 0.55rem;
+  margin-bottom: 0.75rem;
 }
 
 .meta-label {
   font-family: var(--font-serif-display);
-  font-size: 0.66rem;
+  font-size: 0.76rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold-accent);
@@ -735,13 +729,17 @@ body {
 }
 
 .meta-value-sub {
-  font-family: var(--font-typewriter);
-  font-size: 0.96rem;
+  font-family: var(--font-serif-classic);
+  font-size: 1.05rem;
   color: var(--ink-secondary);
 }
 
 .content-section {
-  margin-bottom: 0.85rem;
+  margin-bottom: 1.75rem;
+}
+
+.content-section:last-of-type {
+  margin-bottom: 0;
 }
 
 .section-heading {
@@ -751,18 +749,27 @@ body {
   text-transform: uppercase;
   color: var(--ink-secondary);
   border-bottom: 1px dashed rgba(198, 156, 78, 0.45);
-  padding-bottom: 0.25rem;
-  margin-bottom: 0.5rem;
+  padding-bottom: 0.35rem;
+  margin-bottom: 0.75rem;
   display: flex;
   align-items: center;
   gap: 0.45rem;
 }
 
+.section-heading:not(:first-child) {
+  margin-top: 1.75rem;
+}
+
 .section-text {
-  font-family: var(--font-typewriter);
-  font-size: 1.02rem;
-  line-height: 1.55;
+  font-family: var(--font-serif-classic);
+  font-size: 1.08rem;
+  line-height: 1.65;
   color: var(--ink-primary);
+  margin-bottom: 0.75rem;
+}
+
+.section-text:last-child {
+  margin-bottom: 0;
 }
 
 /* ==========================================================================
@@ -777,7 +784,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.85rem 1.1rem;
-  margin: 0.65rem auto 0.15rem;
+  margin: 1.25rem auto 0.25rem;
   padding: 0.45rem 0.2rem 0.2rem;
   max-width: 440px;
   width: 100%;
@@ -873,8 +880,8 @@ body {
 }
 
 .gallery-caption {
-  font-family: var(--font-typewriter);
-  font-size: 0.74rem;
+  font-family: var(--font-serif-classic);
+  font-size: 0.88rem;
   letter-spacing: 0.02em;
   color: #2c1e14;
   font-weight: 700;
@@ -896,24 +903,25 @@ body {
 }
 
 .highlight-quote-card p {
-  font-family: var(--font-typewriter);
-  font-size: 1.02rem;
+  font-family: var(--font-serif-classic);
+  font-size: 1.08rem;
   line-height: 1.55;
   color: var(--ink-primary);
 }
 
 .goals-list {
   list-style: none;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0;
 }
 
 .goals-list li {
   display: flex;
   align-items: flex-start;
   gap: 0.6rem;
-  margin-bottom: 0.55rem;
-  font-family: var(--font-typewriter);
-  font-size: 0.96rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-serif-classic);
+  font-size: 1.05rem;
   line-height: 1.5;
   color: var(--ink-secondary);
 }
@@ -938,7 +946,7 @@ body {
 
 .creed-tag {
   font-family: var(--font-serif-display);
-  font-size: 0.66rem;
+  font-size: 0.76rem;
   letter-spacing: 0.22em;
   color: var(--gold-accent);
   text-transform: uppercase;
@@ -959,7 +967,7 @@ body {
 
 .page-num {
   font-family: var(--font-serif-classic);
-  font-size: 0.92rem;
+  font-size: 1.0rem;
   font-style: italic;
   color: var(--ink-muted);
 }
