@@ -852,6 +852,57 @@
 
 
     </div>
+
+    <!-- Right-Edge Flag Index (Tome II quick navigation) -->
+    <nav class="book-flag-rail" aria-label="Tome II quick navigation">
+      <button type="button" class="book-flag flag-1 is-active" data-spread="1"
+        onclick="switchSpread(1)" aria-current="page"
+        aria-label="Go to the Introduction, page 1" title="Introduction — Page 1">
+        <span class="flag-title">Intro</span>
+      </button>
+
+      <button type="button" class="book-flag flag-2" data-spread="2"
+        onclick="switchSpread(2)"
+        aria-label="Go to Voice out the Whirlwind, pages 3 and 4" title="Voice out the Whirlwind — Pages 3–4">
+        <span class="flag-title">Whirlwind</span>
+      </button>
+
+      <button type="button" class="book-flag flag-3" data-spread="3"
+        onclick="switchSpread(3)"
+        aria-label="Go to Ramayana, pages 5 and 6" title="Ramayana — Pages 5–6">
+        <span class="flag-title">Ramayana</span>
+      </button>
+
+      <button type="button" class="book-flag flag-4" data-spread="4"
+        onclick="switchSpread(4)"
+        aria-label="Go to Mahabharata, pages 7 and 8" title="Mahabharata — Pages 7–8">
+        <span class="flag-title">Mahabharata</span>
+      </button>
+
+      <button type="button" class="book-flag flag-5" data-spread="5"
+        onclick="switchSpread(5)"
+        aria-label="Go to The Iliad, pages 9 and 10" title="The Iliad — Pages 9–10">
+        <span class="flag-title">Iliad</span>
+      </button>
+
+      <button type="button" class="book-flag flag-6" data-spread="6"
+        onclick="switchSpread(6)"
+        aria-label="Go to The Odyssey, pages 11 and 12" title="The Odyssey — Pages 11–12">
+        <span class="flag-title">Odyssey</span>
+      </button>
+
+      <button type="button" class="book-flag flag-7" data-spread="7"
+        onclick="switchSpread(7)"
+        aria-label="Go to The Song of Roland, pages 13 and 14" title="The Song of Roland — Pages 13–14">
+        <span class="flag-title">Roland</span>
+      </button>
+
+      <button type="button" class="book-flag flag-8" data-spread="8"
+        onclick="switchSpread(8)"
+        aria-label="Go to The Tale of Genji, pages 15 and 16" title="The Tale of Genji — Pages 15–16">
+        <span class="flag-title">Genji</span>
+      </button>
+    </nav>
   </article>
 
 
@@ -884,6 +935,8 @@
 
       const targetSpreadEl = document.getElementById('spread-' + targetSpread);
       if (!targetSpreadEl) return;
+
+      updateBookFlags(targetSpread);
 
       const bookContainer = document.querySelector('.open-book-container');
       const flippingLeaf = document.getElementById('flipping-leaf');
@@ -963,6 +1016,22 @@
         completeTurn();
       }, { once: true });
     }
+
+    // Keep the right-edge flag index in sync with the visible spread
+    function updateBookFlags(activeSpread) {
+      document.querySelectorAll('.book-flag').forEach((flag) => {
+        const isActive = parseInt(flag.dataset.spread, 10) === activeSpread;
+        flag.classList.toggle('is-active', isActive);
+        if (isActive) {
+          flag.setAttribute('aria-current', 'page');
+        } else {
+          flag.removeAttribute('aria-current');
+        }
+      });
+    }
+
+    // Initialise flag state on load
+    updateBookFlags(1);
 
     // Keyboard navigation (Arrow keys and Page Up/Down)
     document.addEventListener('keydown', (e) => {

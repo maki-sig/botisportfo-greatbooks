@@ -1623,3 +1623,140 @@ body {
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   TOME II FOREDGE FLAG INDEX
+   Page-matched fore-edge index tabs.
+   - Text styling exactly matches the tape labels (var(--font-serif-classic), 0.78rem, #3a2a0a, letter-spacing: 0.03em).
+   - Inactive flags tuck behind the open page (z-index: 2).
+   - Active flag sits seamlessly continuous with the open page itself (z-index: 12),
+     sharing the exact same parchment background (--page-right-bg) with no left seam,
+     looking like an integral physical extension of the page leaf.
+   ========================================================================== */
+
+.book-flag-rail {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  bottom: 14px;
+  width: 0;
+  pointer-events: none;
+  /* No z-index here so child flags can stack behind (z-index: 2) or with the open page (z-index: 12) */
+}
+
+.book-flag {
+  position: absolute;
+  right: -94px;              /* how far the tab pokes past the fore-edge */
+  width: 122px;              /* 94px outside + 28px seamlessly bridging into the page margin */
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px 0 34px;
+  z-index: 2;                /* Inactive tabs sit behind the open page leaf */
+
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  pointer-events: auto;
+
+  /* Text styling matching tape labels */
+  font-family: var(--font-serif-classic);
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  color: #3a2a0a;
+  text-align: left;
+  white-space: nowrap;
+
+  /* Same exact color as the book pages */
+  background-color: var(--page-right-bg);
+  border: 1px solid rgba(198, 156, 78, 0.35);
+  border-left: none;         /* Seamless transition from the page edge */
+  border-radius: 0 5px 5px 0;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.12);
+
+  opacity: 0.72;             /* Inactive tabs are a bit transparent */
+  filter: brightness(0.96);  /* Subtle depth for pages behind the open leaf */
+  transform: none;
+  transition:
+    transform 0.22s cubic-bezier(0.2, 0.8, 0.25, 1),
+    box-shadow 0.22s ease,
+    opacity 0.22s ease,
+    filter 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.flag-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--font-serif-classic);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  color: #3a2a0a;
+}
+
+/* Hover: smoothly pulls out slightly from the page edge and gains clarity */
+.book-flag:hover,
+.book-flag:focus-visible {
+  transform: translateX(4px);
+  opacity: 0.95;
+  filter: brightness(1.0);
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.20);
+}
+
+.book-flag:focus-visible {
+  outline: 2px solid #8c6a28;
+  outline-offset: 2px;
+}
+
+/* Active Spread Tab: integral part of the open page itself */
+.book-flag.is-active {
+  z-index: 12;               /* Rises in front of the page stack, integral to open page */
+  opacity: 1;                /* Solid, fully opaque matching the open page leaf */
+  transform: translateX(6px);
+  background-color: var(--page-right-bg); /* Exactly continuous with .page-right */
+  border-top: 1px solid rgba(198, 156, 78, 0.45);
+  border-bottom: 1px solid rgba(198, 156, 78, 0.45);
+  border-right: 1px solid rgba(198, 156, 78, 0.55);
+  border-left: none;         /* No seam or divider cutting into the page paper */
+  border-radius: 0 5px 5px 0;
+  box-shadow: 3px 2px 6px rgba(0, 0, 0, 0.18); /* Shadow falls outward onto desk, never onto page */
+  filter: brightness(1.0);
+  color: #2b1d06;
+}
+
+.book-flag.is-active .flag-title {
+  font-family: var(--font-serif-classic);
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+  color: #2b1d06;
+}
+
+/* Staggered positions down the fore-edge */
+.flag-1 { top: 12.5%; } /* Intro */
+.flag-2 { top: 22.5%; } /* Whirlwind */
+.flag-3 { top: 32.5%; } /* Ramayana */
+.flag-4 { top: 42.5%; } /* Mahabharata */
+.flag-5 { top: 52.5%; } /* The Iliad */
+.flag-6 { top: 62.5%; } /* The Odyssey */
+.flag-7 { top: 72.5%; } /* The Song of Roland */
+.flag-8 { top: 82.5%; } /* The Tale of Genji */
+
+/* Reserve cork margin for the flags only on screens where the pages still
+   have enough room for the longest analysis text. */
+@media (min-width: 1280px) and (min-height: 700px) {
+  .open-book-container {
+    max-width: min(1220px, calc(100vw - 230px));
+  }
+}
+
+/* A side flag rail does not work when the book is narrow, short, or stacked */
+@media (max-width: 1279px), (max-height: 699px) {
+  .book-flag-rail {
+    display: none;
+  }
+}
