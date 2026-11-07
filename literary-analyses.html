@@ -93,7 +93,7 @@
                 onclick="switchSpread(2)" onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(2)"
                 aria-label="Open Voice out the Whirlwind analysis" title="Voice out the Whirlwind — Click to read analysis">
                 <span class="tape">Voice out the Whirlwind</span>
-                <img src="images/Voice of the Whirlwind.jpg" alt="Voice out the Whirlwind" class="postcard-img" onerror="this.style.display='none'">
+                <img src="images/Voice of the Whirlwind.jpg" alt="Voice out the Whirlwind" class="postcard-img" onerror="this.style.display='none'" decoding="async">
               </figure>
 
               <!-- pc-2: Ramayana — click to open -->
@@ -101,7 +101,7 @@
                 onclick="switchSpread(3)" onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(3)"
                 aria-label="Open Ramayana analysis" title="Ramayana — Click to read analysis">
                 <span class="tape">Ramayana</span>
-                <img src="images/Ramayana.jpg" alt="Ramayana" class="postcard-img" onerror="this.style.display='none'">
+                <img src="images/Ramayana.jpg" alt="Ramayana" class="postcard-img" onerror="this.style.display='none'" decoding="async">
               </figure>
 
               <!-- pc-3: Mahabharata — click to open -->
@@ -109,7 +109,7 @@
                 onclick="switchSpread(4)" onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(4)"
                 aria-label="Open Mahabharata analysis" title="Mahabharata — Click to read analysis">
                 <span class="tape">Mahabharata</span>
-                <img src="images/Mahabharata.jpg" alt="Mahabharata" class="postcard-img" onerror="this.style.display='none'">
+                <img src="images/Mahabharata.jpg" alt="Mahabharata" class="postcard-img" onerror="this.style.display='none'" decoding="async">
               </figure>
 
               <!-- pc-4: The Iliad — click to open -->
@@ -117,7 +117,7 @@
                 onclick="switchSpread(5)" onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(5)"
                 aria-label="Open The Iliad analysis" title="The Iliad — Click to read analysis">
                 <span class="tape">The Iliad</span>
-                <img src="images/The Iliad.webp" alt="The Iliad" class="postcard-img" onerror="this.style.display='none'">
+                <img src="images/The Iliad.webp" alt="The Iliad" class="postcard-img" onerror="this.style.display='none'" decoding="async">
               </figure>
 
               <!-- pc-5: The Odyssey — click to open -->
@@ -125,7 +125,7 @@
                 onclick="switchSpread(6)" onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(6)"
                 aria-label="Open The Odyssey analysis" title="The Odyssey — Click to read analysis">
                 <span class="tape">The Odyssey</span>
-                <img src="images/The Odyssey.jpg" alt="The Odyssey" class="postcard-img" onerror="this.style.display='none'">
+                <img src="images/The Odyssey.jpg" alt="The Odyssey" class="postcard-img" onerror="this.style.display='none'" decoding="async">
               </figure>
 
               <!-- pc-6: The Song of Roland — click to open -->
@@ -133,7 +133,7 @@
                 onclick="switchSpread(7)" onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(7)"
                 aria-label="Open The Song of Roland analysis" title="The Song of Roland — Click to read analysis">
                 <span class="tape">The Song of Roland</span>
-                <img src="images/The Song of Roland.webp" alt="The Song of Roland" class="postcard-img" onerror="this.style.display='none'">
+                <img src="images/The Song of Roland.webp" alt="The Song of Roland" class="postcard-img" onerror="this.style.display='none'" decoding="async">
               </figure>
 
               <!-- pc-7: The Tale of Genji — click to open -->
@@ -141,7 +141,7 @@
                 onclick="switchSpread(8)" onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(8)"
                 aria-label="Open The Tale of Genji analysis" title="The Tale of Genji — Click to read analysis">
                 <span class="tape">The Tale of Genji</span>
-                <img src="images/The Tale of Genji.webp" alt="The Tale of Genji" class="postcard-img" onerror="this.style.display='none'">
+                <img src="images/The Tale of Genji.webp" alt="The Tale of Genji" class="postcard-img" onerror="this.style.display='none'" decoding="async">
               </figure>
 
             </div>
@@ -174,12 +174,11 @@
 
             <!-- Book cover image — gallery card style (matches Tome 1 Page 2) -->
             <figure class="analysis-cover-wrap">
-              <img
-                src="images/Voice of the Whirlwind.jpg"
+              <img src="images/Voice of the Whirlwind.jpg"
                 alt="Voice out the Whirlwind book cover"
                 class="analysis-cover-img"
                 onerror="this.style.display='none'"
-              >
+               loading="lazy" decoding="async">
             </figure>
 
             <!-- Author & lens block structured with Tome 1 section-heading styling -->
@@ -266,22 +265,20 @@
             <div class="analysis-duo-gallery" aria-label="Maharishi Valmiki and Ramayana">
               <figure class="duo-card duo-author">
                 <span class="tape">Maharishi Valmiki</span>
-                <img
-                  src="images/Maharishi Valmiki.jpg"
+                <img src="images/Maharishi Valmiki.jpg"
                   alt="Portrait of Maharishi Valmiki"
                   class="duo-thumb"
                   onerror="this.style.display='none'"
-                >
+                 loading="lazy" decoding="async">
               </figure>
 
               <figure class="duo-card duo-story">
                 <span class="tape" aria-hidden="true"></span>
-                <img
-                  src="images/Ramayana.jpg"
+                <img src="images/Ramayana.jpg"
                   alt="Ramayana epic illustration"
                   class="duo-thumb"
                   onerror="this.style.display='none'"
-                >
+                 loading="lazy" decoding="async">
               </figure>
             </div>
 
@@ -367,22 +364,20 @@
             <div class="analysis-duo-gallery" aria-label="Maharishi Ved Vyasa and Mahabharata">
               <figure class="duo-card duo-author">
                 <span class="tape">Maharishi Ved Vyasa</span>
-                <img
-                  src="images/Maharishi Veda Vyasa.webp"
+                <img src="images/Maharishi Veda Vyasa.webp"
                   alt="Portrait of Maharishi Ved Vyasa"
                   class="duo-thumb"
                   onerror="this.style.display='none'"
-                >
+                 loading="lazy" decoding="async">
               </figure>
 
               <figure class="duo-card duo-story">
                 <span class="tape" aria-hidden="true"></span>
-                <img
-                  src="images/Mahabharata.jpg"
+                <img src="images/Mahabharata.jpg"
                   alt="Mahabharata epic illustration"
                   class="duo-thumb"
                   onerror="this.style.display='none'"
-                >
+                 loading="lazy" decoding="async">
               </figure>
             </div>
 
@@ -468,22 +463,20 @@
             <div class="analysis-duo-gallery" aria-label="Homer and The Iliad">
               <figure class="duo-card duo-author">
                 <span class="tape">Homer</span>
-                <img
-                  src="images/Homer.webp"
+                <img src="images/Homer.webp"
                   alt="Portrait of Homer"
                   class="duo-thumb"
                   onerror="this.style.display='none'"
-                >
+                 loading="lazy" decoding="async">
               </figure>
 
               <figure class="duo-card duo-story">
                 <span class="tape" aria-hidden="true"></span>
-                <img
-                  src="images/The Iliad.webp"
+                <img src="images/The Iliad.webp"
                   alt="The Iliad epic illustration"
                   class="duo-thumb"
                   onerror="this.style.display='none'"
-                >
+                 loading="lazy" decoding="async">
               </figure>
             </div>
 
@@ -571,22 +564,20 @@
             <div class="analysis-duo-gallery" aria-label="Homer and The Odyssey">
               <figure class="duo-card duo-author">
                 <span class="tape">Homer</span>
-                <img
-                  src="images/Homer.webp"
+                <img src="images/Homer.webp"
                   alt="Portrait of Homer"
                   class="duo-thumb"
                   onerror="this.style.display='none'"
-                >
+                 loading="lazy" decoding="async">
               </figure>
 
               <figure class="duo-card duo-story">
                 <span class="tape" aria-hidden="true"></span>
-                <img
-                  src="images/The Odyssey.jpg"
+                <img src="images/The Odyssey.jpg"
                   alt="The Odyssey epic illustration"
                   class="duo-thumb"
                   onerror="this.style.display='none'"
-                >
+                 loading="lazy" decoding="async">
               </figure>
             </div>
 
@@ -669,12 +660,11 @@
 
             <!-- Book cover image — gallery card style (matches Voice out the Whirlwind) -->
             <figure class="analysis-cover-wrap">
-              <img
-                src="images/The Song of Roland.webp"
+              <img src="images/The Song of Roland.webp"
                 alt="The Song of Roland book cover"
                 class="analysis-cover-img"
                 onerror="this.style.display='none'"
-              >
+               loading="lazy" decoding="async">
             </figure>
 
             <!-- Lens block -->
@@ -758,22 +748,20 @@
             <div class="analysis-duo-gallery" aria-label="Murasaki Shikibu and The Tale of Genji">
               <figure class="duo-card duo-author">
                 <span class="tape">Murasaki Shikibu</span>
-                <img
-                  src="images/Murasaki Shikibu.webp"
+                <img src="images/Murasaki Shikibu.webp"
                   alt="Portrait of Murasaki Shikibu"
                   class="duo-thumb"
                   onerror="this.style.display='none'"
-                >
+                 loading="lazy" decoding="async">
               </figure>
 
               <figure class="duo-card duo-story">
                 <span class="tape" aria-hidden="true"></span>
-                <img
-                  src="images/The Tale of Genji.webp"
+                <img src="images/The Tale of Genji.webp"
                   alt="The Tale of Genji illustration"
                   class="duo-thumb"
                   onerror="this.style.display='none'"
-                >
+                 loading="lazy" decoding="async">
               </figure>
             </div>
 
