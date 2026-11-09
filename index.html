@@ -41,9 +41,10 @@
       <!-- Description Placeholder on Pinned Paper -->
       <div class="description-box">
         <p>
-          Welcome to my Great Books anthology and learning scrapbook. Here lies an exploratory collection of literary
-          insights, historical commentaries, timeless masterpieces, and reflective thoughts gathered across the
-          semester. Select any volume below to open its chapter.
+          Welcome to my Great Books portfolio! Here you’ll find a compilation of my story analyses, reflections, and key
+          takeaways from the masterpieces we read this semester. Going through these texts helped me see that literature
+          isn't just about old stories, but practical life lessons we can still use today. Take a look around and
+          explore the different sections below to see what I've learned!
         </p>
       </div>
     </header>
@@ -161,10 +162,10 @@
           try {
             const sound = hoverAudio.cloneNode();
             sound.volume = 0.75;
-            sound.play().catch(() => {});
+            sound.play().catch(() => { });
           } catch (e) {
             hoverAudio.currentTime = 0;
-            hoverAudio.play().catch(() => {});
+            hoverAudio.play().catch(() => { });
           }
         }, 80);
       }
@@ -178,7 +179,7 @@
         try {
           const sound = slideAudio.cloneNode();
           sound.volume = 0.85;
-          sound.play().catch(() => {});
+          sound.play().catch(() => { });
           // Guard flag: only navigate once, whichever fires first
           let navigated = false;
           const navigate = () => {
