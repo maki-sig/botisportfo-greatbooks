@@ -1,6 +1,7 @@
 /**
  * book-nav.js
- * Unified book-to-book navigation and audio feedback for the Great Books Digital Portfolio.
+ * Unified book-to-book navigation, audio feedback, and reading tip toast
+ * for the Great Books Digital Portfolio.
  * Active across all book interfaces (Tomes I - V, excluding index.html).
  */
 
@@ -89,15 +90,117 @@
     });
   }
 
+  // Paper tip toast for first-time book readers
+  const TOAST_STORAGE_KEY = 'great_books_toast_shown';
+  const TOAST_DURATION_MS = 8500; // 8.5 seconds display time
+
+  function initPaperToast() {
+    try {
+      if (sessionStorage.getItem(TOAST_STORAGE_KEY)) {
+        return;
+      }
+      sessionStorage.setItem(TOAST_STORAGE_KEY, 'true');
+    } catch (e) {
+      // In case session storage is restricted
+    }
+
+    const toast = document.createElement('aside');
+    toast.className = 'paper-toast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    toast.setAttribute('aria-label', 'Keyboard Navigation Tip');
+
+    toast.innerHTML =
+      '<button type="button" class="paper-toast-close" aria-label="Dismiss reading guide">&times;</button>' +
+      '<div class="paper-toast-header">' +
+        '<span class="paper-toast-pin" aria-hidden="true">&#10022;</span>' +
+        '<span class="paper-toast-title">Reading Guide</span>' +
+      '</div>' +
+      '<p class="paper-toast-intro">Navigate the collection with arrow keys:</p>' +
+      '<div class="paper-toast-shortcuts">' +
+        '<div class="paper-toast-shortcut">' +
+          '<div class="paper-key-group">' +
+            '<kbd class="paper-key">&uarr;</kbd>' +
+            '<kbd class="paper-key">&darr;</kbd>' +
+          '</div>' +
+          '<span class="paper-key-desc">Navigate tomes</span>' +
+        '</div>' +
+        '<div class="paper-toast-shortcut">' +
+          '<div class="paper-key-group">' +
+            '<kbd class="paper-key">&larr;</kbd>' +
+            '<kbd class="paper-key">&rarr;</kbd>' +
+          '</div>' +
+          '<span class="paper-key-desc">Turn pages</span>' +
+        '</div>' +
+      '</div>';
+
+    document.body.appendChild(toast);
+
+    let fadeTimer = null;
+    let removeTimer = null;
+    let isFading = false;
+
+    function dismissToast() {
+      if (isFading) return;
+      isFading = true;
+      clearTimeout(fadeTimer);
+      clearTimeout(removeTimer);
+      toast.classList.remove('is-visible');
+      toast.classList.add('is-fading');
+      removeTimer = setTimeout(function () {
+        if (toast.parentNode) {
+          toast.parentNode.removeChild(toast);
+        }
+      }, 700);
+    }
+
+    function startTimer(duration) {
+      clearTimeout(fadeTimer);
+      fadeTimer = setTimeout(dismissToast, duration);
+    }
+
+    // Smooth entrance after initial page load
+    setTimeout(function () {
+      toast.classList.add('is-visible');
+      startTimer(TOAST_DURATION_MS);
+    }, 450);
+
+    // Close button
+    const closeBtn = toast.querySelector('.paper-toast-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', dismissToast);
+    }
+
+    // Pause timer while user hovers cursor over the toast
+    toast.addEventListener('mouseenter', function () {
+      clearTimeout(fadeTimer);
+    });
+
+    toast.addEventListener('mouseleave', function () {
+      if (!isFading) {
+        startTimer(3500); // Allow 3.5 seconds after cursor leaves
+      }
+    });
+  }
+
+  // Developer helper for easy testing in console
+  window.resetBookNavToast = function () {
+    try {
+      sessionStorage.removeItem(TOAST_STORAGE_KEY);
+      console.log('Book navigation toast reset. Reload or open a book to see it again.');
+    } catch (e) {}
+  };
+
   // Initialize once DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       initNavLinks();
       initArrowKeyNavigation();
+      initPaperToast();
     });
   } else {
     initNavLinks();
     initArrowKeyNavigation();
+    initPaperToast();
   }
 })();
-

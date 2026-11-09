@@ -15,17 +15,48 @@
 
   <link rel="stylesheet" href="nav.css">
   <link rel="stylesheet" href="literary-analyses.css">
+  <link rel="stylesheet" href="desktop-notice.css">
 </head>
 
 <body>
 
-        <!-- Top Navigation Vertical Torn Paper Menu Pinned to Bulletin Board -->
+  <!-- Desktop Interface Requirement Notice (Active below desktop resolution) -->
+  <aside class="desktop-only-overlay" role="dialog" aria-modal="true" aria-label="Desktop Display Required">
+    <div class="desktop-notice-card">
+      <div class="desktop-notice-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+          stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+          <line x1="8" y1="21" x2="16" y2="21" />
+          <line x1="12" y1="17" x2="12" y2="21" />
+        </svg>
+      </div>
+      <span class="desktop-notice-badge">Notice</span>
+      <h2 class="desktop-notice-title">Desktop Display Required</h2>
+      <div class="desktop-notice-divider" aria-hidden="true">&#10045;</div>
+      <p class="desktop-notice-desc">
+        This digital portfolio is crafted as an expansive, antique scrapbook with realistic two-page spreads and
+        classical typography designed for desktop viewports.
+      </p>
+      <p class="desktop-notice-subdesc">
+        Please open this portfolio on a desktop computer or maximize your browser display to view the collection.
+      </p>
+      <div class="desktop-notice-hint">
+        <span>Desktop Interface Only &bull; Min 1025px</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Top Navigation Vertical Torn Paper Menu Pinned to Bulletin Board -->
   <nav class="board-top-nav" aria-label="Anthology Navigation">
     <div class="torn-paper-menu">
       <ul class="nav-menu-list">
         <li>
           <a href="index.html" class="nav-link">
-            <span class="nav-icon" aria-hidden="true"><svg class="nav-icon-svg" viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></span>
+            <span class="nav-icon" aria-hidden="true"><svg class="nav-icon-svg" viewBox="0 0 24 24" width="12"
+                height="12" fill="currentColor">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+              </svg></span>
             <span class="nav-text">Home</span>
           </a>
         </li>
@@ -102,7 +133,8 @@
                 <li><span class="goal-icon">D</span><span><em>The Iliad</em> &mdash; Homer</span></li>
                 <li><span class="goal-icon">E</span><span><em>The Odyssey</em> &mdash; Homer</span></li>
                 <li><span class="goal-icon">F</span><span><em>The Song of Roland</em> &mdash; Anonymous</span></li>
-                <li><span class="goal-icon">G</span><span><em>The Tale of Genji</em> &mdash; Murasaki Shikibu</span></li>
+                <li><span class="goal-icon">G</span><span><em>The Tale of Genji</em> &mdash; Murasaki Shikibu</span>
+                </li>
               </ul>
             </div>
 
@@ -127,67 +159,75 @@
             <div class="postcard-grid">
 
               <!-- pc-1: has dedicated analysis — click to open -->
-              <figure class="postcard pc-1" role="button" tabindex="0"
-                onclick="switchSpread(2)" onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(2)"
-                aria-label="Open Voice out the Whirlwind analysis" title="Voice out the Whirlwind — Click to read analysis">
+              <figure class="postcard pc-1" role="button" tabindex="0" onclick="switchSpread(2)"
+                onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(2)"
+                aria-label="Open Voice out the Whirlwind analysis"
+                title="Voice out the Whirlwind — Click to read analysis">
                 <span class="tape">Voice out the Whirlwind</span>
-                <img src="images/Voice of the Whirlwind.jpg" alt="Voice out the Whirlwind" class="postcard-img" onerror="this.style.display='none'" decoding="async">
+                <img src="images/Voice of the Whirlwind.jpg" alt="Voice out the Whirlwind" class="postcard-img"
+                  onerror="this.style.display='none'" decoding="async">
               </figure>
 
               <!-- pc-2: Ramayana — click to open -->
-              <figure class="postcard pc-2" role="button" tabindex="0"
-                onclick="switchSpread(3)" onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(3)"
-                aria-label="Open Ramayana analysis" title="Ramayana — Click to read analysis">
+              <figure class="postcard pc-2" role="button" tabindex="0" onclick="switchSpread(3)"
+                onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(3)" aria-label="Open Ramayana analysis"
+                title="Ramayana — Click to read analysis">
                 <span class="tape">Ramayana</span>
-                <img src="images/Ramayana.jpg" alt="Ramayana" class="postcard-img" onerror="this.style.display='none'" decoding="async">
+                <img src="images/Ramayana.jpg" alt="Ramayana" class="postcard-img" onerror="this.style.display='none'"
+                  decoding="async">
               </figure>
 
               <!-- pc-3: Mahabharata — click to open -->
-              <figure class="postcard pc-3" role="button" tabindex="0"
-                onclick="switchSpread(4)" onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(4)"
+              <figure class="postcard pc-3" role="button" tabindex="0" onclick="switchSpread(4)"
+                onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(4)"
                 aria-label="Open Mahabharata analysis" title="Mahabharata — Click to read analysis">
                 <span class="tape">Mahabharata</span>
-                <img src="images/Mahabharata.jpg" alt="Mahabharata" class="postcard-img" onerror="this.style.display='none'" decoding="async">
+                <img src="images/Mahabharata.jpg" alt="Mahabharata" class="postcard-img"
+                  onerror="this.style.display='none'" decoding="async">
               </figure>
 
               <!-- pc-4: The Iliad — click to open -->
-              <figure class="postcard pc-4" role="button" tabindex="0"
-                onclick="switchSpread(5)" onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(5)"
-                aria-label="Open The Iliad analysis" title="The Iliad — Click to read analysis">
+              <figure class="postcard pc-4" role="button" tabindex="0" onclick="switchSpread(5)"
+                onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(5)" aria-label="Open The Iliad analysis"
+                title="The Iliad — Click to read analysis">
                 <span class="tape">The Iliad</span>
-                <img src="images/The Iliad.webp" alt="The Iliad" class="postcard-img" onerror="this.style.display='none'" decoding="async">
+                <img src="images/The Iliad.webp" alt="The Iliad" class="postcard-img"
+                  onerror="this.style.display='none'" decoding="async">
               </figure>
 
               <!-- pc-5: The Odyssey — click to open -->
-              <figure class="postcard pc-5" role="button" tabindex="0"
-                onclick="switchSpread(6)" onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(6)"
+              <figure class="postcard pc-5" role="button" tabindex="0" onclick="switchSpread(6)"
+                onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(6)"
                 aria-label="Open The Odyssey analysis" title="The Odyssey — Click to read analysis">
                 <span class="tape">The Odyssey</span>
-                <img src="images/The Odyssey.jpg" alt="The Odyssey" class="postcard-img" onerror="this.style.display='none'" decoding="async">
+                <img src="images/The Odyssey.jpg" alt="The Odyssey" class="postcard-img"
+                  onerror="this.style.display='none'" decoding="async">
               </figure>
 
               <!-- pc-6: The Song of Roland — click to open -->
-              <figure class="postcard pc-6" role="button" tabindex="0"
-                onclick="switchSpread(7)" onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(7)"
+              <figure class="postcard pc-6" role="button" tabindex="0" onclick="switchSpread(7)"
+                onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(7)"
                 aria-label="Open The Song of Roland analysis" title="The Song of Roland — Click to read analysis">
                 <span class="tape">The Song of Roland</span>
-                <img src="images/The Song of Roland.webp" alt="The Song of Roland" class="postcard-img" onerror="this.style.display='none'" decoding="async">
+                <img src="images/The Song of Roland.webp" alt="The Song of Roland" class="postcard-img"
+                  onerror="this.style.display='none'" decoding="async">
               </figure>
 
               <!-- pc-7: The Tale of Genji — click to open -->
-              <figure class="postcard pc-7" role="button" tabindex="0"
-                onclick="switchSpread(8)" onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(8)"
+              <figure class="postcard pc-7" role="button" tabindex="0" onclick="switchSpread(8)"
+                onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(8)"
                 aria-label="Open The Tale of Genji analysis" title="The Tale of Genji — Click to read analysis">
                 <span class="tape">The Tale of Genji</span>
-                <img src="images/The Tale of Genji.webp" alt="The Tale of Genji" class="postcard-img" onerror="this.style.display='none'" decoding="async">
+                <img src="images/The Tale of Genji.webp" alt="The Tale of Genji" class="postcard-img"
+                  onerror="this.style.display='none'" decoding="async">
               </figure>
 
             </div>
 
             <footer class="page-footer">
               <span class="page-num">Folio &bull; Page 2</span>
-              <button class="page-corner-fold fold-right" onclick="switchSpread(2)"
-                aria-label="Turn page forward" title="Turn to Voice out the Whirlwind"></button>
+              <button class="page-corner-fold fold-right" onclick="switchSpread(2)" aria-label="Turn page forward"
+                title="Turn to Voice out the Whirlwind"></button>
             </footer>
 
           </div>
@@ -212,16 +252,17 @@
 
             <!-- Book cover image — gallery card style (matches Tome 1 Page 2) -->
             <figure class="analysis-cover-wrap">
-              <img src="images/Voice of the Whirlwind.jpg"
-                alt="Voice out the Whirlwind book cover"
-                class="analysis-cover-img"
-                onerror="this.style.display='none'"
-               loading="lazy" decoding="async">
+              <img src="images/Voice of the Whirlwind.jpg" alt="Voice out the Whirlwind book cover"
+                class="analysis-cover-img" onerror="this.style.display='none'" loading="lazy" decoding="async">
             </figure>
 
             <!-- Author & lens block structured with Tome 1 section-heading styling -->
             <div class="content-section">
-              <h3 class="section-heading"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:middle;flex-shrink:0"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 12.5a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg> Ecocritical Lens</h3>
+              <h3 class="section-heading"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                  width="13" height="13" fill="currentColor" style="vertical-align:middle;flex-shrink:0">
+                  <path
+                    d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 12.5a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" />
+                </svg> Ecocritical Lens</h3>
               <p class="section-text">
                 Ecocritical lens best fit this story because God speak directly out of a fierce whirlwind
                 and uses the raw power of the natural world to humble Job Instead of debating human rules or
@@ -233,8 +274,8 @@
             </div>
 
             <footer class="page-footer">
-              <button class="page-corner-fold fold-left" onclick="switchSpread(1)"
-                aria-label="Turn page back" title="Return to postcards"></button>
+              <button class="page-corner-fold fold-left" onclick="switchSpread(1)" aria-label="Turn page back"
+                title="Return to postcards"></button>
               <span class="page-num">Folio &bull; Page 3</span>
             </footer>
 
@@ -275,8 +316,8 @@
 
             <footer class="page-footer">
               <span class="page-num">Folio &bull; Page 4</span>
-              <button class="page-corner-fold fold-right" onclick="switchSpread(3)"
-                aria-label="Turn page forward" title="Turn to Ramayana"></button>
+              <button class="page-corner-fold fold-right" onclick="switchSpread(3)" aria-label="Turn page forward"
+                title="Turn to Ramayana"></button>
             </footer>
 
           </div>
@@ -303,26 +344,23 @@
             <div class="analysis-duo-gallery" aria-label="Maharishi Valmiki and Ramayana">
               <figure class="duo-card duo-author">
                 <span class="tape">Maharishi Valmiki</span>
-                <img src="images/Maharishi Valmiki.jpg"
-                  alt="Portrait of Maharishi Valmiki"
-                  class="duo-thumb"
-                  onerror="this.style.display='none'"
-                 loading="lazy" decoding="async">
+                <img src="images/Maharishi Valmiki.jpg" alt="Portrait of Maharishi Valmiki" class="duo-thumb"
+                  onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
 
               <figure class="duo-card duo-story">
                 <span class="tape" aria-hidden="true"></span>
-                <img src="images/Ramayana.jpg"
-                  alt="Ramayana epic illustration"
-                  class="duo-thumb"
-                  onerror="this.style.display='none'"
-                 loading="lazy" decoding="async">
+                <img src="images/Ramayana.jpg" alt="Ramayana epic illustration" class="duo-thumb"
+                  onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
             </div>
 
             <!-- Literary lens block -->
             <div class="content-section">
-              <h3 class="section-heading"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:middle;flex-shrink:0"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> Archetypal Lens</h3>
+              <h3 class="section-heading"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                  width="13" height="13" fill="currentColor" style="vertical-align:middle;flex-shrink:0">
+                  <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
+                </svg> Archetypal Lens</h3>
               <p class="section-text">
                 Archetypal Lens works best here because the story is built around familiar character types
                 and a classic hero's quest. Rama fits the mold of the noble hero who must endure an unjust
@@ -333,8 +371,8 @@
             </div>
 
             <footer class="page-footer">
-              <button class="page-corner-fold fold-left" onclick="switchSpread(2)"
-                aria-label="Turn page back" title="Return to Voice out the Whirlwind"></button>
+              <button class="page-corner-fold fold-left" onclick="switchSpread(2)" aria-label="Turn page back"
+                title="Return to Voice out the Whirlwind"></button>
               <span class="page-num">Folio &bull; Page 5</span>
             </footer>
 
@@ -374,8 +412,8 @@
 
             <footer class="page-footer">
               <span class="page-num">Folio &bull; Page 6</span>
-              <button class="page-corner-fold fold-right" onclick="switchSpread(4)"
-                aria-label="Turn page forward" title="Turn to Mahabharata"></button>
+              <button class="page-corner-fold fold-right" onclick="switchSpread(4)" aria-label="Turn page forward"
+                title="Turn to Mahabharata"></button>
             </footer>
 
           </div>
@@ -402,26 +440,23 @@
             <div class="analysis-duo-gallery" aria-label="Maharishi Ved Vyasa and Mahabharata">
               <figure class="duo-card duo-author">
                 <span class="tape">Maharishi Ved Vyasa</span>
-                <img src="images/Maharishi Veda Vyasa.webp"
-                  alt="Portrait of Maharishi Ved Vyasa"
-                  class="duo-thumb"
-                  onerror="this.style.display='none'"
-                 loading="lazy" decoding="async">
+                <img src="images/Maharishi Veda Vyasa.webp" alt="Portrait of Maharishi Ved Vyasa" class="duo-thumb"
+                  onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
 
               <figure class="duo-card duo-story">
                 <span class="tape" aria-hidden="true"></span>
-                <img src="images/Mahabharata.jpg"
-                  alt="Mahabharata epic illustration"
-                  class="duo-thumb"
-                  onerror="this.style.display='none'"
-                 loading="lazy" decoding="async">
+                <img src="images/Mahabharata.jpg" alt="Mahabharata epic illustration" class="duo-thumb"
+                  onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
             </div>
 
             <!-- Literary lens block -->
             <div class="content-section">
-              <h3 class="section-heading"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:middle;flex-shrink:0"><path d="M4 2h16v3H4V2zm2 4h3v12H6V6zm5 0h2v12h-2V6zm4 0h3v12h-3V6zm-9 13h16v3H4v-3z"/></svg> Structuralist Lens</h3>
+              <h3 class="section-heading"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                  width="13" height="13" fill="currentColor" style="vertical-align:middle;flex-shrink:0">
+                  <path d="M4 2h16v3H4V2zm2 4h3v12H6V6zm5 0h2v12h-2V6zm4 0h3v12h-3V6zm-9 13h16v3H4v-3z" />
+                </svg> Structuralist Lens</h3>
               <p class="section-text">
                 Structuralist Lens fits this epic best because the entire narrative is organized around
                 strong binary pairs and opposing forces. You have the virtuous Pandava brothers constantly
@@ -432,8 +467,8 @@
             </div>
 
             <footer class="page-footer">
-              <button class="page-corner-fold fold-left" onclick="switchSpread(3)"
-                aria-label="Turn page back" title="Return to Ramayana"></button>
+              <button class="page-corner-fold fold-left" onclick="switchSpread(3)" aria-label="Turn page back"
+                title="Return to Ramayana"></button>
               <span class="page-num">Folio &bull; Page 7</span>
             </footer>
 
@@ -473,8 +508,8 @@
 
             <footer class="page-footer">
               <span class="page-num">Folio &bull; Page 8</span>
-              <button class="page-corner-fold fold-right" onclick="switchSpread(5)"
-                aria-label="Turn page forward" title="Turn to The Iliad"></button>
+              <button class="page-corner-fold fold-right" onclick="switchSpread(5)" aria-label="Turn page forward"
+                title="Turn to The Iliad"></button>
             </footer>
 
           </div>
@@ -501,26 +536,24 @@
             <div class="analysis-duo-gallery" aria-label="Homer and The Iliad">
               <figure class="duo-card duo-author">
                 <span class="tape">Homer</span>
-                <img src="images/Homer.webp"
-                  alt="Portrait of Homer"
-                  class="duo-thumb"
-                  onerror="this.style.display='none'"
-                 loading="lazy" decoding="async">
+                <img src="images/Homer.webp" alt="Portrait of Homer" class="duo-thumb"
+                  onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
 
               <figure class="duo-card duo-story">
                 <span class="tape" aria-hidden="true"></span>
-                <img src="images/The Iliad.webp"
-                  alt="The Iliad epic illustration"
-                  class="duo-thumb"
-                  onerror="this.style.display='none'"
-                 loading="lazy" decoding="async">
+                <img src="images/The Iliad.webp" alt="The Iliad epic illustration" class="duo-thumb"
+                  onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
             </div>
 
             <!-- Literary lens block -->
             <div class="content-section">
-              <h3 class="section-heading"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:middle;flex-shrink:0"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7zm-3 18a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2H9z"/></svg> Psychoanalytic Lens</h3>
+              <h3 class="section-heading"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                  width="13" height="13" fill="currentColor" style="vertical-align:middle;flex-shrink:0">
+                  <path
+                    d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7zm-3 18a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2H9z" />
+                </svg> Psychoanalytic Lens</h3>
               <p class="section-text">
                 Psychoanalytic Lens is the most fitting choice because the plot is driven by raw, wounded
                 ego and buried emotional pain. Achilles refuses to fight because his pride was hurt by King
@@ -531,8 +564,8 @@
             </div>
 
             <footer class="page-footer">
-              <button class="page-corner-fold fold-left" onclick="switchSpread(4)"
-                aria-label="Turn page back" title="Return to Mahabharata"></button>
+              <button class="page-corner-fold fold-left" onclick="switchSpread(4)" aria-label="Turn page back"
+                title="Return to Mahabharata"></button>
               <span class="page-num">Folio &bull; Page 9</span>
             </footer>
 
@@ -573,8 +606,8 @@
 
             <footer class="page-footer">
               <span class="page-num">Folio &bull; Page 10</span>
-              <button class="page-corner-fold fold-right" onclick="switchSpread(6)"
-                aria-label="Turn page forward" title="Turn to The Odyssey"></button>
+              <button class="page-corner-fold fold-right" onclick="switchSpread(6)" aria-label="Turn page forward"
+                title="Turn to The Odyssey"></button>
             </footer>
 
           </div>
@@ -602,26 +635,23 @@
             <div class="analysis-duo-gallery" aria-label="Homer and The Odyssey">
               <figure class="duo-card duo-author">
                 <span class="tape">Homer</span>
-                <img src="images/Homer.webp"
-                  alt="Portrait of Homer"
-                  class="duo-thumb"
-                  onerror="this.style.display='none'"
-                 loading="lazy" decoding="async">
+                <img src="images/Homer.webp" alt="Portrait of Homer" class="duo-thumb"
+                  onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
 
               <figure class="duo-card duo-story">
                 <span class="tape" aria-hidden="true"></span>
-                <img src="images/The Odyssey.jpg"
-                  alt="The Odyssey epic illustration"
-                  class="duo-thumb"
-                  onerror="this.style.display='none'"
-                 loading="lazy" decoding="async">
+                <img src="images/The Odyssey.jpg" alt="The Odyssey epic illustration" class="duo-thumb"
+                  onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
             </div>
 
             <!-- Literary lens block -->
             <div class="content-section">
-              <h3 class="section-heading"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:middle;flex-shrink:0"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> Archetypal Lens</h3>
+              <h3 class="section-heading"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                  width="13" height="13" fill="currentColor" style="vertical-align:middle;flex-shrink:0">
+                  <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
+                </svg> Archetypal Lens</h3>
               <p class="section-text">
                 Archetypal Lens is ideal for this epic because Odysseus is the classic example of the
                 wandering hero trying to return home. His journey follows a universal story arc full of
@@ -632,8 +662,8 @@
             </div>
 
             <footer class="page-footer">
-              <button class="page-corner-fold fold-left" onclick="switchSpread(5)"
-                aria-label="Turn page back" title="Return to The Iliad"></button>
+              <button class="page-corner-fold fold-left" onclick="switchSpread(5)" aria-label="Turn page back"
+                title="Return to The Iliad"></button>
               <span class="page-num">Folio &bull; Page 11</span>
             </footer>
 
@@ -672,8 +702,8 @@
 
             <footer class="page-footer">
               <span class="page-num">Folio &bull; Page 12</span>
-              <button class="page-corner-fold fold-right" onclick="switchSpread(7)"
-                aria-label="Turn page forward" title="Turn to The Song of Roland"></button>
+              <button class="page-corner-fold fold-right" onclick="switchSpread(7)" aria-label="Turn page forward"
+                title="Turn to The Song of Roland"></button>
             </footer>
 
           </div>
@@ -698,16 +728,17 @@
 
             <!-- Book cover image — gallery card style (matches Voice out the Whirlwind) -->
             <figure class="analysis-cover-wrap roland-cover-wrap">
-              <img src="images/The Song of Roland.webp"
-                alt="The Song of Roland book cover"
-                class="analysis-cover-img roland-cover-img"
-                onerror="this.style.display='none'"
-               loading="lazy" decoding="async">
+              <img src="images/The Song of Roland.webp" alt="The Song of Roland book cover"
+                class="analysis-cover-img roland-cover-img" onerror="this.style.display='none'" loading="lazy"
+                decoding="async">
             </figure>
 
             <!-- Lens block -->
             <div class="content-section">
-              <h3 class="section-heading"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:middle;flex-shrink:0"><path d="M6 2v6l4 4-4 4v6h12v-6l-4-4 4-4V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z"/></svg> Historical / Contextual Lens</h3>
+              <h3 class="section-heading"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                  width="13" height="13" fill="currentColor" style="vertical-align:middle;flex-shrink:0">
+                  <path d="M6 2v6l4 4-4 4v6h12v-6l-4-4 4-4V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z" />
+                </svg> Historical / Contextual Lens</h3>
               <p class="section-text">
                 Historical / Contextual Lens fits this poem best because the story is deeply rooted in the
                 medieval culture of chivalry and holy war. Written around the time of the First Crusade, the
@@ -718,8 +749,8 @@
             </div>
 
             <footer class="page-footer">
-              <button class="page-corner-fold fold-left" onclick="switchSpread(6)"
-                aria-label="Turn page back" title="Return to The Odyssey"></button>
+              <button class="page-corner-fold fold-left" onclick="switchSpread(6)" aria-label="Turn page back"
+                title="Return to The Odyssey"></button>
               <span class="page-num">Folio &bull; Page 13</span>
             </footer>
 
@@ -758,8 +789,8 @@
 
             <footer class="page-footer">
               <span class="page-num">Folio &bull; Page 14</span>
-              <button class="page-corner-fold fold-right" onclick="switchSpread(8)"
-                aria-label="Turn page forward" title="Turn to The Tale of Genji"></button>
+              <button class="page-corner-fold fold-right" onclick="switchSpread(8)" aria-label="Turn page forward"
+                title="Turn to The Tale of Genji"></button>
             </footer>
 
           </div>
@@ -786,26 +817,24 @@
             <div class="analysis-duo-gallery" aria-label="Murasaki Shikibu and The Tale of Genji">
               <figure class="duo-card duo-author">
                 <span class="tape">Murasaki Shikibu</span>
-                <img src="images/Murasaki Shikibu.webp"
-                  alt="Portrait of Murasaki Shikibu"
-                  class="duo-thumb"
-                  onerror="this.style.display='none'"
-                 loading="lazy" decoding="async">
+                <img src="images/Murasaki Shikibu.webp" alt="Portrait of Murasaki Shikibu" class="duo-thumb"
+                  onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
 
               <figure class="duo-card duo-story">
                 <span class="tape" aria-hidden="true"></span>
-                <img src="images/The Tale of Genji.webp"
-                  alt="The Tale of Genji illustration"
-                  class="duo-thumb"
-                  onerror="this.style.display='none'"
-                 loading="lazy" decoding="async">
+                <img src="images/The Tale of Genji.webp" alt="The Tale of Genji illustration" class="duo-thumb"
+                  onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
             </div>
 
             <!-- Literary lens block -->
             <div class="content-section">
-              <h3 class="section-heading"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:middle;flex-shrink:0"><path d="M12 2a6 6 0 0 0-6 6c0 2.97 2.16 5.43 5 5.91V16H9v2h2v3h2v-3h2v-2h-2v-2.09c2.84-.48 5-2.94 5-5.91a6 6 0 0 0-6-6zm0 10a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg> Feminist Lens</h3>
+              <h3 class="section-heading"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                  width="13" height="13" fill="currentColor" style="vertical-align:middle;flex-shrink:0">
+                  <path
+                    d="M12 2a6 6 0 0 0-6 6c0 2.97 2.16 5.43 5 5.91V16H9v2h2v3h2v-3h2v-2h-2v-2.09c2.84-.48 5-2.94 5-5.91a6 6 0 0 0-6-6zm0 10a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" />
+                </svg> Feminist Lens</h3>
               <p class="section-text">
                 The Feminist Lens is the most fitting approach because the novel was written by a woman,
                 Murasaki Shikibu, who highlights the real social conditions of women in the Heian court.
@@ -817,8 +846,8 @@
             </div>
 
             <footer class="page-footer">
-              <button class="page-corner-fold fold-left" onclick="switchSpread(7)"
-                aria-label="Turn page back" title="Return to The Song of Roland"></button>
+              <button class="page-corner-fold fold-left" onclick="switchSpread(7)" aria-label="Turn page back"
+                title="Return to The Song of Roland"></button>
               <span class="page-num">Folio &bull; Page 15</span>
             </footer>
 
@@ -881,50 +910,42 @@
 
     <!-- Right-Edge Flag Index (Tome II quick navigation) -->
     <nav class="book-flag-rail" aria-label="Tome II quick navigation">
-      <button type="button" class="book-flag flag-1 is-active" data-spread="1"
-        onclick="switchSpread(1)" aria-current="page"
-        aria-label="Go to the Introduction, page 1" title="Introduction — Page 1">
+      <button type="button" class="book-flag flag-1 is-active" data-spread="1" onclick="switchSpread(1)"
+        aria-current="page" aria-label="Go to the Introduction, page 1" title="Introduction — Page 1">
         <span class="flag-title">Intro</span>
       </button>
 
-      <button type="button" class="book-flag flag-2" data-spread="2"
-        onclick="switchSpread(2)"
+      <button type="button" class="book-flag flag-2" data-spread="2" onclick="switchSpread(2)"
         aria-label="Go to Voice out the Whirlwind, pages 3 and 4" title="Voice out the Whirlwind — Pages 3–4">
         <span class="flag-title">Whirlwind</span>
       </button>
 
-      <button type="button" class="book-flag flag-3" data-spread="3"
-        onclick="switchSpread(3)"
+      <button type="button" class="book-flag flag-3" data-spread="3" onclick="switchSpread(3)"
         aria-label="Go to Ramayana, pages 5 and 6" title="Ramayana — Pages 5–6">
         <span class="flag-title">Ramayana</span>
       </button>
 
-      <button type="button" class="book-flag flag-4" data-spread="4"
-        onclick="switchSpread(4)"
+      <button type="button" class="book-flag flag-4" data-spread="4" onclick="switchSpread(4)"
         aria-label="Go to Mahabharata, pages 7 and 8" title="Mahabharata — Pages 7–8">
         <span class="flag-title">Mahabharata</span>
       </button>
 
-      <button type="button" class="book-flag flag-5" data-spread="5"
-        onclick="switchSpread(5)"
+      <button type="button" class="book-flag flag-5" data-spread="5" onclick="switchSpread(5)"
         aria-label="Go to The Iliad, pages 9 and 10" title="The Iliad — Pages 9–10">
         <span class="flag-title">Iliad</span>
       </button>
 
-      <button type="button" class="book-flag flag-6" data-spread="6"
-        onclick="switchSpread(6)"
+      <button type="button" class="book-flag flag-6" data-spread="6" onclick="switchSpread(6)"
         aria-label="Go to The Odyssey, pages 11 and 12" title="The Odyssey — Pages 11–12">
         <span class="flag-title">Odyssey</span>
       </button>
 
-      <button type="button" class="book-flag flag-7" data-spread="7"
-        onclick="switchSpread(7)"
+      <button type="button" class="book-flag flag-7" data-spread="7" onclick="switchSpread(7)"
         aria-label="Go to The Song of Roland, pages 13 and 14" title="The Song of Roland — Pages 13–14">
         <span class="flag-title">Roland</span>
       </button>
 
-      <button type="button" class="book-flag flag-8" data-spread="8"
-        onclick="switchSpread(8)"
+      <button type="button" class="book-flag flag-8" data-spread="8" onclick="switchSpread(8)"
         aria-label="Go to The Tale of Genji, pages 15 and 16" title="The Tale of Genji — Pages 15–16">
         <span class="flag-title">Genji</span>
       </button>
@@ -945,10 +966,10 @@
       try {
         const sound = turnAudio.cloneNode();
         sound.volume = 0.85;
-        sound.play().catch(() => {});
+        sound.play().catch(() => { });
       } catch (e) {
         turnAudio.currentTime = 0;
-        turnAudio.play().catch(() => {});
+        turnAudio.play().catch(() => { });
       }
     }
 
@@ -1071,7 +1092,7 @@
       }
     });
 
-    </script>
+  </script>
   <script src="book-nav.js"></script>
 </body>
 

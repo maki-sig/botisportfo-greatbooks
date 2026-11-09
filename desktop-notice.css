@@ -1,0 +1,183 @@
+/* ==========================================================================
+   DESKTOP RESOLUTION REQUIREMENT OVERLAY
+   Covers the entire screen with an antique parchment reminder when
+   the viewport is below desktop interface resolution.
+   ========================================================================== */
+
+.desktop-only-overlay {
+  display: none;
+}
+
+@media (max-width: 1024px), (max-height: 540px) {
+  /* Prevent interaction and background scrolling while covered */
+  body {
+    overflow: hidden !important;
+  }
+
+  .desktop-only-overlay {
+    display: flex !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    width: 100dvw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    z-index: 999999 !important;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(26, 17, 11, 0.95) 0%,
+      rgba(11, 7, 4, 0.98) 100%
+    );
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    text-align: center;
+    animation: fadeInNotice 0.3s ease-out;
+  }
+}
+
+@keyframes fadeInNotice {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Antique Parchment Notice Card */
+.desktop-notice-card {
+  position: relative;
+  max-width: 440px;
+  width: 90%;
+  background-color: #faf4e4;
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(215, 195, 160, 0.35) 0%,
+      rgba(247, 238, 218, 0.45) 5%,
+      rgba(255, 253, 248, 0.95) 25%,
+      rgba(255, 253, 248, 0.95) 75%,
+      rgba(247, 238, 218, 0.45) 95%,
+      rgba(215, 195, 160, 0.35) 100%
+    );
+  border: 1.5px solid #d4b578;
+  border-radius: 6px;
+  padding: 2.2rem 1.8rem 1.8rem;
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.65),
+    0 4px 12px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 4px rgba(255, 255, 255, 0.6),
+    inset 0 0 0 5px rgba(198, 156, 78, 0.3);
+  color: #231b15;
+  box-sizing: border-box;
+}
+
+/* Monitor / Screen Icon Emblem */
+.desktop-notice-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fcf8ee 0%, #ede0c7 100%);
+  border: 1.5px solid #c69c4e;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  color: #8c5a24;
+  margin-bottom: 1rem;
+}
+
+.desktop-notice-icon svg {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+/* Top Badge */
+.desktop-notice-badge {
+  display: block;
+  font-family: var(--font-serif-display, 'Cinzel', serif);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #966129;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+}
+
+/* Title */
+.desktop-notice-title {
+  font-family: var(--font-serif-display, 'Cinzel', serif);
+  font-size: 1.38rem;
+  font-weight: 700;
+  color: #24170d;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.75rem;
+}
+
+/* Classical Ornament Divider */
+.desktop-notice-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: #c69c4e;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.desktop-notice-divider::before,
+.desktop-notice-divider::after {
+  content: "";
+  height: 1px;
+  width: 48px;
+  background: linear-gradient(90deg, transparent, #c69c4e, transparent);
+}
+
+/* Descriptive Text */
+.desktop-notice-desc {
+  font-family: var(--font-serif-classic, 'Cormorant Garamond', Garamond, serif);
+  font-size: 1.12rem;
+  line-height: 1.55;
+  color: #4a3628;
+  margin-bottom: 0.8rem;
+}
+
+.desktop-notice-subdesc {
+  font-family: var(--font-serif-classic, 'Cormorant Garamond', Garamond, serif);
+  font-size: 0.98rem;
+  line-height: 1.45;
+  color: #6d5442;
+  margin-bottom: 1.2rem;
+}
+
+/* Resolution Badge */
+.desktop-notice-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(198, 156, 78, 0.12);
+  border: 1px dashed rgba(198, 156, 78, 0.45);
+  border-radius: 4px;
+  padding: 0.4rem 0.85rem;
+  font-family: var(--font-serif-display, 'Cinzel', serif);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: #724618;
+  text-transform: uppercase;
+}
+
+.desktop-notice-hint strong {
+  color: #3b220b;
+}
+

@@ -14,9 +14,37 @@
     rel="stylesheet">
 
   <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="desktop-notice.css">
 </head>
 
 <body>
+
+  <!-- Desktop Interface Requirement Notice (Active below desktop resolution) -->
+  <aside class="desktop-only-overlay" role="dialog" aria-modal="true" aria-label="Desktop Display Required">
+    <div class="desktop-notice-card">
+      <div class="desktop-notice-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+          stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+          <line x1="8" y1="21" x2="16" y2="21" />
+          <line x1="12" y1="17" x2="12" y2="21" />
+        </svg>
+      </div>
+      <span class="desktop-notice-badge">Notice</span>
+      <h2 class="desktop-notice-title">Desktop Display Required</h2>
+      <div class="desktop-notice-divider" aria-hidden="true">&#10045;</div>
+      <p class="desktop-notice-desc">
+        This digital portfolio is crafted as an expansive, antique scrapbook with realistic two-page spreads and
+        classical typography designed for desktop viewports.
+      </p>
+      <p class="desktop-notice-subdesc">
+        Please open this portfolio on a desktop computer or maximize your browser display to view the collection.
+      </p>
+      <div class="desktop-notice-hint">
+        <span>Desktop Interface Only &bull; Min 1025px</span>
+      </div>
+    </div>
+  </aside>
 
   <!-- Bulletin Board Container -->
   <main class="bulletin-board" role="main">

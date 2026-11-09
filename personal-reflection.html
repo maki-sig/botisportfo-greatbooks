@@ -15,17 +15,48 @@
 
   <link rel="stylesheet" href="nav.css">
   <link rel="stylesheet" href="personal-reflection.css">
+  <link rel="stylesheet" href="desktop-notice.css">
 </head>
 
 <body>
 
-        <!-- Top Navigation Vertical Torn Paper Menu Pinned to Bulletin Board -->
+  <!-- Desktop Interface Requirement Notice (Active below desktop resolution) -->
+  <aside class="desktop-only-overlay" role="dialog" aria-modal="true" aria-label="Desktop Display Required">
+    <div class="desktop-notice-card">
+      <div class="desktop-notice-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+          stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+          <line x1="8" y1="21" x2="16" y2="21" />
+          <line x1="12" y1="17" x2="12" y2="21" />
+        </svg>
+      </div>
+      <span class="desktop-notice-badge">Notice</span>
+      <h2 class="desktop-notice-title">Desktop Display Required</h2>
+      <div class="desktop-notice-divider" aria-hidden="true">&#10045;</div>
+      <p class="desktop-notice-desc">
+        This digital portfolio is crafted as an expansive, antique scrapbook with realistic two-page spreads and
+        classical typography designed for desktop viewports.
+      </p>
+      <p class="desktop-notice-subdesc">
+        Please open this portfolio on a desktop computer or maximize your browser display to view the collection.
+      </p>
+      <div class="desktop-notice-hint">
+        <span>Desktop Interface Only &bull; Min 1025px</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Top Navigation Vertical Torn Paper Menu Pinned to Bulletin Board -->
   <nav class="board-top-nav" aria-label="Anthology Navigation">
     <div class="torn-paper-menu">
       <ul class="nav-menu-list">
         <li>
           <a href="index.html" class="nav-link">
-            <span class="nav-icon" aria-hidden="true"><svg class="nav-icon-svg" viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></span>
+            <span class="nav-icon" aria-hidden="true"><svg class="nav-icon-svg" viewBox="0 0 24 24" width="12"
+                height="12" fill="currentColor">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+              </svg></span>
             <span class="nav-text">Home</span>
           </a>
         </li>
@@ -98,7 +129,11 @@
             <div class="content-section">
               <h2 class="section-heading">&#10020; Personal Realization &amp; Insights</h2>
               <p class="section-text">
-                Coming from a computer science background, I used to think literature was just long, boring stories detached from practical life. But going through this course showed me that these works actually mirror real human experiences. Stories like the Greek epics and Panchatantra fables deal with the exact same issues we face today, such as pride, trust, and duty. Literature stopped feeling like a chore and became a relatable guide to understanding how people handle life's challenges.
+                Coming from a computer science background, I used to think literature was just long, boring stories
+                detached from practical life. But going through this course showed me that these works actually mirror
+                real human experiences. Stories like the Greek epics and Panchatantra fables deal with the exact same
+                issues we face today, such as pride, trust, and duty. Literature stopped feeling like a chore and became
+                a relatable guide to understanding how people handle life's challenges.
               </p>
             </div>
 
@@ -125,7 +160,8 @@
             <div class="philosophy-card">
               <span class="creed-tag">Core Inquiry II</span>
               <p class="inquiry-prompt">
-                What challenges did you encounter when reading and analyzing literary masterpieces, and how did you overcome them?
+                What challenges did you encounter when reading and analyzing literary masterpieces, and how did you
+                overcome them?
               </p>
             </div>
 
@@ -133,7 +169,11 @@
             <div class="content-section">
               <h3 class="section-heading">&#9998; Methodological Breakthrough</h3>
               <p class="section-text">
-                My biggest hurdle was getting past the archaic language, massive casts, and complex family trees in epics like the Mahabharata and the Iliad. It was easy to get lost in the details. I overcame this by treating stories like programming problems, breaking them down step by step. I focused on core conflicts, summarized key events in simple words, and connected the themes to storytelling I already enjoy, like character-driven manga, which made the texts much easier to digest.
+                My biggest hurdle was getting past the archaic language, massive casts, and complex family trees in
+                epics like the Mahabharata and the Iliad. It was easy to get lost in the details. I overcame this by
+                treating stories like programming problems, breaking them down step by step. I focused on core
+                conflicts, summarized key events in simple words, and connected the themes to storytelling I already
+                enjoy, like character-driven manga, which made the texts much easier to digest.
               </p>
             </div>
 
@@ -176,14 +216,18 @@
             <div class="content-section">
               <h3 class="section-heading">&#10038; Systems &amp; Relational Structures</h3>
               <p class="section-text">
-                The Structuralist lens influenced me the most because I naturally look for patterns, logic, and systems. Instead of getting caught up in raw emotions, it helped me see how a story's building blocks, opposite pairs, and relationships work together. In Book 2 of the Panchatantra, for instance, the crow, mouse, deer, and turtle function like a working machine where each animal's distinct trait is necessary for the team to survive. Viewing texts as organized systems made analyzing them straightforward and clear.
+                The Structuralist lens influenced me the most because I naturally look for patterns, logic, and systems.
+                Instead of getting caught up in raw emotions, it helped me see how a story's building blocks, opposite
+                pairs, and relationships work together. In Book 2 of the Panchatantra, for instance, the crow, mouse,
+                deer, and turtle function like a working machine where each animal's distinct trait is necessary for the
+                team to survive. Viewing texts as organized systems made analyzing them straightforward and clear.
               </p>
             </div>
 
             <!-- Page 3 Footer -->
             <footer class="page-footer">
-              <button class="page-corner-fold fold-left" onclick="switchSpread(1)"
-                aria-label="Turn page back to Part I" title="Folded corner: click to turn back"></button>
+              <button class="page-corner-fold fold-left" onclick="switchSpread(1)" aria-label="Turn page back to Part I"
+                title="Folded corner: click to turn back"></button>
               <span class="page-num">Folio &bull; Page 3</span>
             </footer>
 
@@ -212,7 +256,11 @@
             <div class="content-section">
               <h3 class="section-heading">&#10020; Pride, Humility &amp; Consequence</h3>
               <p class="section-text">
-                I realized that no matter the era or culture, basic human flaws never change: unchecked pride causes disaster, blind trust brings betrayal, and grudges hurt everyone. Achilles and Roland both showed how stubborn ego leads to tragic losses, while the Odyssey and Panchatantra proved that patience and quick wits beat brute force every time. It reminded me that life is fragile, and we need to stay humble, thoughtful, and accountable for our actions.
+                I realized that no matter the era or culture, basic human flaws never change: unchecked pride causes
+                disaster, blind trust brings betrayal, and grudges hurt everyone. Achilles and Roland both showed how
+                stubborn ego leads to tragic losses, while the Odyssey and Panchatantra proved that patience and quick
+                wits beat brute force every time. It reminded me that life is fragile, and we need to stay humble,
+                thoughtful, and accountable for our actions.
               </p>
             </div>
 
@@ -247,7 +295,8 @@
             <div class="philosophy-card">
               <span class="creed-tag">Core Inquiry V</span>
               <p class="inquiry-prompt">
-                How can you apply the lessons and values learned from Great Books in your personal, academic, or future professional life?
+                How can you apply the lessons and values learned from Great Books in your personal, academic, or future
+                professional life?
               </p>
             </div>
 
@@ -255,7 +304,12 @@
             <div class="content-section">
               <h3 class="section-heading">&#9998; Engineering, Teamwork &amp; Ethics</h3>
               <p class="section-text">
-                In my personal life, these stories remind me to be a loyal friend while staying mindful of who I trust. Academically and in my tech career, analyzing literature strengthens my problem-solving skills by training me to look at issues from multiple angles before acting. When working on group projects or building software, the lesson of the Panchatantra allies reminds me to value each teammate's unique strengths so we can succeed together. Most of all, it taught me to stay grounded and lead with patience and empathy.
+                In my personal life, these stories remind me to be a loyal friend while staying mindful of who I trust.
+                Academically and in my tech career, analyzing literature strengthens my problem-solving skills by
+                training me to look at issues from multiple angles before acting. When working on group projects or
+                building software, the lesson of the Panchatantra allies reminds me to value each teammate's unique
+                strengths so we can succeed together. Most of all, it taught me to stay grounded and lead with patience
+                and empathy.
               </p>
             </div>
 
@@ -353,20 +407,17 @@
 
     <!-- Right-Edge Flag Index (Tome V quick navigation, identical to Tome II) -->
     <nav class="book-flag-rail" aria-label="Tome V quick navigation">
-      <button type="button" class="book-flag flag-1 is-active" data-spread="1"
-        onclick="switchSpread(1)" aria-current="page"
-        aria-label="Go to Growth &amp; Appreciation, pages 1 and 2" title="Growth — Pages 1–2">
+      <button type="button" class="book-flag flag-1 is-active" data-spread="1" onclick="switchSpread(1)"
+        aria-current="page" aria-label="Go to Growth &amp; Appreciation, pages 1 and 2" title="Growth — Pages 1–2">
         <span class="flag-title">Growth</span>
       </button>
 
-      <button type="button" class="book-flag flag-2" data-spread="2"
-        onclick="switchSpread(2)"
+      <button type="button" class="book-flag flag-2" data-spread="2" onclick="switchSpread(2)"
         aria-label="Go to Lenses &amp; Realizations, pages 3 and 4" title="Lenses — Pages 3–4">
         <span class="flag-title">Lenses</span>
       </button>
 
-      <button type="button" class="book-flag flag-3" data-spread="3"
-        onclick="switchSpread(3)"
+      <button type="button" class="book-flag flag-3" data-spread="3" onclick="switchSpread(3)"
         aria-label="Go to Application &amp; Synthesis, pages 5 and 6" title="Synthesis — Pages 5–6">
         <span class="flag-title">Synthesis</span>
       </button>
@@ -387,10 +438,10 @@
       try {
         const sound = turnAudio.cloneNode();
         sound.volume = 0.85;
-        sound.play().catch(() => {});
+        sound.play().catch(() => { });
       } catch (e) {
         turnAudio.currentTime = 0;
-        turnAudio.play().catch(() => {});
+        turnAudio.play().catch(() => { });
       }
     }
 
@@ -509,7 +560,7 @@
         if (currentSpreadNum > 1) switchSpread(currentSpreadNum - 1);
       }
     });
-      </script>
+  </script>
   <script src="book-nav.js"></script>
 
 </body>
