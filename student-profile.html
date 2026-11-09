@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="student-profile.css">
@@ -34,12 +34,12 @@
     <div class="book-spreads-wrapper">
 
       <!-- ========================================================
-           SPREAD 1: Pages 1 & 2
+           SPREAD 1: Pages 1 & 2 (Complete Student Profile Volume)
            ======================================================== -->
-      <div class="book-spread active-spread" id="spread-1" role="tabpanel" aria-labelledby="tab-spread-1">
+      <div class="book-spread active-spread" id="spread-1" role="region" aria-label="Student Profile Pages 1 and 2">
 
-        <!-- PAGE 1: Identity & Brief Personal Introduction -->
-        <section class="book-page page-left" aria-label="Part 1: Student Identity and Personal Introduction">
+        <!-- PAGE 1: Identity, Personal Introduction & Course Expectations -->
+        <section class="book-page page-left" aria-label="Part 1: Student Identity, Personal Introduction and Expectations">
           <div class="page-inner-border">
 
             <header class="page-header">
@@ -48,7 +48,7 @@
               <div class="page-divider" aria-hidden="true">&#10045;</div>
             </header>
 
-            <!-- Portrait & Metadata -->
+            <!-- Portrait & Metadata from Student Profile.md -->
             <div class="profile-card-layout">
               <div class="photo-frame-wrapper">
                 <span class="photo-corner top-left" aria-hidden="true"></span>
@@ -69,18 +69,27 @@
                 </div>
 
                 <div class="meta-field">
-                  <span class="meta-label">Program of Study</span>
-                  <p class="meta-value-sub">Bachelor of Science in Computer Science</p>
+                  <span class="meta-label">Course &bull; Year &bull; Section</span>
+                  <p class="meta-value-sub">Bachelor of Science in Computer Science 4th Year &bull; BCS-OCa Section</p>
                 </div>
               </div>
             </div>
 
-            <!-- Brief Personal Introduction -->
+            <!-- Brief Personal Introduction from Student Profile.md -->
             <div class="content-section">
               <h2 class="section-heading">&#9998; Brief Personal Introduction</h2>
               <p class="section-text">
                 Hello! I’m Marc Botis. My friends call me Marc or Macky. I like to have fun and learn useful and
                 practical knowledge.
+              </p>
+            </div>
+
+            <!-- Statement of Learning Expectations from Student Profile.md (Moved below Introduction) -->
+            <div class="content-section">
+              <h3 class="section-heading">&#9881; Statement of Learning Expectations</h3>
+              <p class="section-text">
+                My expectation for the subject Great Books is to cultivate critical thinking and analytical reading
+                for myself, and as I read more books in this subject I also hope to improve my english communication.
               </p>
             </div>
 
@@ -139,102 +148,9 @@
               </div>
             </div>
 
-            <!-- Page 2 Footer with Folded Paper Dog-Ear Corner -->
+            <!-- Page 2 Footer (Final Page of Tome I) -->
             <footer class="page-footer">
               <span class="page-num">Folio &bull; Page 2</span>
-              <button class="page-corner-fold fold-right" onclick="switchSpread(2)" aria-label="Turn page forward"
-                title="Folded corner: click to turn page"></button>
-            </footer>
-
-          </div>
-        </section>
-
-      </div>
-
-
-      <!-- ========================================================
-           SPREAD 2: Pages 3 & 4
-           ======================================================== -->
-      <div class="book-spread" id="spread-2" role="tabpanel" aria-labelledby="spread-2">
-
-        <!-- PAGE 3: Great Books Course Expectations & Learning Goals -->
-        <section class="book-page page-left" aria-label="Part 3: Expectations in Great Books">
-          <div class="page-inner-border">
-
-            <header class="page-header">
-              <span class="chapter-badge">Academic Horizons</span>
-              <h2 class="page-title">Course Expectations</h2>
-              <div class="page-divider" aria-hidden="true">&#10045;</div>
-            </header>
-
-            <div class="content-section">
-              <h3 class="section-heading">&#9881; Statement of Learning Expectations</h3>
-              <p class="section-text">&ldquo;My expectation for the subject Great Books is to cultivate critical thinking and analytical
-                reading for myself, and as I read more books in this subject I also hope to improve my english
-                communication.&rdquo;</p>
-            </div>
-
-            <div class="content-section">
-              <h3 class="section-heading">&#10038; Core Objectives</h3>
-              <ul class="goals-list">
-                <li>
-                  <span class="goal-icon">&#10003;</span>
-                  <span><strong>Critical Thinking:</strong> Engaging deep analytical inquiries into literary motifs and
-                    authorial philosophy.</span>
-                </li>
-                <li>
-                  <span class="goal-icon">&#10003;</span>
-                  <span><strong>Analytical Reading:</strong> Dissecting complex narratives, dialogues, and historical
-                    contexts.</span>
-                </li>
-                <li>
-                  <span class="goal-icon">&#10003;</span>
-                  <span><strong>English Communication:</strong> Refining vocabulary, essay articulation, and discourse
-                    confidence.</span>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Page 3 Footer with Folded Paper Dog-Ear Corner -->
-            <footer class="page-footer">
-              <button class="page-corner-fold fold-left" onclick="switchSpread(1)" aria-label="Turn page back"
-                title="Folded corner: click to turn back"></button>
-              <span class="page-num">Folio &bull; Page 3</span>
-            </footer>
-
-          </div>
-        </section>
-
-        <!-- PAGE 4: Reflections & The Computer Science Perspective -->
-        <section class="book-page page-right" aria-label="Part 4: Personal Reflections and Philosophy">
-          <div class="page-inner-border">
-
-            <header class="page-header">
-              <span class="chapter-badge">Epilogue &bull; Synthesis</span>
-              <h2 class="page-title">Personal Reflection</h2>
-              <div class="page-divider" aria-hidden="true">&#10045;</div>
-            </header>
-
-            <div class="content-section">
-              <h3 class="section-heading">&#10020; Intersection &bull; Tech &amp; Humanities</h3>
-              <p class="section-text">
-                As a Computer Science student, studying the Great Books offers a vital counterbalance to algorithms
-                and code. Where programming teaches logical structure and problem-solving, world literature
-                illuminates the human condition, empathy, and moral depth.
-              </p>
-            </div>
-
-            <div class="content-section">
-              <h3 class="section-heading">&#10038; Personal Study Creed</h3>
-              <p class="section-text">
-                Combining practical knowledge with timeless literature builds well-rounded wisdom&mdash;grounding
-                technological innovation with timeless philosophical insights.
-              </p>
-            </div>
-
-            <!-- Page 4 Footer (Final Page) -->
-            <footer class="page-footer">
-              <span class="page-num">Folio &bull; Page 4</span>
               <span class="page-num" aria-hidden="true">&#10022;</span>
             </footer>
 
@@ -243,186 +159,11 @@
 
       </div>
 
-      <!-- Realistic 3D Flipping Leaf Overlay -->
-      <div class="flipping-page-leaf" id="flipping-leaf" aria-hidden="true">
-        <div class="leaf-side leaf-front" id="leaf-front"></div>
-        <div class="leaf-side leaf-back" id="leaf-back"></div>
-      </div>
-
-      <!-- Dynamic Ambient Page Shadows -->
-      <div class="page-turning-shadow shadow-left" id="shadow-left" aria-hidden="true"></div>
-      <div class="page-turning-shadow shadow-right" id="shadow-right" aria-hidden="true"></div>
-
     </div>
   </article>
 
-  <!-- Sound Effect on Page Turn -->
-  <audio id="page-turn-sound" src="assets/page turn.mp3" preload="auto"></audio>
-
-  <!-- Interactive Spread Switcher: Text Fade-Out -> Curved Page Turn -> Text Fade-In -->
+  <!-- Book slide sound on Back to Bookshelf click -->
   <script>
-    let isTurning = false;
-    let page2Clone = null;
-    let page3Clone = null;
-
-    function getOrCreateClones() {
-      if (!page2Clone || !page3Clone) {
-        const spread1 = document.getElementById('spread-1');
-        const spread2 = document.getElementById('spread-2');
-        if (spread1 && spread2) {
-          const p2 = spread1.querySelector('.page-right');
-          const p3 = spread2.querySelector('.page-left');
-          if (p2 && p3) {
-            page2Clone = p2.cloneNode(true);
-            page3Clone = p3.cloneNode(true);
-          }
-        }
-      }
-      return { page2Clone, page3Clone };
-    }
-
-    function playPageTurnSound() {
-      const turnAudio = document.getElementById('page-turn-sound');
-      if (!turnAudio) return;
-      try {
-        const sound = turnAudio.cloneNode();
-        sound.volume = 0.85;
-        sound.play().catch(() => {});
-      } catch (e) {
-        turnAudio.currentTime = 0;
-        turnAudio.play().catch(() => {});
-      }
-    }
-
-    function switchSpread(targetSpread) {
-      if (isTurning) return;
-      const spread1 = document.getElementById('spread-1');
-      const spread2 = document.getElementById('spread-2');
-      const currentSpreadNum = spread1.classList.contains('active-spread') ? 1 : 2;
-
-      if (targetSpread === currentSpreadNum) return;
-
-      const bookContainer = document.querySelector('.open-book-container');
-      const flippingLeaf = document.getElementById('flipping-leaf');
-      const leafFront = document.getElementById('leaf-front');
-      const leafBack = document.getElementById('leaf-back');
-
-      // Play page turn audio sound effect
-      playPageTurnSound();
-
-      // Momentarily disappear corner folds on click
-      if (bookContainer) {
-        bookContainer.classList.add('turning-in-progress');
-      }
-
-      // Fallback for mobile / small screens where pages stack vertically
-      if (window.innerWidth <= 768 || !flippingLeaf || !leafFront || !leafBack) {
-        isTurning = true;
-        const outgoingSpread = targetSpread === 2 ? spread1 : spread2;
-        const incomingSpread = targetSpread === 2 ? spread2 : spread1;
-        outgoingSpread.classList.remove('active-spread');
-        incomingSpread.classList.add('active-spread');
-        setTimeout(() => {
-          if (bookContainer) bookContainer.classList.remove('turning-in-progress');
-          isTurning = false;
-        }, 280);
-        return;
-      }
-
-      isTurning = true;
-      const { page2Clone: p2c, page3Clone: p3c } = getOrCreateClones();
-
-      if (targetSpread === 2) {
-        // Turning Forward: Page 2 flips left over the spine to become Page 3
-        const page2Source = spread1.querySelector('.page-right');
-
-        leafFront.replaceChildren(p2c);
-        leafBack.replaceChildren(p3c);
-
-        spread2.classList.add('spread-underneath');
-        page2Source.style.visibility = 'hidden';
-
-        // Synchronous activation prevents any 1-frame blank gap
-        flippingLeaf.className = 'flipping-page-leaf flip-forward';
-
-        const completeTurn = () => {
-          // 1. Activate Spread 2 first so destination pages are rendered before leaf is hidden
-          spread2.classList.add('active-spread');
-          spread2.classList.remove('spread-underneath');
-          spread1.classList.remove('active-spread');
-          page2Source.style.visibility = '';
-
-          // 2. Hide leaf on next animation frame for seamless gapless handoff
-          requestAnimationFrame(() => {
-            flippingLeaf.className = 'flipping-page-leaf';
-            if (bookContainer) {
-              bookContainer.classList.remove('turning-in-progress');
-            }
-            isTurning = false;
-          });
-        };
-
-        const timer = setTimeout(completeTurn, 780);
-        flippingLeaf.addEventListener('animationend', () => {
-          clearTimeout(timer);
-          completeTurn();
-        }, { once: true });
-
-      } else {
-        // Turning Backward: Page 3 flips right over the spine to become Page 2
-        const page3Source = spread2.querySelector('.page-left');
-
-        leafFront.replaceChildren(p3c);
-        leafBack.replaceChildren(p2c);
-
-        spread1.classList.add('spread-underneath');
-        page3Source.style.visibility = 'hidden';
-
-        // Synchronous activation prevents any 1-frame blank gap
-        flippingLeaf.className = 'flipping-page-leaf flip-backward';
-
-        const completeTurn = () => {
-          // 1. Activate Spread 1 first so destination pages are rendered before leaf is hidden
-          spread1.classList.add('active-spread');
-          spread1.classList.remove('spread-underneath');
-          spread2.classList.remove('active-spread');
-          page3Source.style.visibility = '';
-
-          // 2. Hide leaf on next animation frame for seamless gapless handoff
-          requestAnimationFrame(() => {
-            flippingLeaf.className = 'flipping-page-leaf';
-            if (bookContainer) {
-              bookContainer.classList.remove('turning-in-progress');
-            }
-            isTurning = false;
-          });
-        };
-
-        const timer = setTimeout(completeTurn, 780);
-        flippingLeaf.addEventListener('animationend', () => {
-          clearTimeout(timer);
-          completeTurn();
-        }, { once: true });
-      }
-    }
-
-    // Pre-cache clones as soon as DOM is ready for zero latency on first turn
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', getOrCreateClones);
-    } else {
-      getOrCreateClones();
-    }
-
-    // Keyboard navigation (Arrow keys and Page Up/Down)
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight' || e.key === 'PageDown') {
-        switchSpread(2);
-      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-        switchSpread(1);
-      }
-    });
-
-    // Book slide sound on Back to Bookshelf click
     (function () {
       const slideAudio = new Audio('assets/book slide.mp3');
       slideAudio.preload = 'auto';
@@ -435,7 +176,6 @@
             const sound = slideAudio.cloneNode();
             sound.volume = 0.85;
             sound.play().catch(() => {});
-            // Guard flag: only navigate once, whichever fires first
             let navigated = false;
             const navigate = () => {
               if (navigated) return;

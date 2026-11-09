@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tome IV &bull; Summary of Learning | Great Books</title>
+
+  <!-- Google Fonts for Classical Aesthetic (Identical to previous Tomes) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="summary-of-learning.css">
+</head>
+
+<body>
+
+  <!-- Top Navigation Pinned to the Bulletin Board (Identical to previous Tomes) -->
+  <nav class="board-top-nav" aria-label="Page Navigation">
+    <a href="index.html" class="back-button" aria-label="Return to Great Books bookshelf">
+      &larr; Bookshelf
+    </a>
+  </nav>
+
+  <!-- Open Book Component (Antique Leather Volume with Natural Tilt) -->
+  <article class="open-book-container" aria-label="Summary of Learning Open Book">
+
+    <!-- Center Hanging Silk Bookmark Ribbon (Sage Green Silk, Positioned behind pages) -->
+    <div class="center-silk-ribbon" aria-hidden="true"></div>
+
+    <div class="book-spreads-wrapper">
+
+      <!-- ========================================================
+           SPREAD 1: Pages 1 & 2 (Complete Summary of Learning)
+           ======================================================== -->
+      <div class="book-spread active-spread" id="spread-1" role="region" aria-label="Summary of Learning Pages 1 and 2">
+
+        <!-- PAGE 1: Literature as a Mirror of Human Nature (Paragraph 1) -->
+        <section class="book-page page-left" aria-label="Part 1: Literature as a Mirror of Human Nature">
+          <div class="page-inner-border">
+
+            <header class="page-header">
+              <span class="chapter-badge">Synthesis &bull; Tome IV</span>
+              <h1 class="page-title">Summary of Learning</h1>
+              <div class="page-divider" aria-hidden="true">&#10045;</div>
+            </header>
+
+            <!-- Main Narrative Section from Summary.txt Paragraph 1 -->
+            <div class="content-section">
+              <h2 class="section-heading">&#10020; Literature as a Mirror of Human Nature</h2>
+              <p class="section-text">
+                Taking the Great Books course really opened my eyes to how stories from different periods and cultures
+                are actually connected to real human life. In our classes, we explored ancient and medieval masterpieces
+                like the <em>Ramayana</em>, the <em>Mahabharata</em>, the <em>Iliad</em>, the <em>Odyssey</em>, and
+                <em>The Tale of Genji</em>, along with classic fables from the <em>Panchatantra</em>.
+              </p>
+              <p class="section-text">
+                At first, I thought these older works would feel totally outdated and hard to relate to, but reading
+                through them showed me that people back then dealt with the exact same struggles we face today, like
+                dealing with pride, holding onto grudges, trusting the wrong people, and trying to honor their duty.
+              </p>
+              <p class="section-text">
+                For example, seeing how Achilles let his stubborn ego hurt his own friends, or how the
+                <em>Panchatantra</em> uses simple animal interactions to warn us against blind trust, made me realize
+                that literature works like a mirror of human nature and society. These stories are not just ancient
+                tales to memorize for class, but timeless reminders that teach us practical values like humility,
+                patience, and staying grounded in our everyday lives.
+              </p>
+            </div>
+
+            <!-- Page 1 Footer -->
+            <footer class="page-footer">
+              <span class="page-num">Folio &bull; Page 1</span>
+              <span class="page-num">&#10022;</span>
+            </footer>
+
+          </div>
+        </section>
+
+        <!-- PAGE 2: Critical Lenses and Analytical Growth (Paragraph 2) -->
+        <section class="book-page page-right" aria-label="Part 2: Analytical Growth and Critical Methodology">
+          <div class="page-inner-border">
+
+            <header class="page-header">
+              <span class="chapter-badge">Critical Methodology</span>
+              <h2 class="page-title">Analytical Growth</h2>
+              <div class="page-divider" aria-hidden="true">&#10045;</div>
+            </header>
+
+            <!-- Main Analytical Section from Summary.txt Paragraph 2 -->
+            <div class="content-section">
+              <h3 class="section-heading">&#9998; Critical Lenses &amp; The CS Mindset</h3>
+              <p class="section-text">
+                Beyond just understanding the plots, this course helped me build real critical thinking and analytical
+                skills by teaching me how to use different literary lenses. Learning frameworks like the Structuralist,
+                Archetypal, Feminist, Psychoanalytic, and Ecocritical lenses gave me specific tools to look beneath the
+                surface of a text instead of just taking things at face value.
+              </p>
+              <p class="section-text">
+                For instance, when I analyzed <em>The Tale of Genji</em> through a feminist lens or the
+                <em>Mahabharata</em> through structuralism, it forced me to ask deeper questions about who holds power,
+                how character relationships create conflict, and why authors choose specific narrative patterns.
+              </p>
+              <p class="section-text">
+                As a computer science student, breaking down stories this way felt a lot like analyzing a complex
+                problem from multiple angles before jumping to conclusions. Applying these critical lenses trained me to
+                think more carefully, express my ideas more clearly, and evaluate both what I read and the real-world
+                situations I encounter with a much more open and analytical mindset.
+              </p>
+            </div>
+
+            <!-- Page 2 Footer -->
+            <footer class="page-footer">
+              <span class="page-num">Folio &bull; Page 2</span>
+              <span class="page-num" aria-hidden="true">&#10022;</span>
+            </footer>
+
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+  </article>
+
+  <!-- Book slide sound on Back to Bookshelf click -->
+  <script>
+    (function () {
+      const slideAudio = new Audio('assets/book slide.mp3');
+      slideAudio.preload = 'auto';
+      const backBtn = document.querySelector('.back-button');
+      if (backBtn) {
+        backBtn.addEventListener('click', function (e) {
+          const href = this.href;
+          e.preventDefault();
+          try {
+            const sound = slideAudio.cloneNode();
+            sound.volume = 0.85;
+            sound.play().catch(() => {});
+            let navigated = false;
+            const navigate = () => {
+              if (navigated) return;
+              navigated = true;
+              clearTimeout(timer);
+              window.location.href = href;
+            };
+            sound.addEventListener('ended', navigate);
+            const timer = setTimeout(navigate, 420);
+          } catch (err) {
+            window.location.href = href;
+          }
+        });
+      }
+    })();
+  </script>
+
+</body>
+
+</html>
+

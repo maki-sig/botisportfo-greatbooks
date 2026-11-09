@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tome III &bull; Favorite Literary Masterpiece | Great Books</title>
+
+  <!-- Google Fonts for Classical Aesthetic (Identical to Tome I & Tome II) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="favorite-masterpiece.css">
+</head>
+
+<body>
+
+  <!-- Top Navigation Pinned to the Bulletin Board (Identical to Tome I & Tome II) -->
+  <nav class="board-top-nav" aria-label="Page Navigation">
+    <a href="index.html" class="back-button" aria-label="Return to Great Books bookshelf">
+      &larr; Bookshelf
+    </a>
+  </nav>
+
+  <!-- Open Book Component (Fits Screen Height with Natural Tilt) -->
+  <article class="open-book-container" aria-label="Favorite Literary Masterpiece Open Book">
+
+    <!-- Center Hanging Silk Bookmark Ribbon (Positioned behind pages) -->
+    <div class="center-silk-ribbon" aria-hidden="true"></div>
+
+    <div class="book-spreads-wrapper">
+
+      <!-- ========================================================
+           SPREAD 1: Pages 1 & 2
+           ======================================================== -->
+      <div class="book-spread active-spread" id="spread-1" role="tabpanel" aria-labelledby="spread-1">
+
+        <!-- PAGE 1: Story Title, Author & Duo Photo Gallery -->
+        <section class="book-page page-left" aria-label="Story Title and Author">
+          <div class="page-inner-border">
+
+            <header class="page-header">
+              <span class="chapter-badge">Masterpiece &bull; Tome III</span>
+              <h1 class="page-title">Panchatantra</h1>
+              <div class="page-divider" aria-hidden="true">&#10045;</div>
+            </header>
+
+            <!-- Side-by-side photo cards: Author portrait (left) & Story illustration (right) -->
+            <div class="analysis-duo-gallery" aria-label="Vishnu Sharma and Panchatantra">
+              <figure class="duo-card duo-author">
+                <span class="tape">Vishnu Sharma</span>
+                <img src="images/Vishnu Sharma.jpg" alt="Portrait of Vishnu Sharma" class="duo-thumb"
+                  onerror="this.style.display='none'" loading="lazy" decoding="async">
+              </figure>
+
+              <figure class="duo-card duo-story">
+                <span class="tape" aria-hidden="true"></span>
+                <img src="images/Panchatantra.jpg" alt="Panchatantra fable illustration" class="duo-thumb"
+                  onerror="this.style.display='none'" loading="lazy" decoding="async">
+              </figure>
+            </div>
+
+            <!-- Identity Metadata: Story Title, Author, Origin -->
+            <div class="identity-meta">
+              <div class="meta-field">
+                <span class="meta-label">Story Title</span>
+                <p class="meta-value">Labdhapranasam (The Loss of Gains)</p>
+              </div>
+
+              <div class="meta-field">
+                <span class="meta-label">Author</span>
+                <p class="meta-value-sub"><strong>Vishnu Sharma</strong> &bull; Ancient Sanskrit Sage</p>
+              </div>
+
+              <div class="meta-field">
+                <span class="meta-label">Literary Origin</span>
+                <p class="meta-value-sub">Panchatantra &bull; Book 4 &bull; Wisdom Literature</p>
+              </div>
+            </div>
+
+            <!-- Page 1 Footer -->
+            <footer class="page-footer">
+              <span class="page-num">Folio &bull; Page 1</span>
+              <span class="page-num">&#10022;</span>
+            </footer>
+
+          </div>
+        </section>
+
+        <!-- PAGE 2: Brief Overview of the Story -->
+        <section class="book-page page-right" aria-label="Brief Overview">
+          <div class="page-inner-border">
+
+            <header class="page-header">
+              <span class="chapter-badge">Narrative Synopsis</span>
+              <h2 class="page-title">Brief Overview</h2>
+              <div class="page-divider" aria-hidden="true">&#10045;</div>
+            </header>
+
+            <div class="content-section">
+              <h3 class="section-heading">&#9998; The Monkey &amp; the Crocodile</h3>
+              <p class="section-text">
+                A monkey named Raktamukha lives by a riverbank, sharing sweet jamun fruits with a crocodile named
+                Karalamukha. Their warm bond breaks when the crocodile's wife insists on eating the monkey’s heart. Torn
+                by pressure at home, Karalamukha invites the monkey across the river under the guise of hospitality,
+                only to confess midstream that he plans to take his heart.
+              </p>
+              <p class="section-text">
+                Thinking fast on his feet, the monkey stays calm and claims he left his heart safely behind on the tree.
+                The gullible crocodile swims back to retrieve it, allowing Raktamukha to leap to safety and sever their
+                ties forever. This classic fable proves that presence of mind can rescue us from dire peril, while
+                blind trust often costs what we hold dearest.
+              </p>
+            </div>
+
+            <!-- Page 2 Footer with Folded Paper Dog-Ear Corner -->
+            <footer class="page-footer">
+              <span class="page-num">Folio &bull; Page 2</span>
+              <button class="page-corner-fold fold-right" onclick="switchSpread(2)" aria-label="Turn page forward"
+                title="Folded corner: click to turn page"></button>
+            </footer>
+
+          </div>
+        </section>
+
+      </div>
+
+
+      <!-- ========================================================
+           SPREAD 2: Pages 3 & 4
+           ======================================================== -->
+      <div class="book-spread" id="spread-2" role="tabpanel" aria-labelledby="spread-2">
+
+        <!-- PAGE 3: The Reason Why It's My Favorite -->
+        <section class="book-page page-left" aria-label="The Reason">
+          <div class="page-inner-border">
+
+            <header class="page-header">
+              <span class="chapter-badge">Personal Preference</span>
+              <h2 class="page-title">The Reason</h2>
+              <div class="page-divider" aria-hidden="true">&#10045;</div>
+            </header>
+
+            <div class="content-section">
+              <h3 class="section-heading">&#10020; Why It&rsquo;s My Favorite Masterpiece</h3>
+              <p class="section-text">
+                The monkey and the crocodile is my favorite literary masterpiece because it gives a great lesson without
+                making me sit through a super long story. I like how it gets right to the point, so whenever I need a
+                quick reminder about being careful with who I trust, I can just think back to this story without reading
+                through pages of text.
+              </p>
+              <p class="section-text">
+                It also feels super familiar to me because it reminds me of the Pabula ng Unggoy at Buwaya in the
+                Philippines. It makes me wonder if our local version was derived from this Panchatantra story.
+              </p>
+              <p class="section-text">
+                Plus, stories that personify animals are just really fun to read. Giving animals human personalities,
+                talk, and sneaky traits makes the whole thing entertaining, while still keeping the moral simple and
+                relatable for everyday life.
+              </p>
+            </div>
+
+            <!-- Page 3 Footer with Folded Paper Dog-Ear Corner -->
+            <footer class="page-footer">
+              <button class="page-corner-fold fold-left" onclick="switchSpread(1)" aria-label="Turn page back"
+                title="Folded corner: click to turn back"></button>
+              <span class="page-num">Folio &bull; Page 3</span>
+            </footer>
+
+          </div>
+        </section>
+
+        <!-- PAGE 4: Why I Appreciate the Story & Personal Connection and Realization -->
+        <section class="book-page page-right" aria-label="Appreciation and Insight">
+          <div class="page-inner-border">
+
+            <header class="page-header">
+              <span class="chapter-badge">Reflection &bull; Meaning</span>
+              <h2 class="page-title">Appreciation &amp; Insight</h2>
+              <div class="page-divider" aria-hidden="true">&#10045;</div>
+            </header>
+
+            <div class="content-section">
+              <h3 class="section-heading">&#10020; Why I Appreciate the Story</h3>
+              <p class="section-text">
+                The themes of betrayal, presence of mind, and misplaced trust are the reasons why I appreciate this
+                story. Karalamukha starting off as a loyal friend but giving in to his wife's demands shows how
+                quickly people can turn on you when external pressure comes in, which is a practical lesson about
+                keeping your guard up. On the other hand, Raktamukha's character shows the power of staying calm under
+                pressure. Instead of panicking when he realizes he's in danger, he uses his quick wits to outsmart the
+                crocodile, proving that clear thinking can save you from tough situations.
+              </p>
+            </div>
+
+            <div class="content-section">
+              <h3 class="section-heading">&#10038; Personal Connection and Realization</h3>
+              <p class="section-text" style="font-style: italic;">
+                Reading this story made me reflect on my own relationships and how easy it is to trust people without
+                thinking twice. Being a good friend doesn't mean blindly following someone or letting
+                your guard down completely, proving that these quick life lessons are universal and stick with us no
+                matter where we grow up.
+              </p>
+            </div>
+
+            <!-- Page 4 Footer (Final Page) -->
+            <footer class="page-footer">
+              <span class="page-num">Folio &bull; Page 4</span>
+              <span class="page-num" aria-hidden="true">&#10022;</span>
+            </footer>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Realistic 3D Flipping Leaf Overlay -->
+      <div class="flipping-page-leaf" id="flipping-leaf" aria-hidden="true">
+        <div class="leaf-side leaf-front" id="leaf-front"></div>
+        <div class="leaf-side leaf-back" id="leaf-back"></div>
+      </div>
+
+      <!-- Dynamic Ambient Page Shadows -->
+      <div class="page-turning-shadow shadow-left" id="shadow-left" aria-hidden="true"></div>
+      <div class="page-turning-shadow shadow-right" id="shadow-right" aria-hidden="true"></div>
+
+    </div>
+  </article>
+
+  <!-- Sound Effect on Page Turn -->
+  <audio id="page-turn-sound" src="assets/page turn.mp3" preload="auto"></audio>
+
+  <!-- Interactive Spread Switcher: Text Fade-Out -> Curved Page Turn -> Text Fade-In -->
+  <script>
+    let isTurning = false;
+    let page2Clone = null;
+    let page3Clone = null;
+
+    function getOrCreateClones() {
+      if (!page2Clone || !page3Clone) {
+        const spread1 = document.getElementById('spread-1');
+        const spread2 = document.getElementById('spread-2');
+        if (spread1 && spread2) {
+          const p2 = spread1.querySelector('.page-right');
+          const p3 = spread2.querySelector('.page-left');
+          if (p2 && p3) {
+            page2Clone = p2.cloneNode(true);
+            page3Clone = p3.cloneNode(true);
+          }
+        }
+      }
+      return { page2Clone, page3Clone };
+    }
+
+    function playPageTurnSound() {
+      const turnAudio = document.getElementById('page-turn-sound');
+      if (!turnAudio) return;
+      try {
+        const sound = turnAudio.cloneNode();
+        sound.volume = 0.85;
+        sound.play().catch(() => { });
+      } catch (e) {
+        turnAudio.currentTime = 0;
+        turnAudio.play().catch(() => { });
+      }
+    }
+
+    function switchSpread(targetSpread) {
+      if (isTurning) return;
+      const spread1 = document.getElementById('spread-1');
+      const spread2 = document.getElementById('spread-2');
+      const currentSpreadNum = spread1.classList.contains('active-spread') ? 1 : 2;
+
+      if (targetSpread === currentSpreadNum) return;
+
+      const bookContainer = document.querySelector('.open-book-container');
+      const flippingLeaf = document.getElementById('flipping-leaf');
+      const leafFront = document.getElementById('leaf-front');
+      const leafBack = document.getElementById('leaf-back');
+
+      // Play page turn audio sound effect
+      playPageTurnSound();
+
+      // Momentarily disappear corner folds on click
+      if (bookContainer) {
+        bookContainer.classList.add('turning-in-progress');
+      }
+
+      // Fallback for mobile / small screens where pages stack vertically
+      if (window.innerWidth <= 768 || !flippingLeaf || !leafFront || !leafBack) {
+        isTurning = true;
+        const outgoingSpread = targetSpread === 2 ? spread1 : spread2;
+        const incomingSpread = targetSpread === 2 ? spread2 : spread1;
+        outgoingSpread.classList.remove('active-spread');
+        incomingSpread.classList.add('active-spread');
+        setTimeout(() => {
+          if (bookContainer) bookContainer.classList.remove('turning-in-progress');
+          isTurning = false;
+        }, 280);
+        return;
+      }
+
+      isTurning = true;
+      const { page2Clone: p2c, page3Clone: p3c } = getOrCreateClones();
+
+      if (targetSpread === 2) {
+        // Turning Forward: Page 2 flips left over the spine to become Page 3
+        const page2Source = spread1.querySelector('.page-right');
+
+        leafFront.replaceChildren(p2c);
+        leafBack.replaceChildren(p3c);
+
+        spread2.classList.add('spread-underneath');
+        page2Source.style.visibility = 'hidden';
+
+        flippingLeaf.className = 'flipping-page-leaf flip-forward';
+
+        const completeTurn = () => {
+          spread2.classList.add('active-spread');
+          spread2.classList.remove('spread-underneath');
+          spread1.classList.remove('active-spread');
+          page2Source.style.visibility = '';
+
+          requestAnimationFrame(() => {
+            flippingLeaf.className = 'flipping-page-leaf';
+            if (bookContainer) {
+              bookContainer.classList.remove('turning-in-progress');
+            }
+            isTurning = false;
+          });
+        };
+
+        const timer = setTimeout(completeTurn, 780);
+        flippingLeaf.addEventListener('animationend', () => {
+          clearTimeout(timer);
+          completeTurn();
+        }, { once: true });
+
+      } else {
+        // Turning Backward: Page 3 flips right over the spine to become Page 2
+        const page3Source = spread2.querySelector('.page-left');
+
+        leafFront.replaceChildren(p3c);
+        leafBack.replaceChildren(p2c);
+
+        spread1.classList.add('spread-underneath');
+        page3Source.style.visibility = 'hidden';
+
+        flippingLeaf.className = 'flipping-page-leaf flip-backward';
+
+        const completeTurn = () => {
+          spread1.classList.add('active-spread');
+          spread1.classList.remove('spread-underneath');
+          spread2.classList.remove('active-spread');
+          page3Source.style.visibility = '';
+
+          requestAnimationFrame(() => {
+            flippingLeaf.className = 'flipping-page-leaf';
+            if (bookContainer) {
+              bookContainer.classList.remove('turning-in-progress');
+            }
+            isTurning = false;
+          });
+        };
+
+        const timer = setTimeout(completeTurn, 780);
+        flippingLeaf.addEventListener('animationend', () => {
+          clearTimeout(timer);
+          completeTurn();
+        }, { once: true });
+      }
+    }
+
+    // Pre-cache clones as soon as DOM is ready for zero latency on first turn
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', getOrCreateClones);
+    } else {
+      getOrCreateClones();
+    }
+
+    // Keyboard navigation (Arrow keys and Page Up/Down)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+        switchSpread(2);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        switchSpread(1);
+      }
+    });
+
+    // Book slide sound on Back to Bookshelf click
+    (function () {
+      const slideAudio = new Audio('assets/book slide.mp3');
+      slideAudio.preload = 'auto';
+      const backBtn = document.querySelector('.back-button');
+      if (backBtn) {
+        backBtn.addEventListener('click', function (e) {
+          const href = this.href;
+          e.preventDefault();
+          try {
+            const sound = slideAudio.cloneNode();
+            sound.volume = 0.85;
+            sound.play().catch(() => { });
+            let navigated = false;
+            const navigate = () => {
+              if (navigated) return;
+              navigated = true;
+              clearTimeout(timer);
+              window.location.href = href;
+            };
+            sound.addEventListener('ended', navigate);
+            const timer = setTimeout(navigate, 420);
+          } catch (err) {
+            window.location.href = href;
+          }
+        });
+      }
+    })();
+  </script>
+
+</body>
+
+</html>

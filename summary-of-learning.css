@@ -1,0 +1,504 @@
+/* ==========================================================================
+   Tome IV • Summary of Learning
+   Antique Leather Volume (Deep Warm Brown & Sage Silk Ribbon)
+   Styling, accents, fonts, and design identical to previous Tomes
+   ========================================================================== */
+
+:root {
+  --bg-parchment: #fbf7ee;
+  --bg-parchment-deep: #f4ecdc;
+  --page-left-bg: #fefcf6;
+  --page-right-bg: #faf4e6;
+  --border-parchment: #dfd4bf;
+
+  --ink-primary: #1e140d;
+  --ink-secondary: #423226;
+  --ink-muted: #6b5748;
+  --gold-accent: #c69c4e;
+  --gold-glow: #e5b967;
+  --gold-light: #fbf4df;
+
+  /* Tome IV Antique Leather Palette matching homepage book-4 */
+  --book-leather: #522b13;
+  --book-leather-light: #6e3d1c;
+  --book-leather-deep: #381a09;
+  --ribbon-green: #264a3b;
+
+  --font-serif-display: 'Cinzel', serif;
+  --font-serif-title: 'Playfair Display', Georgia, serif;
+  --font-serif-classic: 'Cormorant Garamond', Garamond, serif;
+  --font-serif-body: 'Cormorant Garamond', Garamond, serif;
+  --font-typewriter: var(--font-serif-classic);
+}
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden !important;
+}
+
+/* Fullscreen Cork Bulletin Board Background (Identical to previous Tomes) */
+body {
+  font-family: var(--font-serif-classic);
+  background-color: #ba8c58;
+  background-image:
+    radial-gradient(rgba(84, 46, 20, 0.32) 15%, transparent 16%),
+    radial-gradient(rgba(60, 32, 14, 0.24) 15%, transparent 16%),
+    radial-gradient(rgba(245, 215, 175, 0.38) 15%, transparent 16%),
+    radial-gradient(rgba(95, 54, 24, 0.2) 15%, transparent 16%);
+  background-size: 22px 22px, 34px 34px, 18px 18px, 28px 28px;
+  background-position: 0 0, 11px 11px, 6px 6px, 15px 15px;
+
+  /* Wooden Outer Window Frame */
+  border: 14px solid #583318;
+  border-image: linear-gradient(135deg, #744521 0%, #46250f 50%, #683d1c 100%) 14;
+  box-shadow: inset 0 0 50px rgba(40, 20, 8, 0.6);
+
+  color: var(--ink-primary);
+  line-height: 1.48;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1rem;
+  overflow: hidden !important;
+}
+
+/* ==========================================================================
+   Top Navigation (Pinned to bulletin board)
+   ========================================================================== */
+
+.board-top-nav {
+  position: fixed;
+  top: calc(14px + 0.6rem);
+  left: calc(14px + 0.75rem);
+  z-index: 2;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  text-decoration: none;
+  font-family: var(--font-serif-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #2e1d11;
+  background: #fbf7ee;
+  border: 1px solid #d4c2a3;
+  padding: 0.35rem 0.95rem 0.35rem 1.35rem;
+  border-radius: 3px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 2;
+}
+
+.back-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  transform: translateY(-50%);
+  width: 11px;
+  height: 11px;
+  background: radial-gradient(circle at 35% 35%, #eb4444 0%, #b81414 60%, #6a0909 100%);
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.back-button:hover,
+.back-button:focus-visible {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.35);
+  color: #000;
+  outline: none;
+}
+
+/* ==========================================================================
+   Open Book Container (Leather Cover with Natural Tilt)
+   ========================================================================== */
+
+.open-book-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1220px;
+  min-height: 560px;
+  height: calc(100vh - 4.4rem);
+  max-height: 740px;
+  margin: 0 auto;
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--book-leather) 0%, var(--book-leather-light) 50%, var(--book-leather-deep) 100%);
+  padding: 10px 14px 14px;
+
+  /* Natural Realistic Scrapbook Tilt matching homepage book-4 */
+  transform: rotate(1.2deg);
+  box-shadow:
+    4px 20px 45px rgba(0, 0, 0, 0.58),
+    -2px 10px 25px rgba(0, 0, 0, 0.35),
+    inset 0 0 20px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+/* Central Hanging Silk Bookmark Ribbon (Sage Green Silk, behind pages) */
+.center-silk-ribbon {
+  position: absolute;
+  top: -16px;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%) rotate(1.2deg);
+  transform-origin: top center;
+  width: 24px;
+  background: linear-gradient(90deg,
+      #183327 0%,
+      #264a3b 22%,
+      #3a6c56 50%,
+      #264a3b 78%,
+      #183327 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 15px), 0 100%);
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(2px 6px 8px rgba(0, 0, 0, 0.45));
+}
+
+/* Embroidered silk headband stitch at top spine */
+.center-silk-ribbon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #a8792c 0%, #f5da82 50%, #a8792c 100%);
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Fine vertical weave sheen across the ribbon */
+.center-silk-ribbon::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 1px,
+    rgba(255, 255, 255, 0.08) 1px,
+    rgba(0, 0, 0, 0.12) 2px
+  );
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Spreads Perspective Wrapper & 3D Center Gutter Shadow
+   ========================================================================== */
+
+.book-spreads-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  perspective: 2200px;
+  z-index: 5;
+}
+
+/* 3D Center Spine Gutter Shadow */
+.book-spreads-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  background: linear-gradient(90deg,
+      rgba(0, 0, 0, 0.25) 0%,
+      rgba(0, 0, 0, 0.09) 25%,
+      rgba(0, 0, 0, 0.02) 45%,
+      rgba(0, 0, 0, 0.02) 55%,
+      rgba(0, 0, 0, 0.09) 75%,
+      rgba(0, 0, 0, 0.25) 100%);
+  z-index: 25;
+  pointer-events: none;
+}
+
+.book-spread {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 20;
+}
+
+/* ==========================================================================
+   Book Pages & Classical Frame
+   ========================================================================== */
+
+.book-page {
+  flex: 1;
+  height: 100%;
+  padding: 1.2rem 1.8rem 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.page-left {
+  background-color: var(--page-left-bg);
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 0%, transparent 8%, transparent 92%, rgba(0, 0, 0, 0.12) 100%);
+  border-right: 1px solid rgba(160, 140, 110, 0.3);
+}
+
+.page-right {
+  background-color: var(--page-right-bg);
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.12) 0%, transparent 8%, transparent 92%, rgba(0, 0, 0, 0.03) 100%);
+}
+
+/* Outer fanned page-edge deckle simulation */
+.page-left::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: -8px;
+  width: 8px;
+  background: repeating-linear-gradient(to right, #eedfc7 0px, #f8f2e4 1px, #d9c5a5 2px);
+  border-radius: 2px 0 0 2px;
+}
+
+.page-right::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  right: -8px;
+  width: 8px;
+  background: repeating-linear-gradient(to right, #eedfc7 0px, #f8f2e4 1px, #d9c5a5 2px);
+  border-radius: 0 2px 2px 0;
+}
+
+/* Inner Classical Page Frame */
+.page-inner-border {
+  border: 1px solid rgba(198, 156, 78, 0.38);
+  border-radius: 2px;
+  padding: 1.1rem 1.35rem 0.8rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.page-inner-border::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border: 1px dashed rgba(198, 156, 78, 0.22);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Page Headers, Badges, Dividers
+   ========================================================================== */
+
+.page-header {
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+
+.chapter-badge {
+  font-family: var(--font-serif-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ink-secondary);
+  border-bottom: 1px solid var(--gold-accent);
+  padding-bottom: 0.2rem;
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
+.page-title {
+  font-family: var(--font-serif-title);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  line-height: 1.15;
+}
+
+.page-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0.35rem auto 0;
+  color: var(--gold-accent);
+  font-size: 0.8rem;
+}
+
+.page-divider::before,
+.page-divider::after {
+  content: "";
+  height: 1px;
+  width: 45px;
+  background: linear-gradient(90deg, transparent, var(--gold-accent), transparent);
+}
+
+/* ==========================================================================
+   Content Sections, Headings & Text (Matching Tome I & Tome II)
+   ========================================================================== */
+
+.content-section {
+  margin-bottom: 1.75rem;
+}
+
+.content-section:last-of-type {
+  margin-bottom: 0;
+}
+
+.section-heading {
+  font-family: var(--font-serif-display);
+  font-size: 0.76rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-secondary);
+  border-bottom: 1px dashed rgba(198, 156, 78, 0.45);
+  padding-bottom: 0.35rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.section-heading:not(:first-child) {
+  margin-top: 1.75rem;
+}
+
+.section-text {
+  font-family: var(--font-serif-classic);
+  font-size: 1.06rem;
+  line-height: 1.62;
+  color: var(--ink-primary);
+  margin-bottom: 0.75rem;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.section-text:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Page Footers & Numbers
+   ========================================================================== */
+
+.page-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(198, 156, 78, 0.35);
+}
+
+.page-num {
+  font-family: var(--font-serif-classic);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .open-book-container {
+    transform: rotate(0deg);
+  }
+  .page-title {
+    font-size: 1.45rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 0.6rem 0.4rem;
+    border-width: 8px;
+    align-items: flex-start;
+    overflow-y: auto !important;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .open-book-container {
+    height: auto;
+    max-height: none;
+    transform: rotate(0deg);
+    margin-top: 3.2rem;
+  }
+
+  .center-silk-ribbon {
+    left: 24px;
+    transform: none;
+    top: -12px;
+    bottom: auto;
+    height: 44px;
+    z-index: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 10px), 0 100%);
+  }
+
+  .book-spread {
+    flex-direction: column;
+    position: relative;
+    height: auto;
+  }
+
+  .book-spreads-wrapper::before {
+    display: none;
+  }
+
+  .book-page {
+    height: auto;
+    min-height: auto;
+    padding: 1.1rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .page-left::after,
+  .page-right::after {
+    display: none;
+  }
+}
+
