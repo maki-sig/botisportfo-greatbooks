@@ -64,6 +64,8 @@
       }
 
       if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+        // Don't intercept if an enlarged photo modal is currently open
+        if (document.querySelector('.photo-modal-backdrop.is-active')) return;
         const activeLink = document.querySelector('.nav-menu-list .nav-link.is-active');
         const currentHref = activeLink ? activeLink.getAttribute('href') : '';
         let currentIndex = bookPages.indexOf(currentHref);

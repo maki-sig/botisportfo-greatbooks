@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tome I &bull; Student Profile | Great Books</title>
+  <title>Tome I - Botis' Profile</title>
 
   <!-- Google Fonts for Classical & Typewriter Aesthetic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -120,11 +120,21 @@
 
             <!-- Portrait & Metadata from Student Profile.md -->
             <div class="profile-card-layout">
-              <div class="photo-frame-wrapper">
+              <div class="photo-frame-wrapper" role="button" tabindex="0"
+                aria-label="Enlarge portrait photo of Marc Neljohn R. Botis" title="Click to enlarge portrait photo">
                 <span class="photo-corner top-left" aria-hidden="true"></span>
                 <img src="images/Profile.png" alt="Portrait photo of Marc Neljohn R. Botis" class="portrait-photo"
                   onerror="this.style.display='none'" decoding="async">
                 <span class="photo-corner bottom-right" aria-hidden="true"></span>
+                <span class="photo-zoom-hint" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <line x1="20" y1="20" x2="16" y2="16"></line>
+                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                  </svg>
+                </span>
               </div>
 
               <div class="identity-meta">
@@ -140,7 +150,8 @@
 
                 <div class="meta-field">
                   <span class="meta-label">Course &bull; Year &bull; Section</span>
-                  <p class="meta-value-sub">Bachelor of Science in Computer Science 4th Year &bull; BCS-OCa Section</p>
+                  <p class="meta-value-sub">Bachelor of Science in Computer Science 4th Year &bull;
+                    Great Books-GEC-GB-NRs</p>
                 </div>
               </div>
             </div>
@@ -232,8 +243,86 @@
     </div>
   </article>
 
-  <!-- Book slide sound on Back to Bookshelf click -->
+  <!-- Book navigation & reading tip toast -->
+
+  <!-- Enlarged Profile Photo Lightbox Modal -->
+  <aside id="profile-photo-modal" class="photo-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-label="Enlarged Portrait Photo">
+    <div class="photo-modal-content">
+      <!-- Tape with X mark to close -->
+      <button type="button" class="photo-modal-tape-close" aria-label="Close enlarged photo"
+        title="Close photo (or click background)">
+        <span class="tape-x-mark" aria-hidden="true">&times;</span>
+      </button>
+
+      <!-- Vintage Photo Frame -->
+      <div class="photo-modal-frame">
+        <span class="photo-corner top-left" aria-hidden="true"></span>
+        <span class="photo-corner top-right" aria-hidden="true"></span>
+        <img src="images/Profile.png" alt="Enlarged portrait photo of Marc Neljohn R. Botis" class="modal-portrait-img">
+        <span class="photo-corner bottom-left" aria-hidden="true"></span>
+        <span class="photo-corner bottom-right" aria-hidden="true"></span>
+      </div>
+
+      <!-- Caption -->
+      <div class="photo-modal-caption">
+        <span class="caption-name">Marc Neljohn R. Botis</span>
+        <span class="caption-sub">Tome I &bull; Student Profile</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Book slide sound and navigation -->
   <script src="book-nav.js"></script>
+  <script>
+    (function () {
+      const trigger = document.querySelector('.photo-frame-wrapper');
+      const modal = document.getElementById('profile-photo-modal');
+      const closeBtn = document.querySelector('.photo-modal-tape-close');
+      if (!trigger || !modal) return;
+
+      function openModal() {
+        modal.classList.add('is-active');
+        modal.setAttribute('aria-hidden', 'false');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeModal() {
+        modal.classList.remove('is-active');
+        modal.setAttribute('aria-hidden', 'true');
+        trigger.focus();
+      }
+
+      trigger.addEventListener('click', openModal);
+      trigger.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal();
+        }
+      });
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          closeModal();
+        });
+      }
+
+      // Close when clicking directly on the dimmed backdrop background
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-active')) {
+          closeModal();
+        }
+      });
+    })();
+  </script>
 
 </body>
 
