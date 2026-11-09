@@ -1,6 +1,5 @@
 *.pdf
 *.md
+*.txt
 
 !README.md
-
-Summary.txt

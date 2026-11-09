@@ -73,56 +73,135 @@ body {
 }
 
 /* ==========================================================================
-   Top Navigation (Fixed to top-left corner of the bulletin board)
+   Top Navigation: Vertical Torn Paper Menu (Pinned to Bulletin Board)
    ========================================================================== */
 
 .board-top-nav {
   position: fixed;
-  top: calc(14px + 0.6rem); /* Offset by body border (14px) + inner padding */
+  top: calc(14px + 0.55rem);
   left: calc(14px + 0.75rem);
-  z-index: 2; /* Behind the open book (z-index: 10) */
+  z-index: 2; /* Sits on bulletin board behind the open book (z-index: 10) */
+  filter: drop-shadow(0 3px 7px rgba(35, 18, 8, 0.3)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.18));
+  /* No container hover effect */
 }
 
-/* Pinned "Back to Bookshelf" Button */
-.back-button {
+/* Torn Paper Scrap Container (Scaled Down & Behind Books) */
+.torn-paper-menu {
+  display: inline-flex;
+  background-color: #faf4e4;
+  /* Curled parchment shading: subtle darkening toward top and bottom edges */
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(205, 182, 145, 0.45) 0%,
+      rgba(247, 238, 218, 0.5) 6%,
+      rgba(255, 253, 247, 0.95) 30%,
+      rgba(255, 253, 247, 0.95) 70%,
+      rgba(247, 238, 218, 0.5) 94%,
+      rgba(205, 182, 145, 0.45) 100%
+    );
+  padding: 0.65rem 0.95rem;
+  min-width: 112px;
+  position: relative;
+  /* Torn jagged edges on the left & right, gentle curved arch across top & bottom */
+  clip-path: polygon(
+    0% 4px, 15% 2.5px, 30% 1px, 50% 0px, 70% 1px, 85% 2.5px, 100% 4px,
+    99.2% 7%, 100% 14%, 98.6% 21%, 99.8% 28%, 98.4% 35%, 100% 42%, 99.1% 49%, 98.5% 56%, 100% 63%, 98.8% 70%, 99.6% 77%, 98.4% 84%, 100% 91%, 99% 96%,
+    100% calc(100% - 4px), 85% calc(100% - 2.5px), 70% calc(100% - 1px), 50% 100%, 30% calc(100% - 1px), 15% calc(100% - 2.5px), 0% calc(100% - 4px),
+    1% 96%, 0% 91%, 1.6% 84%, 0.4% 77%, 1.2% 70%, 0% 63%, 1.5% 56%, 0.9% 49%, 0% 42%, 1.6% 35%, 0.2% 28%, 1.4% 21%, 0% 14%, 0.8% 7%
+  );
+}
+
+/* Vertical Menu Navigation List */
+.nav-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.nav-menu-list li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Navigation Links */
+.nav-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.48rem;
+  width: 100%;
+  color: #3e2715;
   text-decoration: none;
   font-family: var(--font-serif-display);
-  font-size: 0.78rem;
-  letter-spacing: 0.16em;
+  font-size: 0.67rem;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
-  color: #2e1d11;
-  background: #fbf7ee;
-  border: 1px solid #d4c2a3;
-  padding: 0.35rem 0.95rem 0.35rem 1.35rem;
-  border-radius: 3px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
-  position: relative;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  z-index: 2; /* Behind the open book */
+  font-weight: 600;
+  padding: 0.16rem 0.15rem;
+  border-radius: 2px;
+  transition: color 0.18s ease, transform 0.15s ease;
 }
 
-.back-button::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 6px;
-  transform: translateY(-50%);
-  width: 11px;
-  height: 11px;
-  background: radial-gradient(circle at 35% 35%, #5aab42 0%, #2f7a1e 60%, #1a4a10 100%);
-  border-radius: 50%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+.nav-icon {
+  font-size: 0.78rem;
+  color: var(--gold-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  line-height: 1;
+  opacity: 0.85;
+  transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
 }
 
-.back-button:hover,
-.back-button:focus-visible {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.35);
-  color: #000;
+.nav-icon-svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.nav-text {
+  display: inline-block;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: #8c4a1e;
   outline: none;
+}
+
+.nav-link:hover .nav-icon,
+.nav-link:focus-visible .nav-icon {
+  opacity: 1;
+  transform: scale(1.15);
+  color: #8c4a1e;
+}
+
+/* Active Page with Dotted Underline Style */
+.nav-link.is-active {
+  color: #1a0f07;
+  font-weight: 800;
+}
+
+.nav-link.is-active .nav-icon {
+  color: #8c5a24;
+  opacity: 1;
+}
+
+.nav-link.is-active .nav-text {
+  border-bottom: 2px dotted #8c5a24;
 }
 
 
@@ -154,55 +233,17 @@ body {
   transition: transform 0.3s ease;
 }
 
-/* Central Hanging Silk Bookmark Ribbon - Repositioned BEHIND the book pages */
+/* Ribbon Bookmark Decoration (Top-left corner of cover, behind pages, no sharp points) */
 .center-silk-ribbon {
   position: absolute;
-  top: -16px;
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%) rotate(2deg);
-  transform-origin: top center;
+  top: -12px;
+  left: 36px;
   width: 24px;
-  background: linear-gradient(90deg,
-      #8a6500 0%,
-      #b08109 22%,
-      #d4a017 50%,
-      #b08109 78%,
-      #8a6500 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 15px), 0 100%);
-  z-index: 1; /* Positioned strictly BEHIND .book-spreads-wrapper (z-index: 5) and all pages */
-  pointer-events: none;
-  filter: drop-shadow(2px 6px 8px rgba(0, 0, 0, 0.45));
-}
-
-/* Embroidered silk headband stitch at top spine */
-.center-silk-ribbon::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #a8792c 0%, #f5da82 50%, #a8792c 100%);
-  border-radius: 2px 2px 0 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-/* Fine vertical weave sheen across the ribbon */
-.center-silk-ribbon::after {
-  content: "";
-  position: absolute;
-  top: 4px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent 0px,
-    transparent 1px,
-    rgba(255, 255, 255, 0.08) 1px,
-    rgba(0, 0, 0, 0.12) 2px
-  );
+  height: 46px;
+  background: #b08109;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.35);
+  border-radius: 4px 4px 0 0;
+  z-index: 1; /* Positioned behind .book-spreads-wrapper (z-index: 5) and book pages */
   pointer-events: none;
 }
 
@@ -1545,6 +1586,31 @@ body {
     align-items: flex-start;
   }
 
+  .board-top-nav {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 0 auto 0.65rem auto;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    z-index: 2;
+  }
+
+  .torn-paper-menu {
+    padding: 0.5rem 0.85rem;
+    min-width: 105px;
+  }
+
+  .nav-menu-list {
+    gap: 0.22rem;
+  }
+
+  .nav-link {
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+  }
+
   .open-book-container {
     height: auto;
     max-height: none;
@@ -1577,13 +1643,14 @@ body {
   }
 
   .center-silk-ribbon {
-    left: 24px;
+    left: 20px;
     transform: none;
-    top: -12px;
+    top: -8px;
     bottom: auto;
-    height: 44px;
+    width: 18px;
+    height: 34px;
+    border-radius: 3px 3px 0 0;
     z-index: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 10px), 0 100%);
   }
 
   .manga-gallery {

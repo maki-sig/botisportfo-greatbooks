@@ -18,11 +18,48 @@
 
 <body>
 
-  <!-- Top Navigation Pinned to the Bulletin Board (Identical to Tome I & Tome II) -->
-  <nav class="board-top-nav" aria-label="Page Navigation">
-    <a href="index.html" class="back-button" aria-label="Return to Great Books bookshelf">
-      &larr; Bookshelf
-    </a>
+        <!-- Top Navigation Vertical Torn Paper Menu Pinned to Bulletin Board -->
+  <nav class="board-top-nav" aria-label="Anthology Navigation">
+    <div class="torn-paper-menu">
+      <ul class="nav-menu-list">
+        <li>
+          <a href="index.html" class="nav-link">
+            <span class="nav-icon" aria-hidden="true"><svg class="nav-icon-svg" viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></span>
+            <span class="nav-text">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="student-profile.html" class="nav-link">
+            <span class="nav-icon" aria-hidden="true">&#9743;</span>
+            <span class="nav-text">Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="literary-analyses.html" class="nav-link">
+            <span class="nav-icon" aria-hidden="true">&#10020;</span>
+            <span class="nav-text">Analyses</span>
+          </a>
+        </li>
+        <li>
+          <a href="favorite-masterpiece.html" class="nav-link is-active" aria-current="page">
+            <span class="nav-icon" aria-hidden="true">&#9813;</span>
+            <span class="nav-text">Favorite</span>
+          </a>
+        </li>
+        <li>
+          <a href="summary-of-learning.html" class="nav-link">
+            <span class="nav-icon" aria-hidden="true">&#10022;</span>
+            <span class="nav-text">Summary</span>
+          </a>
+        </li>
+        <li>
+          <a href="personal-reflection.html" class="nav-link">
+            <span class="nav-icon" aria-hidden="true">&#10038;</span>
+            <span class="nav-text">Reflection</span>
+          </a>
+        </li>
+      </ul>
+    </div>
   </nav>
 
   <!-- Open Book Component (Fits Screen Height with Natural Tilt) -->
@@ -417,6 +454,23 @@
         });
       }
     })();
+      // Paper slide sound on navigating between books
+          const slideAudio = new Audio('assets/book slide.mp3');
+          slideAudio.preload = 'auto';
+          const navLinks = document.querySelectorAll('.nav-link:not(.is-active)');
+          navLinks.forEach((link) => {
+            link.addEventListener('click', function (e) {
+              const href = this.href;
+              e.preventDefault();
+              try {
+                slideAudio.currentTime = 0;
+                slideAudio.play().catch(() => {});
+              } catch (err) {}
+              setTimeout(() => {
+                window.location.href = href;
+              }, 240);
+            });
+          });
   </script>
 
 </body>

@@ -1,0 +1,1243 @@
+/* ==========================================================================
+   Tome V • Personal Reflection
+   Styled after Tome II (7 Literary Analyses) Template
+   Identical Decoration, Accents, Fonts, Margins, Borders, and Overall Styling
+   ========================================================================== */
+
+:root {
+  --bg-parchment: #fbf7ee;
+  --bg-parchment-deep: #f4ecdc;
+  --page-left-bg: #fefcf6;
+  --page-right-bg: #faf4e6;
+  --border-parchment: #dfd4bf;
+
+  --ink-primary: #1e140d;
+  --ink-secondary: #423226;
+  --ink-muted: #6b5748;
+  --gold-accent: #c69c4e;
+  --gold-glow: #e5b967;
+  --gold-light: #fbf4df;
+
+  /* Tome V Royal Plum Volume Cover matching homepage book-5 */
+  --book-plum: #391932;
+  --book-plum-light: #522748;
+  --book-plum-deep: #1e0919;
+  --ribbon-bronze: #b88231;
+
+  --font-serif-display: 'Cinzel', serif;
+  --font-serif-title: 'Playfair Display', Georgia, serif;
+  --font-serif-classic: 'Cormorant Garamond', Garamond, serif;
+  --font-serif-body: 'Cormorant Garamond', Garamond, serif;
+  --font-typewriter: var(--font-serif-classic);
+}
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden !important;
+}
+
+/* Fullscreen Cork Bulletin Board Background (Identical to Tome II) */
+body {
+  font-family: var(--font-serif-classic);
+  background-color: #ba8c58;
+  background-image:
+    radial-gradient(rgba(84, 46, 20, 0.32) 15%, transparent 16%),
+    radial-gradient(rgba(60, 32, 14, 0.24) 15%, transparent 16%),
+    radial-gradient(rgba(245, 215, 175, 0.38) 15%, transparent 16%),
+    radial-gradient(rgba(95, 54, 24, 0.2) 15%, transparent 16%);
+  background-size: 22px 22px, 34px 34px, 18px 18px, 28px 28px;
+  background-position: 0 0, 11px 11px, 6px 6px, 15px 15px;
+
+  /* Wooden Outer Window Frame (Identical to Tome II) */
+  border: 14px solid #583318;
+  border-image: linear-gradient(135deg, #744521 0%, #46250f 50%, #683d1c 100%) 14;
+  box-shadow: inset 0 0 50px rgba(40, 20, 8, 0.6);
+
+  color: var(--ink-primary);
+  line-height: 1.48;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1rem;
+  overflow: hidden !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   Top Navigation: Vertical Torn Paper Menu (Pinned to Bulletin Board)
+   ========================================================================== */
+
+.board-top-nav {
+  position: fixed;
+  top: calc(14px + 0.55rem);
+  left: calc(14px + 0.75rem);
+  z-index: 2; /* Sits on bulletin board behind the open book (z-index: 10) */
+  filter: drop-shadow(0 3px 7px rgba(35, 18, 8, 0.3)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.18));
+  /* No container hover effect */
+}
+
+/* Torn Paper Scrap Container (Scaled Down & Behind Books) */
+.torn-paper-menu {
+  display: inline-flex;
+  background-color: #faf4e4;
+  /* Curled parchment shading: subtle darkening toward top and bottom edges */
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(205, 182, 145, 0.45) 0%,
+      rgba(247, 238, 218, 0.5) 6%,
+      rgba(255, 253, 247, 0.95) 30%,
+      rgba(255, 253, 247, 0.95) 70%,
+      rgba(247, 238, 218, 0.5) 94%,
+      rgba(205, 182, 145, 0.45) 100%
+    );
+  padding: 0.65rem 0.95rem;
+  min-width: 112px;
+  position: relative;
+  /* Torn jagged edges on the left & right, gentle curved arch across top & bottom */
+  clip-path: polygon(
+    0% 4px, 15% 2.5px, 30% 1px, 50% 0px, 70% 1px, 85% 2.5px, 100% 4px,
+    99.2% 7%, 100% 14%, 98.6% 21%, 99.8% 28%, 98.4% 35%, 100% 42%, 99.1% 49%, 98.5% 56%, 100% 63%, 98.8% 70%, 99.6% 77%, 98.4% 84%, 100% 91%, 99% 96%,
+    100% calc(100% - 4px), 85% calc(100% - 2.5px), 70% calc(100% - 1px), 50% 100%, 30% calc(100% - 1px), 15% calc(100% - 2.5px), 0% calc(100% - 4px),
+    1% 96%, 0% 91%, 1.6% 84%, 0.4% 77%, 1.2% 70%, 0% 63%, 1.5% 56%, 0.9% 49%, 0% 42%, 1.6% 35%, 0.2% 28%, 1.4% 21%, 0% 14%, 0.8% 7%
+  );
+}
+
+/* Vertical Menu Navigation List */
+.nav-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.nav-menu-list li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Navigation Links */
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.48rem;
+  width: 100%;
+  color: #3e2715;
+  text-decoration: none;
+  font-family: var(--font-serif-display);
+  font-size: 0.67rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.16rem 0.15rem;
+  border-radius: 2px;
+  transition: color 0.18s ease, transform 0.15s ease;
+}
+
+.nav-icon {
+  font-size: 0.78rem;
+  color: var(--gold-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  line-height: 1;
+  opacity: 0.85;
+  transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.nav-icon-svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.nav-text {
+  display: inline-block;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: #8c4a1e;
+  outline: none;
+}
+
+.nav-link:hover .nav-icon,
+.nav-link:focus-visible .nav-icon {
+  opacity: 1;
+  transform: scale(1.15);
+  color: #8c4a1e;
+}
+
+/* Active Page with Dotted Underline Style */
+.nav-link.is-active {
+  color: #1a0f07;
+  font-weight: 800;
+}
+
+.nav-link.is-active .nav-icon {
+  color: #8c5a24;
+  opacity: 1;
+}
+
+.nav-link.is-active .nav-text {
+  border-bottom: 2px dotted #8c5a24;
+}
+
+/* ==========================================================================
+   Zoomed-In Open Book Container (With Natural Tilt & 3D Depth)
+   ========================================================================== */
+
+.open-book-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1220px;
+  min-height: 560px;
+  height: calc(100vh - 4.4rem);
+  max-height: 740px;
+  margin: 0 auto;
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--book-plum) 0%, var(--book-plum-deep) 100%);
+  padding: 10px 14px 14px;
+  transform: rotate(-1.4deg);
+  box-shadow:
+    4px 20px 45px rgba(0, 0, 0, 0.58),
+    -2px 10px 25px rgba(0, 0, 0, 0.35),
+    inset 0 0 20px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+/* Ribbon Bookmark Decoration (Top-left corner of cover, behind pages, no sharp points) */
+.center-silk-ribbon {
+  position: absolute;
+  top: -12px;
+  left: 36px;
+  width: 24px;
+  height: 46px;
+  background: var(--ribbon-bronze);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.35);
+  border-radius: 4px 4px 0 0;
+  z-index: 1; /* Positioned behind .book-spreads-wrapper (z-index: 5) and book pages */
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Spreads Perspective Wrapper & 3D Center Gutter Shadow (Identical to Tome II)
+   ========================================================================== */
+
+.book-spreads-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  perspective: 2200px;
+  z-index: 5;
+}
+
+/* 3D Center Spine Gutter Shadow */
+.book-spreads-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  background: linear-gradient(90deg,
+      rgba(0, 0, 0, 0.25) 0%,
+      rgba(0, 0, 0, 0.09) 25%,
+      rgba(0, 0, 0, 0.02) 45%,
+      rgba(0, 0, 0, 0.02) 55%,
+      rgba(0, 0, 0, 0.09) 75%,
+      rgba(0, 0, 0, 0.25) 100%);
+  z-index: 25;
+  pointer-events: none;
+}
+
+/* Each Spread (2 facing pages) */
+.book-spread {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+.book-spread.active-spread {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.book-spread.spread-underneath {
+  opacity: 1 !important;
+  pointer-events: none;
+  z-index: 4 !important;
+  transition: none !important;
+}
+
+/* ==========================================================================
+   Realistic & Ultra-Smooth 3D Page Turn System (GPU Compositor Accelerated)
+   ========================================================================== */
+
+.flipping-page-leaf {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  z-index: 30;
+  display: none;
+  will-change: transform;
+}
+
+.flipping-page-leaf.flip-forward {
+  display: block;
+  right: 0;
+  transform-origin: left center;
+  animation: smoothFlipForward 0.76s forwards;
+}
+
+.flipping-page-leaf.flip-backward {
+  display: block;
+  left: 0;
+  transform-origin: right center;
+  animation: smoothFlipBackward 0.76s forwards;
+}
+
+.leaf-side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.leaf-side .book-page {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.leaf-side .page-corner-fold {
+  display: none !important;
+}
+
+.leaf-side .book-page::after {
+  display: none !important;
+}
+
+.leaf-front {
+  transform: rotateY(0deg) translateZ(1px);
+  background-color: var(--page-right-bg);
+  box-shadow: inset -2px 0 4px rgba(0, 0, 0, 0.08);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.leaf-back {
+  transform: rotateY(180deg) translateZ(1px);
+  background-color: var(--page-left-bg);
+  box-shadow: inset 2px 0 4px rgba(0, 0, 0, 0.08);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.leaf-side::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0;
+  will-change: opacity;
+}
+
+.leaf-front::after {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.22) 0%, rgba(255, 255, 255, 0.25) 55%, rgba(0, 0, 0, 0.12) 100%);
+}
+
+.leaf-back::after {
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.22) 0%, rgba(255, 255, 255, 0.25) 55%, rgba(0, 0, 0, 0.12) 100%);
+}
+
+.flip-forward .leaf-front::after {
+  animation: frontSheenForward 0.76s forwards;
+}
+
+.flip-forward .leaf-back::after {
+  animation: backSheenForward 0.76s forwards;
+}
+
+.flip-backward .leaf-front::after {
+  animation: frontSheenBackward 0.76s forwards;
+}
+
+.flip-backward .leaf-back::after {
+  animation: backSheenBackward 0.76s forwards;
+}
+
+@keyframes smoothFlipForward {
+  0% {
+    transform: rotateY(0deg) skewY(0deg);
+    animation-timing-function: cubic-bezier(0.38, 0, 0.65, 0.7);
+  }
+
+  50% {
+    transform: rotateY(-90deg) skewY(-2.2deg);
+    animation-timing-function: cubic-bezier(0.2, 0.35, 0.25, 1);
+  }
+
+  100% {
+    transform: rotateY(-180deg) skewY(0deg);
+  }
+}
+
+@keyframes smoothFlipBackward {
+  0% {
+    transform: rotateY(0deg) skewY(0deg);
+    animation-timing-function: cubic-bezier(0.38, 0, 0.65, 0.7);
+  }
+
+  50% {
+    transform: rotateY(90deg) skewY(2.2deg);
+    animation-timing-function: cubic-bezier(0.2, 0.35, 0.25, 1);
+  }
+
+  100% {
+    transform: rotateY(180deg) skewY(0deg);
+  }
+}
+
+@keyframes frontSheenForward {
+  0% {
+    opacity: 0;
+    animation-timing-function: ease-in-out;
+  }
+  50% {
+    opacity: 0.65;
+    animation-timing-function: ease-out;
+  }
+  100% {
+    opacity: 0.65;
+  }
+}
+
+@keyframes backSheenForward {
+  0% {
+    opacity: 0.65;
+    animation-timing-function: ease-in;
+  }
+  50% {
+    opacity: 0.65;
+    animation-timing-function: cubic-bezier(0.2, 0.35, 0.25, 1);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes frontSheenBackward {
+  0% {
+    opacity: 0;
+    animation-timing-function: ease-in-out;
+  }
+  50% {
+    opacity: 0.65;
+    animation-timing-function: ease-out;
+  }
+  100% {
+    opacity: 0.65;
+  }
+}
+
+@keyframes backSheenBackward {
+  0% {
+    opacity: 0.65;
+    animation-timing-function: ease-in;
+  }
+  50% {
+    opacity: 0.65;
+    animation-timing-function: cubic-bezier(0.2, 0.35, 0.25, 1);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Static Ambient Shadows */
+.page-turning-shadow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  pointer-events: none;
+  z-index: 15;
+  opacity: 0;
+  will-change: opacity;
+}
+
+.shadow-left {
+  left: 0;
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 40%, transparent 80%);
+}
+
+.shadow-right {
+  right: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 40%, transparent 80%);
+}
+
+.flip-forward ~ .shadow-right {
+  animation: shadowLift 0.76s forwards;
+}
+
+.flip-forward ~ .shadow-left {
+  animation: shadowLand 0.76s forwards;
+}
+
+.flip-backward ~ .shadow-left {
+  animation: shadowLift 0.76s forwards;
+}
+
+.flip-backward ~ .shadow-right {
+  animation: shadowLand 0.76s forwards;
+}
+
+@keyframes shadowLift {
+  0% {
+    opacity: 0.15;
+    animation-timing-function: ease-out;
+  }
+  45% {
+    opacity: 0.5;
+    animation-timing-function: ease-in;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes shadowLand {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+    animation-timing-function: ease-out;
+  }
+  85% {
+    opacity: 0.45;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   Book Page Base (Identical to Tome II)
+   ========================================================================== */
+
+.book-page {
+  flex: 1;
+  height: 100%;
+  padding: 1.2rem 1.8rem 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* Left Page (Verso) */
+.page-left {
+  background-color: var(--page-left-bg);
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 0%, transparent 8%, transparent 92%, rgba(0, 0, 0, 0.12) 100%);
+  border-right: 1px solid rgba(160, 140, 110, 0.3);
+}
+
+/* Right Page (Recto) */
+.page-right {
+  background-color: var(--page-right-bg);
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.12) 0%, transparent 8%, transparent 92%, rgba(0, 0, 0, 0.03) 100%);
+}
+
+/* Outer fanned page-edge simulation (Identical to Tome II) */
+.page-left::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: -8px;
+  width: 8px;
+  background: repeating-linear-gradient(to right, #eedfc7 0px, #f8f2e4 1px, #d9c5a5 2px);
+  border-radius: 2px 0 0 2px;
+}
+
+.page-right::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  right: -8px;
+  width: 8px;
+  background: repeating-linear-gradient(to right, #eedfc7 0px, #f8f2e4 1px, #d9c5a5 2px);
+  border-radius: 0 2px 2px 0;
+}
+
+/* Inner Classical Page Frame (Identical to Tome II) */
+.page-inner-border {
+  border: 1px solid rgba(198, 156, 78, 0.38);
+  border-radius: 2px;
+  padding: 1.1rem 1.35rem 0.8rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.page-inner-border::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border: 1px dashed rgba(198, 156, 78, 0.22);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Page Header (Identical to Tome II)
+   ========================================================================== */
+
+.page-header {
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+
+.chapter-badge {
+  font-family: var(--font-serif-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ink-secondary);
+  border-bottom: 1px solid var(--gold-accent);
+  padding-bottom: 0.2rem;
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
+.page-title {
+  font-family: var(--font-serif-title);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  line-height: 1.15;
+}
+
+.page-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0.35rem auto 0;
+  color: var(--gold-accent);
+  font-size: 0.8rem;
+}
+
+.page-divider::before,
+.page-divider::after {
+  content: "";
+  height: 1px;
+  width: 45px;
+  background: linear-gradient(90deg, transparent, var(--gold-accent), transparent);
+}
+
+/* ==========================================================================
+   Core Inquiry Card (Tome II Philosophy-Card Template)
+   ========================================================================== */
+
+.philosophy-card {
+  background: rgba(254, 250, 242, 0.75);
+  border: 1px dashed rgba(198, 156, 78, 0.45);
+  border-radius: 3px;
+  padding: 0.65rem 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.creed-tag {
+  font-family: var(--font-serif-display);
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  color: var(--gold-accent);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.inquiry-prompt {
+  font-family: var(--font-serif-classic);
+  font-size: 1.0rem;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--ink-secondary);
+}
+
+/* ==========================================================================
+   Content Sections & Section Headings (Identical to Tome II)
+   ========================================================================== */
+
+.content-section {
+  margin-bottom: 0.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content-section:last-of-type {
+  margin-bottom: 0;
+}
+
+.section-heading {
+  font-family: var(--font-serif-display);
+  font-size: 0.76rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-secondary);
+  border-bottom: 1px dashed rgba(198, 156, 78, 0.45);
+  padding-bottom: 0.35rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.section-text {
+  font-family: var(--font-serif-classic);
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: var(--ink-primary);
+  margin-bottom: 0.75rem;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+.section-text:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Page 6: Highlight Quote Card & Synthesis Grid (Tome II Style)
+   ========================================================================== */
+
+.highlight-quote-card {
+  background: rgba(255, 253, 248, 0.75);
+  border-left: 4px solid var(--gold-accent);
+  padding: 0.75rem 1rem;
+  border-radius: 0 4px 4px 0;
+  margin: 0.4rem 0 0.75rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.highlight-quote-card p {
+  font-family: var(--font-serif-classic);
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--ink-primary);
+  text-align: center;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  margin: auto 0;
+}
+
+.pillar-card {
+  background: rgba(254, 250, 242, 0.75);
+  border: 1px dashed rgba(198, 156, 78, 0.4);
+  border-radius: 3px;
+  padding: 0.85rem 0.95rem;
+}
+
+.pillar-header {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.25rem;
+}
+
+.pillar-symbol {
+  color: var(--gold-accent);
+  font-size: 0.8rem;
+}
+
+.pillar-title {
+  font-family: var(--font-serif-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-secondary);
+  font-weight: 700;
+}
+
+.pillar-desc {
+  font-family: var(--font-serif-classic);
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: var(--ink-secondary);
+}
+
+.synthesis-signoff {
+  border-top: 1px solid rgba(198, 156, 78, 0.3);
+  padding-top: 0.45rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+.signoff-tag {
+  font-family: var(--font-serif-display);
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-accent);
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+.signoff-phrase {
+  font-family: var(--font-serif-classic);
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--ink-muted);
+}
+
+/* ==========================================================================
+   Page Footer with Number & Page-Turn Buttons (Identical to Tome II)
+   ========================================================================== */
+
+.page-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(198, 156, 78, 0.28);
+  padding-top: 0.45rem;
+  margin-top: auto;
+}
+
+.page-num {
+  font-family: var(--font-serif-classic);
+  font-size: 1.0rem;
+  font-style: italic;
+  color: var(--ink-muted);
+}
+
+/* ==========================================================================
+   Folded Paper Corner Page Navigation (Identical to Tome II)
+   ========================================================================== */
+
+.page-corner-fold {
+  position: absolute;
+  bottom: 0;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 35;
+  background: none;
+  border: none;
+  padding: 0;
+  outline: none;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.8, 0.25, 1);
+}
+
+/* Corner folds momentarily disappear during page turn transition */
+.open-book-container.turning-in-progress .page-corner-fold,
+.turning-in-progress .page-corner-fold {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: scale(0.65);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+}
+
+/* Right page bottom-right fold (Turn Forward) */
+.page-corner-fold.fold-right {
+  right: 0;
+}
+
+.page-corner-fold.fold-right::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 36px 36px;
+  border-color: transparent transparent transparent #e6d7ba;
+  filter: drop-shadow(-3px -3px 4px rgba(0, 0, 0, 0.24));
+  transition: border-width 0.25s cubic-bezier(0.2, 0.8, 0.25, 1), filter 0.25s ease;
+}
+
+.page-corner-fold.fold-right::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 36px 36px;
+  border-color: transparent transparent transparent rgba(35, 18, 8, 0.18);
+  transform: translate(-2px, -2px);
+  z-index: -1;
+  transition: border-width 0.25s cubic-bezier(0.2, 0.8, 0.25, 1);
+}
+
+.page-corner-fold.fold-right:hover::before,
+.page-corner-fold.fold-right:focus-visible::before {
+  border-width: 0 0 50px 50px;
+  border-color: transparent transparent transparent #ede0c3;
+  filter: drop-shadow(-5px -5px 7px rgba(0, 0, 0, 0.35));
+}
+
+.page-corner-fold.fold-right:hover::after,
+.page-corner-fold.fold-right:focus-visible::after {
+  border-width: 0 0 50px 50px;
+}
+
+/* Left page bottom-left fold (Turn Backward) */
+.page-corner-fold.fold-left {
+  left: 0;
+}
+
+.page-corner-fold.fold-left::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 36px 36px 0;
+  border-color: transparent #e6d7ba transparent transparent;
+  filter: drop-shadow(3px -3px 4px rgba(0, 0, 0, 0.24));
+  transition: border-width 0.25s cubic-bezier(0.2, 0.8, 0.25, 1), filter 0.25s ease;
+}
+
+.page-corner-fold.fold-left::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 36px 36px 0;
+  border-color: transparent rgba(35, 18, 8, 0.18) transparent transparent;
+  transform: translate(2px, -2px);
+  z-index: -1;
+  transition: border-width 0.25s cubic-bezier(0.2, 0.8, 0.25, 1);
+}
+
+.page-corner-fold.fold-left:hover::before,
+.page-corner-fold.fold-left:focus-visible::before {
+  border-width: 0 50px 50px 0;
+  border-color: transparent #ede0c3 transparent transparent;
+  filter: drop-shadow(5px -5px 7px rgba(0, 0, 0, 0.35));
+}
+
+.page-corner-fold.fold-left:hover::after,
+.page-corner-fold.fold-left:focus-visible::after {
+  border-width: 0 50px 50px 0;
+}
+
+/* ==========================================================================
+   Right-Edge Fore-Edge Flag Tabs (Identical to Tome II)
+   ========================================================================== */
+
+.book-flag-rail {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  bottom: 14px;
+  width: 0;
+  pointer-events: none;
+  /* No z-index here so child flags can stack behind (z-index: 2) or with the open page (z-index: 12) */
+}
+
+.book-flag {
+  position: absolute;
+  right: -94px;              /* how far the tab pokes past the fore-edge */
+  width: 122px;              /* 94px outside + 28px seamlessly bridging into the page margin */
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px 0 34px;
+  z-index: 2;                /* Inactive tabs sit behind the open page leaf */
+
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  pointer-events: auto;
+
+  /* Text styling matching tape labels */
+  font-family: var(--font-serif-classic);
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  color: #3a2a0a;
+  text-align: left;
+  white-space: nowrap;
+
+  /* Same exact color as the book pages */
+  background-color: var(--page-right-bg);
+  border: 1px solid rgba(198, 156, 78, 0.35);
+  border-left: none;         /* Seamless transition from the page edge */
+  border-radius: 0 5px 5px 0;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.12);
+
+  opacity: 0.72;             /* Inactive tabs are a bit transparent */
+  filter: brightness(0.96);  /* Subtle depth for pages behind the open leaf */
+  transform: none;
+  transition:
+    transform 0.22s cubic-bezier(0.2, 0.8, 0.25, 1),
+    box-shadow 0.22s ease,
+    opacity 0.22s ease,
+    filter 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.flag-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--font-serif-classic);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  color: #3a2a0a;
+}
+
+/* Hover: smoothly pulls out slightly from the page edge and gains clarity */
+.book-flag:hover,
+.book-flag:focus-visible {
+  transform: translateX(4px);
+  opacity: 0.95;
+  filter: brightness(1.0);
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.20);
+}
+
+.book-flag:focus-visible {
+  outline: 2px solid #8c6a28;
+  outline-offset: 2px;
+}
+
+/* Active Spread Tab: integral part of the open page itself */
+.book-flag.is-active {
+  z-index: 12;               /* Rises in front of the page stack, integral to open page */
+  opacity: 1;                /* Solid, fully opaque matching the open page leaf */
+  transform: translateX(6px);
+  background-color: var(--page-right-bg); /* Exactly continuous with .page-right */
+  border-top: 1px solid rgba(198, 156, 78, 0.45);
+  border-bottom: 1px solid rgba(198, 156, 78, 0.45);
+  border-right: 1px solid rgba(198, 156, 78, 0.55);
+  border-left: none;         /* No seam or divider cutting into the page paper */
+  border-radius: 0 5px 5px 0;
+  box-shadow: 3px 2px 6px rgba(0, 0, 0, 0.18); /* Shadow falls outward onto desk, never onto page */
+  filter: brightness(1.0);
+  color: #2b1d06;
+}
+
+.book-flag.is-active .flag-title {
+  font-family: var(--font-serif-classic);
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+  color: #2b1d06;
+}
+
+/* Staggered positions down the fore-edge */
+.flag-1 { top: 22%; }
+.flag-2 { top: 40%; }
+.flag-3 { top: 58%; }
+
+/* Reserve cork margin for the flags only on screens where the pages still
+   have enough room for the longest analysis text. */
+@media (min-width: 1280px) and (min-height: 700px) {
+  .open-book-container {
+    max-width: min(1220px, calc(100vw - 230px));
+  }
+}
+
+/* A side flag rail does not work when the book is narrow, short, or stacked */
+@media (max-width: 1279px), (max-height: 699px) {
+  .book-flag-rail {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .open-book-container {
+    transform: rotate(0deg);
+  }
+
+  .page-title {
+    font-size: 1.45rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 0.6rem 0.4rem;
+    border-width: 8px;
+    align-items: flex-start;
+    overflow-y: auto !important;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .board-top-nav {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 0 auto 0.65rem auto;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    z-index: 2;
+  }
+
+  .torn-paper-menu {
+    padding: 0.5rem 0.85rem;
+    min-width: 105px;
+  }
+
+  .nav-menu-list {
+    gap: 0.22rem;
+  }
+
+  .nav-link {
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+  }
+
+  .open-book-container {
+    height: auto;
+    max-height: none;
+    transform: rotate(0deg);
+    margin-top: 3.2rem;
+  }
+
+  .center-silk-ribbon {
+    left: 20px;
+    transform: none;
+    top: -8px;
+    bottom: auto;
+    width: 18px;
+    height: 34px;
+    border-radius: 3px 3px 0 0;
+    z-index: 1;
+  }
+
+  .book-spread {
+    flex-direction: column;
+    position: relative;
+    height: auto;
+  }
+
+  .book-spreads-wrapper::before {
+    display: none;
+  }
+
+  .book-page {
+    height: auto;
+    min-height: auto;
+    padding: 1.1rem 1rem;
+  }
+
+  .page-left {
+    border-right: none;
+    border-bottom: 1px solid rgba(160, 140, 110, 0.35);
+  }
+
+  .page-inner-border {
+    padding: 1rem 0.9rem;
+  }
+
+  .section-text {
+    font-size: 1.02rem;
+    line-height: 1.58;
+    text-align: left;
+  }
+
+  .pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .page-corner-fold {
+    display: none;
+  }
+
+  .book-flag-rail {
+    display: none;
+  }
+}
