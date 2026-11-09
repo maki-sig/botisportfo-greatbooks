@@ -782,14 +782,7 @@ body {
    Page 6: Highlight Quote Card & Synthesis Grid (Tome II Style)
    ========================================================================== */
 
-.highlight-quote-card {
-  background: rgba(255, 253, 248, 0.75);
-  border-left: 4px solid var(--gold-accent);
-  padding: 0.75rem 1rem;
-  border-radius: 0 4px 4px 0;
-  margin: 0.4rem 0 0.75rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
+
 
 .highlight-quote-card p {
   font-family: var(--font-serif-classic);
@@ -1154,30 +1147,7 @@ body {
     min-height: 100vh;
   }
 
-  .board-top-nav {
-    position: relative;
-    top: auto;
-    left: auto;
-    margin: 0 auto 0.65rem auto;
-    display: flex;
-    justify-content: center;
-    width: fit-content;
-    z-index: 2;
-  }
 
-  .torn-paper-menu {
-    padding: 0.5rem 0.85rem;
-    min-width: 105px;
-  }
-
-  .nav-menu-list {
-    gap: 0.22rem;
-  }
-
-  .nav-link {
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
-  }
 
   .open-book-container {
     height: auto;

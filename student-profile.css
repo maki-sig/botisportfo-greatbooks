@@ -1154,30 +1154,7 @@ body {
     align-items: flex-start;
   }
 
-  .board-top-nav {
-    position: relative;
-    top: auto;
-    left: auto;
-    margin: 0 auto 0.65rem auto;
-    display: flex;
-    justify-content: center;
-    width: fit-content;
-    z-index: 2;
-  }
 
-  .torn-paper-menu {
-    padding: 0.5rem 0.85rem;
-    min-width: 105px;
-  }
-
-  .nav-menu-list {
-    gap: 0.22rem;
-  }
-
-  .nav-link {
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
-  }
 
   .open-book-container {
     height: auto;

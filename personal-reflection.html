@@ -13,6 +13,7 @@
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap"
     rel="stylesheet">
 
+  <link rel="stylesheet" href="nav.css">
   <link rel="stylesheet" href="personal-reflection.css">
 </head>
 
@@ -508,24 +509,8 @@
         if (currentSpreadNum > 1) switchSpread(currentSpreadNum - 1);
       }
     });
-      // Paper slide sound on navigating between books
-          const slideAudio = new Audio('assets/book slide.mp3');
-          slideAudio.preload = 'auto';
-          const navLinks = document.querySelectorAll('.nav-link:not(.is-active)');
-          navLinks.forEach((link) => {
-            link.addEventListener('click', function (e) {
-              const href = this.href;
-              e.preventDefault();
-              try {
-                slideAudio.currentTime = 0;
-                slideAudio.play().catch(() => {});
-              } catch (err) {}
-              setTimeout(() => {
-                window.location.href = href;
-              }, 240);
-            });
-          });
-  </script>
+      </script>
+  <script src="book-nav.js"></script>
 
 </body>
 
