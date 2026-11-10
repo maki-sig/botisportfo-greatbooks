@@ -49,6 +49,17 @@
   <!-- Bulletin Board Container -->
   <main class="bulletin-board" role="main">
 
+    <!-- Pinned Asset Credits Letter Envelope -->
+    <button type="button" class="credits-envelope" id="credits-envelope" aria-haspopup="dialog"
+      aria-controls="credits-letter-overlay" aria-expanded="false" aria-label="Open asset credits letter">
+      <span class="envelope-pin" aria-hidden="true"></span>
+      <span class="envelope-body" aria-hidden="true">
+        <span class="envelope-flap"></span>
+        <span class="envelope-seal">&#10022;</span>
+        <span class="envelope-label">Asset Credits</span>
+      </span>
+    </button>
+
     <!-- Paper Note Pinned to the Bulletin Board -->
     <header class="pinned-paper-note">
       <!-- 3D Red Pushpin -->
@@ -157,11 +168,215 @@
     <footer class="pinned-footer-note">
       <span class="corner-pin left" aria-hidden="true"></span>
       <span class="corner-pin right" aria-hidden="true"></span>
-      <p class="footer-quote">&ldquo;A reader lives a thousand lives before he dies.&rdquo;</p>
-      <p class="footer-credits">Great Books Final Project &bull; Digital Portfolio</p>
+      <p class="footer-quote">&ldquo;A reader lives a thousand lives before he dies. The man who never reads lives only
+        one.&rdquo; -George R.R. Martin</p>
     </footer>
 
   </main>
+
+  <!-- Asset Credits Opened Letter Overlay -->
+  <div class="credits-letter-overlay" id="credits-letter-overlay" role="dialog" aria-modal="true"
+    aria-labelledby="credits-letter-title" aria-hidden="true">
+    <div class="credits-letter-wrap">
+      <button type="button" class="credits-letter-close" aria-label="Close asset credits">&times;</button>
+      <article class="credits-letter">
+        <header class="credits-letter-header">
+          <span class="credits-letter-kicker">Ex Libris &middot; Attributions</span>
+          <h2 class="credits-letter-title" id="credits-letter-title">Asset Credits</h2>
+          <p class="credits-letter-intro">
+            Sources for the artwork, imagery, and sound effects gathered for this portfolio.
+          </p>
+        </header>
+
+        <div class="credits-letter-body">
+          <section class="credits-group">
+            <h3 class="credits-group-title">Homepage</h3>
+            <ul class="credits-list">
+              <li class="credits-item">
+                <a href="https://wallhaven.cc/w/3km2ry" target="_blank" rel="noopener noreferrer">
+                  <span class="credits-source-name">Background Library</span>
+                  <span class="credits-source-url">https://wallhaven.cc/w/3km2ry</span>
+                </a>
+              </li>
+            </ul>
+          </section>
+
+          <section class="credits-group">
+            <h3 class="credits-group-title">Tome I</h3>
+            <ul class="credits-list">
+              <li class="credits-item">
+                <a href="https://slamdunk.fandom.com/wiki/Takehiko_Inoue" target="_blank" rel="noopener noreferrer">
+                  <span class="credits-source-name">Takehiko Inoue</span>
+                  <span class="credits-source-url">https://slamdunk.fandom.com/wiki/Takehiko_Inoue</span>
+                </a>
+              </li>
+              <li class="credits-item">
+                <a href="https://halcyonrealms.com/mangacomics/slam-dunk-manga-new-edition-cover-art-full-collection/"
+                  target="_blank" rel="noopener noreferrer">
+                  <span class="credits-source-name">Slam Dunk Cover</span>
+                  <span
+                    class="credits-source-url">https://halcyonrealms.com/mangacomics/slam-dunk-manga-new-edition-cover-art-full-collection/</span>
+                </a>
+              </li>
+              <li class="credits-item">
+                <a href="https://en.wikipedia.org/wiki/Vagabond_(manga)" target="_blank" rel="noopener noreferrer">
+                  <span class="credits-source-name">Vagabond Cover</span>
+                  <span class="credits-source-url">https://en.wikipedia.org/wiki/Vagabond_(manga)</span>
+                </a>
+              </li>
+              <li class="credits-item">
+                <a href="https://www.simonandschuster.com/books/Real-Vol-15/Takehiko-Inoue/Real/9781974724604"
+                  target="_blank" rel="noopener noreferrer">
+                  <span class="credits-source-name">Real Cover</span>
+                  <span
+                    class="credits-source-url">https://www.simonandschuster.com/books/Real-Vol-15/Takehiko-Inoue/Real/9781974724604</span>
+                </a>
+              </li>
+            </ul>
+          </section>
+
+          <section class="credits-group">
+            <h3 class="credits-group-title">Tome II</h3>
+            <ul class="credits-list">
+              <li class="credits-item">
+                <a href="https://www.testifygod.org/job-38-42-god-speaks-to-job.html" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="credits-source-name">Voice out the Whirlwind</span>
+                  <span class="credits-source-url">https://www.testifygod.org/job-38-42-god-speaks-to-job.html</span>
+                </a>
+              </li>
+              <li class="credits-item">
+                <a href="https://sbm.org.uk/?page_id=1338" target="_blank" rel="noopener noreferrer">
+                  <span class="credits-source-name">Maharishi Valmiki</span>
+                  <span class="credits-source-url">https://sbm.org.uk/?page_id=1338</span>
+                </a>
+              </li>
+              <li class="credits-item">
+                <a href="https://ph.pinterest.com/pin/187743878205126045/" target="_blank" rel="noopener noreferrer">
+                  <span class="credits-source-name">Ramayana</span>
+                  <span class="credits-source-url">https://ph.pinterest.com/pin/187743878205126045/</span>
+                </a>
+              </li>
+              <li class="credits-item">
+                <a href="https://www.chinmayamissionmumbai.com/chinmaya/hcc/gurupurnima" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="credits-source-name">Maharishi Veda Vyasa</span>
+                  <span class="credits-source-url">https://www.chinmayamissionmumbai.com/chinmaya/hcc/gurupurnima</span>
+                </a>
+              </li>
+              <li class="credits-item">
+                <a href="https://www.reddit.com/r/hinduism/comments/vbvhi4/an_italian_giampaolo_tomassetti_took_5_years_to/?tl=en"
+                  target="_blank" rel="noopener noreferrer">
+                  <span class="credits-source-name">Mahabharata</span>
+                  <span
+                    class="credits-source-url">https://www.reddit.com/r/hinduism/comments/vbvhi4/an_italian_giampaolo_tomassetti_took_5_years_to/?tl=en</span>
+                </a>
+              </li>
+              <li class="credits-item">
+                <a href="https://www.meisterdrucke.uk/fine-art-prints/Unknown-artist/953772/Homer.html" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="credits-source-name">Homer</span>
+                  <span
+                    class="credits-source-url">https://www.meisterdrucke.uk/fine-art-prints/Unknown-artist/953772/Homer.html</span>
+                </a>
+              </li>
+              <li class="credits-item">
+                <a href="https://commons.wikimedia.org/wiki/File:Triumph_of_Achilles_in_Corfu_Achilleion.jpg"
+                  target="_blank" rel="noopener noreferrer">
+                  <span class="credits-source-name">Iliad</span>
+                  <span
+                    class="credits-source-url">https://commons.wikimedia.org/wiki/File:Triumph_of_Achilles_in_Corfu_Achilleion.jpg</span>
+                </a>
+              </li>
+              <li class="credits-item">
+                <a href="https://commons.wikimedia.org/wiki/File:WATERHOUSE_-_Ulises_y_las_Sirenas_(National_Gallery_of_Victoria,_Melbourne,_1891._%C3%93leo_sobre_lienzo,_100.6_x_202_cm).jpg"
+                  target="_blank" rel="noopener noreferrer">
+                  <span class="credits-source-name">Odyssey</span>
+                  <span
+                    class="credits-source-url">https://commons.wikimedia.org/wiki/File:WATERHOUSE_-_Ulises_y_las_Sirenas_(National_Gallery_of_Victoria,_Melbourne,_1891._%C3%93leo_sobre_lienzo,_100.6_x_202_cm).jpg</span>
+                </a>
+              </li>
+              <li class="credits-item">
+                <a href="https://www.britannica.com/topic/La-Chanson-de-Roland" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="credits-source-name">Song of Roland</span>
+                  <span class="credits-source-url">https://www.britannica.com/topic/La-Chanson-de-Roland</span>
+                </a>
+              </li>
+              <li class="credits-item">
+                <a href="https://www.britannica.com/topic/The-Tale-of-Genji" target="_blank" rel="noopener noreferrer">
+                  <span class="credits-source-name">Murasaki Shikibu</span>
+                  <span class="credits-source-url">https://www.britannica.com/topic/The-Tale-of-Genji</span>
+                </a>
+              </li>
+              <li class="credits-item">
+                <a href="https://ukiyo-e.org/image/jaodb/Masao_Ebina-The_Tale_of_Genji-CH33_Fuji_no_Uraba-00038391-050905-F12"
+                  target="_blank" rel="noopener noreferrer">
+                  <span class="credits-source-name">Tale of Genji</span>
+                  <span
+                    class="credits-source-url">https://ukiyo-e.org/image/jaodb/Masao_Ebina-The_Tale_of_Genji-CH33_Fuji_no_Uraba-00038391-050905-F12</span>
+                </a>
+              </li>
+            </ul>
+          </section>
+
+          <section class="credits-group">
+            <h3 class="credits-group-title">Tome III</h3>
+            <ul class="credits-list">
+              <li class="credits-item">
+                <a href="https://commons.wikimedia.org/wiki/File:The_Brahman_Bidpai_(in_a_conversation_with_the_Raja_of_India)._BNF_Persan_376,_folio_82v.jpg"
+                  target="_blank" rel="noopener noreferrer">
+                  <span class="credits-source-name">Vishnu Sharma</span>
+                  <span
+                    class="credits-source-url">https://commons.wikimedia.org/wiki/File:The_Brahman_Bidpai_(in_a_conversation_with_the_Raja_of_India)._BNF_Persan_376,_folio_82v.jpg</span>
+                </a>
+              </li>
+              <li class="credits-item">
+                <a href="https://in.pinterest.com/pin/740490363768072303/" target="_blank" rel="noopener noreferrer">
+                  <span class="credits-source-name">Panchatantra</span>
+                  <span class="credits-source-url">https://in.pinterest.com/pin/740490363768072303/</span>
+                </a>
+              </li>
+            </ul>
+          </section>
+
+          <section class="credits-group">
+            <h3 class="credits-group-title">Sound Effects</h3>
+            <ul class="credits-list">
+              <li class="credits-item">
+                <a href="https://pixabay.com/sound-effects/film-special-effects-sliding-book-36725/" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="credits-source-name">Book Slide</span>
+                  <span
+                    class="credits-source-url">https://pixabay.com/sound-effects/film-special-effects-sliding-book-36725/</span>
+                </a>
+              </li>
+              <li class="credits-item">
+                <a href="https://pixabay.com/sound-effects/film-special-effects-book-page-turn-104314/" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="credits-source-name">Page Turn</span>
+                  <span
+                    class="credits-source-url">https://pixabay.com/sound-effects/film-special-effects-book-page-turn-104314/</span>
+                </a>
+              </li>
+              <li class="credits-item">
+                <a href="https://pixabay.com/sound-effects/film-special-effects-book-drop-30016/" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="credits-source-name">Book Open</span>
+                  <span
+                    class="credits-source-url">https://pixabay.com/sound-effects/film-special-effects-book-drop-30016/</span>
+                </a>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <footer class="credits-letter-footer">
+          With gratitude to the artists &amp; archives &bull; Great Books Portfolio
+        </footer>
+      </article>
+    </div>
+  </div>
 
   <!-- Sound Effects -->
   <audio id="book-hover-sound" src="assets/book.mp3" preload="auto"></audio>
@@ -235,6 +450,89 @@
         });
         slot.addEventListener('focus', scheduleHoverSound);
         slot.addEventListener('click', playSlideAndNavigate);
+      });
+
+      // ------------------------------------------------------------------
+      // Asset Credits Envelope & Opened Letter Overlay
+      // ------------------------------------------------------------------
+      const creditsEnvelope = document.getElementById('credits-envelope');
+      const creditsOverlay = document.getElementById('credits-letter-overlay');
+      const creditsClose = creditsOverlay
+        ? creditsOverlay.querySelector('.credits-letter-close')
+        : null;
+      const pageTurnAudio = new Audio('assets/page turn.mp3');
+      pageTurnAudio.preload = 'auto';
+      let lastFocusedElement = null;
+
+      function playLetterSound() {
+        try {
+          const sound = pageTurnAudio.cloneNode();
+          sound.volume = 0.55;
+          sound.play().catch(() => { });
+        } catch (err) {
+          // Audio is a progressive enhancement only.
+        }
+      }
+
+      function openCreditsLetter() {
+        if (!creditsOverlay || !creditsEnvelope) return;
+        lastFocusedElement = document.activeElement;
+        creditsOverlay.classList.add('is-active');
+        creditsOverlay.setAttribute('aria-hidden', 'false');
+        creditsEnvelope.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('credits-open');
+        playLetterSound();
+        setTimeout(() => {
+          if (creditsClose) creditsClose.focus();
+        }, 120);
+      }
+
+      function closeCreditsLetter() {
+        if (!creditsOverlay || !creditsEnvelope) return;
+        creditsOverlay.classList.remove('is-active');
+        creditsOverlay.setAttribute('aria-hidden', 'true');
+        creditsEnvelope.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('credits-open');
+        if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+          lastFocusedElement.focus();
+        }
+      }
+
+      if (creditsEnvelope) {
+        creditsEnvelope.addEventListener('click', openCreditsLetter);
+      }
+
+      if (creditsClose) {
+        creditsClose.addEventListener('click', closeCreditsLetter);
+      }
+
+      if (creditsOverlay) {
+        // Clicking the dimmed backdrop (but not the letter) closes the overlay.
+        creditsOverlay.addEventListener('click', (e) => {
+          if (e.target === creditsOverlay) closeCreditsLetter();
+        });
+
+        // Keep keyboard focus cycling between the close button and the links.
+        creditsOverlay.addEventListener('keydown', (e) => {
+          if (e.key !== 'Tab' || !creditsOverlay.classList.contains('is-active')) return;
+          const focusables = creditsOverlay.querySelectorAll('a[href], button');
+          if (!focusables.length) return;
+          const first = focusables[0];
+          const last = focusables[focusables.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && creditsOverlay && creditsOverlay.classList.contains('is-active')) {
+          closeCreditsLetter();
+        }
       });
     });
   </script>
