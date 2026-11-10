@@ -92,33 +92,66 @@
     });
   }
 
+  // Handle Escape key to return to the bookshelf landing page
+  function initEscapeNavigation() {
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape' || e.repeat) return;
+
+      // Don't intercept if user is typing in an input, textarea, or contentEditable element
+      if (
+        e.target &&
+        (e.target.tagName === 'INPUT' ||
+          e.target.tagName === 'TEXTAREA' ||
+          e.target.isContentEditable)
+      ) {
+        return;
+      }
+
+      // Let an open lightbox or dialog close first
+      if (
+        document.querySelector(
+          '.photo-modal-backdrop.is-active, .credits-letter-overlay.is-active'
+        )
+      ) {
+        return;
+      }
+
+      if (isNavigating) return;
+      triggerNavigation('index.html');
+    });
+  }
+
   // Paper tip toast for first-time book readers
   const TOAST_STORAGE_KEY = 'great_books_toast_shown';
   const TOAST_DURATION_MS = 8500; // 8.5 seconds display time
+  const TOAST_COLLAPSE_MS = 500; // Matches the CSS collapse transition
 
   function initPaperToast() {
+    let isFirstVisit = false;
     try {
-      if (sessionStorage.getItem(TOAST_STORAGE_KEY)) {
-        return;
+      if (!sessionStorage.getItem(TOAST_STORAGE_KEY)) {
+        sessionStorage.setItem(TOAST_STORAGE_KEY, 'true');
+        isFirstVisit = true;
       }
-      sessionStorage.setItem(TOAST_STORAGE_KEY, 'true');
     } catch (e) {
       // In case session storage is restricted
+      isFirstVisit = true;
     }
 
     const toast = document.createElement('aside');
     toast.className = 'paper-toast';
+    toast.id = 'reading-guide-toast';
     toast.setAttribute('role', 'status');
     toast.setAttribute('aria-live', 'polite');
     toast.setAttribute('aria-label', 'Keyboard Navigation Tip');
 
     toast.innerHTML =
-      '<button type="button" class="paper-toast-close" aria-label="Dismiss reading guide">&times;</button>' +
+      '<button type="button" class="paper-toast-close" aria-label="Minimise reading guide">&times;</button>' +
       '<div class="paper-toast-header">' +
         '<span class="paper-toast-pin" aria-hidden="true">&#10022;</span>' +
         '<span class="paper-toast-title">Reading Guide</span>' +
       '</div>' +
-      '<p class="paper-toast-intro">Navigate the collection with arrow keys:</p>' +
+      '<p class="paper-toast-intro">Navigate the collection with your keyboard:</p>' +
       '<div class="paper-toast-shortcuts">' +
         '<div class="paper-toast-shortcut">' +
           '<div class="paper-key-group">' +
@@ -134,44 +167,97 @@
           '</div>' +
           '<span class="paper-key-desc">Turn pages</span>' +
         '</div>' +
+        '<div class="paper-toast-shortcut">' +
+          '<div class="paper-key-group">' +
+            '<kbd class="paper-key">Esc</kbd>' +
+          '</div>' +
+          '<span class="paper-key-desc">Return home</span>' +
+        '</div>' +
       '</div>';
 
     document.body.appendChild(toast);
 
-    let fadeTimer = null;
-    let removeTimer = null;
-    let isFading = false;
+    // Small, transparent tip button that replaces the toast once it collapses
+    const tipButton = document.createElement('button');
+    tipButton.type = 'button';
+    tipButton.className = 'paper-toast-tip';
+    tipButton.setAttribute('aria-label', 'Show reading guide');
+    tipButton.setAttribute('aria-controls', toast.id);
+    tipButton.setAttribute('aria-expanded', 'false');
+    tipButton.title = 'Reading guide';
+    tipButton.innerHTML =
+      '<svg class="paper-toast-tip-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+        '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .9 1.6l.1.6h5.2l.1-.6c.1-.6.4-1.2.9-1.6A6 6 0 0 0 12 3Z" ' +
+          'fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '</svg>';
+    document.body.appendChild(tipButton);
 
-    function dismissToast() {
-      if (isFading) return;
-      isFading = true;
+    const closeBtn = toast.querySelector('.paper-toast-close');
+
+    let fadeTimer = null;
+    let collapseTimer = null;
+    let isExpanded = false;
+
+    function clearToastTimers() {
       clearTimeout(fadeTimer);
-      clearTimeout(removeTimer);
-      toast.classList.remove('is-visible');
-      toast.classList.add('is-fading');
-      removeTimer = setTimeout(function () {
-        if (toast.parentNode) {
-          toast.parentNode.removeChild(toast);
-        }
-      }, 700);
+      clearTimeout(collapseTimer);
     }
 
     function startTimer(duration) {
       clearTimeout(fadeTimer);
-      fadeTimer = setTimeout(dismissToast, duration);
+      fadeTimer = setTimeout(collapseToast, duration);
+    }
+
+    function expandToast() {
+      if (isExpanded) return;
+      isExpanded = true;
+      clearToastTimers();
+      toast.removeAttribute('aria-hidden');
+      tipButton.setAttribute('aria-expanded', 'true');
+      tipButton.classList.remove('is-visible');
+      // Let the browser paint the collapsed state before re-expanding
+      requestAnimationFrame(function () {
+        toast.classList.add('is-visible');
+        // Keep keyboard focus usable when the tip button collapses away
+        if (document.activeElement === tipButton && closeBtn) {
+          closeBtn.focus();
+        }
+      });
+      startTimer(TOAST_DURATION_MS);
+    }
+
+    function collapseToast() {
+      if (!isExpanded) return;
+      isExpanded = false;
+      clearToastTimers();
+      toast.classList.remove('is-visible');
+      tipButton.setAttribute('aria-expanded', 'false');
+      tipButton.classList.add('is-visible');
+
+      // Hide the faded panel from assistive tech once the transition finishes
+      collapseTimer = setTimeout(function () {
+        toast.setAttribute('aria-hidden', 'true');
+        if (toast.contains(document.activeElement)) {
+          tipButton.focus();
+        }
+      }, TOAST_COLLAPSE_MS);
     }
 
     // Smooth entrance after initial page load
-    setTimeout(function () {
-      toast.classList.add('is-visible');
-      startTimer(TOAST_DURATION_MS);
-    }, 450);
-
-    // Close button
-    const closeBtn = toast.querySelector('.paper-toast-close');
-    if (closeBtn) {
-      closeBtn.addEventListener('click', dismissToast);
+    if (isFirstVisit) {
+      setTimeout(expandToast, 450);
+    } else {
+      toast.setAttribute('aria-hidden', 'true');
+      tipButton.classList.add('is-visible');
     }
+
+    // Close button collapses the guide instead of removing it
+    if (closeBtn) {
+      closeBtn.addEventListener('click', collapseToast);
+    }
+
+    // Re-open the guide from the collapsed tip button
+    tipButton.addEventListener('click', expandToast);
 
     // Pause timer while user hovers cursor over the toast
     toast.addEventListener('mouseenter', function () {
@@ -179,7 +265,7 @@
     });
 
     toast.addEventListener('mouseleave', function () {
-      if (!isFading) {
+      if (isExpanded) {
         startTimer(3500); // Allow 3.5 seconds after cursor leaves
       }
     });
@@ -198,11 +284,13 @@
     document.addEventListener('DOMContentLoaded', function () {
       initNavLinks();
       initArrowKeyNavigation();
+      initEscapeNavigation();
       initPaperToast();
     });
   } else {
     initNavLinks();
     initArrowKeyNavigation();
+    initEscapeNavigation();
     initPaperToast();
   }
 })();

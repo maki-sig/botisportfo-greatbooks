@@ -7,7 +7,8 @@
   position: fixed;
   top: calc(14px + 0.55rem);
   left: calc(14px + 0.75rem);
-  z-index: 2; /* Sits on bulletin board behind the open book (z-index: 10) */
+  z-index: 2;
+  /* Sits on bulletin board behind the open book (z-index: 10) */
   filter: drop-shadow(0 3px 7px rgba(35, 18, 8, 0.3)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.18));
 }
 
@@ -17,25 +18,21 @@
   background-color: #faf4e4;
   /* Curled parchment shading: subtle darkening toward top and bottom edges */
   background-image:
-    linear-gradient(
-      180deg,
+    linear-gradient(180deg,
       rgba(205, 182, 145, 0.45) 0%,
       rgba(247, 238, 218, 0.5) 6%,
       rgba(255, 253, 247, 0.95) 30%,
       rgba(255, 253, 247, 0.95) 70%,
       rgba(247, 238, 218, 0.5) 94%,
-      rgba(205, 182, 145, 0.45) 100%
-    );
+      rgba(205, 182, 145, 0.45) 100%);
   padding: 0.65rem 0.95rem;
   min-width: 112px;
   position: relative;
   /* Torn jagged edges on the left & right, gentle curved arch across top & bottom */
-  clip-path: polygon(
-    0% 4px, 15% 2.5px, 30% 1px, 50% 0px, 70% 1px, 85% 2.5px, 100% 4px,
-    99.2% 7%, 100% 14%, 98.6% 21%, 99.8% 28%, 98.4% 35%, 100% 42%, 99.1% 49%, 98.5% 56%, 100% 63%, 98.8% 70%, 99.6% 77%, 98.4% 84%, 100% 91%, 99% 96%,
-    100% calc(100% - 4px), 85% calc(100% - 2.5px), 70% calc(100% - 1px), 50% 100%, 30% calc(100% - 1px), 15% calc(100% - 2.5px), 0% calc(100% - 4px),
-    1% 96%, 0% 91%, 1.6% 84%, 0.4% 77%, 1.2% 70%, 0% 63%, 1.5% 56%, 0.9% 49%, 0% 42%, 1.6% 35%, 0.2% 28%, 1.4% 21%, 0% 14%, 0.8% 7%
-  );
+  clip-path: polygon(0% 4px, 15% 2.5px, 30% 1px, 50% 0px, 70% 1px, 85% 2.5px, 100% 4px,
+      99.2% 7%, 100% 14%, 98.6% 21%, 99.8% 28%, 98.4% 35%, 100% 42%, 99.1% 49%, 98.5% 56%, 100% 63%, 98.8% 70%, 99.6% 77%, 98.4% 84%, 100% 91%, 99% 96%,
+      100% calc(100% - 4px), 85% calc(100% - 2.5px), 70% calc(100% - 1px), 50% 100%, 30% calc(100% - 1px), 15% calc(100% - 2.5px), 0% calc(100% - 4px),
+      1% 96%, 0% 91%, 1.6% 84%, 0.4% 77%, 1.2% 70%, 0% 63%, 1.5% 56%, 0.9% 49%, 0% 42%, 1.6% 35%, 0.2% 28%, 1.4% 21%, 0% 14%, 0.8% 7%);
 }
 
 /* Vertical Menu Navigation List */
@@ -171,42 +168,99 @@
   max-width: 310px;
   background-color: #faf4e4;
   background-image:
-    linear-gradient(
-      180deg,
+    linear-gradient(180deg,
       rgba(205, 182, 145, 0.45) 0%,
       rgba(247, 238, 218, 0.5) 6%,
       rgba(255, 253, 247, 0.95) 25%,
       rgba(255, 253, 247, 0.95) 75%,
       rgba(247, 238, 218, 0.5) 94%,
-      rgba(205, 182, 145, 0.45) 100%
-    );
+      rgba(205, 182, 145, 0.45) 100%);
   padding: 1.05rem 1.3rem 1.1rem;
   border-radius: 2px;
   /* Torn paper jagged edges on sides and curled arch top/bottom */
-  clip-path: polygon(
-    0% 3px, 15% 1.5px, 30% 0.5px, 50% 0px, 70% 0.5px, 85% 1.5px, 100% 3px,
-    99.2% 8%, 100% 16%, 98.7% 24%, 99.8% 32%, 98.5% 40%, 100% 48%, 98.9% 56%, 99.7% 64%, 98.6% 72%, 100% 80%, 98.8% 88%, 99.5% 94%,
-    100% calc(100% - 3px), 85% calc(100% - 1.5px), 70% calc(100% - 0.5px), 50% 100%, 30% calc(100% - 0.5px), 15% calc(100% - 1.5px), 0% calc(100% - 3px),
-    0.8% 94%, 0% 88%, 1.4% 80%, 0.2% 72%, 1.3% 64%, 0% 56%, 1.2% 48%, 0.3% 40%, 1.4% 32%, 0% 24%, 1.1% 16%, 0.4% 8%
-  );
+  clip-path: polygon(0% 3px, 15% 1.5px, 30% 0.5px, 50% 0px, 70% 0.5px, 85% 1.5px, 100% 3px,
+      99.2% 8%, 100% 16%, 98.7% 24%, 99.8% 32%, 98.5% 40%, 100% 48%, 98.9% 56%, 99.7% 64%, 98.6% 72%, 100% 80%, 98.8% 88%, 99.5% 94%,
+      100% calc(100% - 3px), 85% calc(100% - 1.5px), 70% calc(100% - 0.5px), 50% 100%, 30% calc(100% - 0.5px), 15% calc(100% - 1.5px), 0% calc(100% - 3px),
+      0.8% 94%, 0% 88%, 1.4% 80%, 0.2% 72%, 1.3% 64%, 0% 56%, 1.2% 48%, 0.3% 40%, 1.4% 32%, 0% 24%, 1.1% 16%, 0.4% 8%);
   filter: drop-shadow(0 8px 22px rgba(35, 18, 8, 0.42)) drop-shadow(0 2px 5px rgba(0, 0, 0, 0.25));
   opacity: 0;
   transform: translateY(22px) scale(0.96);
   pointer-events: none;
-  transition: opacity 0.5s cubic-bezier(0.2, 0.8, 0.25, 1), transform 0.5s cubic-bezier(0.2, 0.8, 0.25, 1);
+  visibility: hidden;
+  transition:
+    opacity 0.5s cubic-bezier(0.2, 0.8, 0.25, 1),
+    transform 0.5s cubic-bezier(0.2, 0.8, 0.25, 1),
+    visibility 0s linear 0.5s;
 }
 
 .paper-toast.is-visible {
   opacity: 1;
   transform: translateY(0) scale(1);
   pointer-events: auto;
+  visibility: visible;
+  transition:
+    opacity 0.5s cubic-bezier(0.2, 0.8, 0.25, 1),
+    transform 0.5s cubic-bezier(0.2, 0.8, 0.25, 1),
+    visibility 0s linear 0s;
 }
 
-.paper-toast.is-fading {
+/* Collapsed state: a small, transparent tip icon button */
+.paper-toast-tip {
+  position: fixed;
+  bottom: 26px;
+  right: 30px;
+  z-index: 99;
+  /* Sits beneath the paper panel while it fades out */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  color: #ffffff;
+  filter: drop-shadow(0 2px 4px rgba(35, 18, 8, 0.75));
+  line-height: 1;
+  cursor: pointer;
   opacity: 0;
-  transform: translateY(14px) scale(0.96);
-  pointer-events: none;
-  transition: opacity 0.65s ease-in, transform 0.65s ease-in;
+  visibility: hidden;
+  transform: translateY(8px) scale(0.8);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    color 0.2s ease,
+    visibility 0s linear 0.35s;
+}
+
+.paper-toast-tip-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.paper-toast-tip.is-visible {
+  opacity: 0.5;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    color 0.2s ease,
+    visibility 0s linear 0s;
+}
+
+.paper-toast-tip:hover,
+.paper-toast-tip:focus-visible {
+  opacity: 0.8;
+  color: #ffffff;
+  transform: translateY(0) scale(1.14);
+}
+
+.paper-toast-tip:focus-visible {
+  outline: 2px solid rgba(196, 154, 69, 0.75);
+  outline-offset: 3px;
 }
 
 /* Close Button */
@@ -305,4 +359,15 @@
   font-size: 0.95rem;
   color: #2e1e12;
   font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .paper-toast,
+  .paper-toast.is-visible,
+  .paper-toast-tip,
+  .paper-toast-tip.is-visible {
+    transition-duration: 0.01ms;
+    transition-delay: 0s;
+  }
 }
