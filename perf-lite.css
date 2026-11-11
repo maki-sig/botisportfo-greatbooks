@@ -1,0 +1,169 @@
+/* ==========================================================================
+   PERFORMANCE LAYER
+   Shared by every page. Two jobs:
+   1. Respect prefers-reduced-motion everywhere.
+   2. Provide a lightweight rendering path (.perf-lite) for low-end desktops.
+
+   Loaded after the page stylesheet so these rules win without needing
+   to fight the cascade with high specificity everywhere.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Reduced motion: keep the layout, remove the movement.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Lightweight mode
+   -------------------------------------------------------------------------- */
+
+/* Full-screen backdrop blur is the single most expensive effect on weak GPUs. */
+.perf-lite *,
+.perf-lite *::before,
+.perf-lite *::after {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.perf-lite .credits-letter-overlay {
+  background: rgba(14, 9, 6, 0.95) !important;
+}
+
+.perf-lite .photo-modal-backdrop {
+  background: rgba(14, 9, 6, 0.95) !important;
+}
+
+.perf-lite .desktop-only-overlay {
+  background: rgba(14, 9, 6, 0.98) !important;
+}
+
+/* Drop-shadow filters re-rasterise on every paint; use plain shadows instead. */
+.perf-lite .board-top-nav {
+  filter: drop-shadow(0 1px 3px rgba(35, 18, 8, 0.35)) !important;
+}
+
+.perf-lite .paper-toast,
+.perf-lite .paper-toast-tip,
+.perf-lite .envelope-flap,
+.perf-lite .pushpin::after {
+  filter: none !important;
+}
+
+/* One cheap shadow instead of three large blurred layers. */
+.perf-lite .bulletin-board {
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.62),
+    inset 0 0 18px rgba(40, 20, 8, 0.35) !important;
+}
+
+.perf-lite .open-book-container {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.58) !important;
+}
+
+.perf-lite .book-spreads-wrapper {
+  box-shadow: none !important;
+}
+
+.perf-lite .pinned-paper-note,
+.perf-lite .pinned-footer-note {
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.28) !important;
+}
+
+.perf-lite .book-card {
+  box-shadow:
+    2px 4px 10px rgba(0, 0, 0, 0.38),
+    inset 0 0 10px rgba(0, 0, 0, 0.38) !important;
+}
+
+.perf-lite .credits-letter {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6) !important;
+}
+
+.perf-lite .photo-modal-frame {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Motion is limited to composited properties (transform / opacity). */
+.perf-lite .book-card {
+  transition: transform 0.2s ease !important;
+}
+
+.perf-lite .book-slot:hover .book-card,
+.perf-lite .book-slot:focus-visible .book-card {
+  transform: rotate(0deg) scale(1.04) !important;
+}
+
+.perf-lite .envelope-body,
+.perf-lite .credits-letter-close,
+.perf-lite .photo-modal-tape-close {
+  transition: none !important;
+}
+
+.perf-lite .open-prompt,
+.perf-lite .open-prompt .arrow,
+.perf-lite .nav-icon {
+  transition-duration: 0.15s !important;
+}
+
+/* Lightweight page turn: keep the 3D flip but make it fast and transform-only.
+   Drop sheen/ambient shadow layers (extra paint/compositing) and let the leaf
+   animate with a shorter duration. */
+.perf-lite .page-turning-shadow {
+  display: none !important;
+}
+
+.perf-lite .leaf-side::after {
+  display: none !important;
+  animation: none !important;
+}
+
+.perf-lite .flipping-page-leaf.flip-forward,
+.perf-lite .flipping-page-leaf.flip-backward {
+  animation-duration: 0.42s !important;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.perf-lite .leaf-front,
+.perf-lite .leaf-back {
+  box-shadow: none !important;
+}
+
+/* In lite mode inactive spreads don't need to stay "underneath" rendered in
+   the same way; keep visibility/content rules from the base lite block. */
+
+/* CSS-only crossfade used by the lite / small-screen page-turn branch. */
+.perf-lite .book-spread.active-spread,
+.perf-lite .book-spread.leaving-spread {
+  transition: opacity 0.16s ease !important;
+}
+
+/* Do not keep hidden spreads in the render tree. */
+.perf-lite .book-spread:not(.active-spread):not(.spread-underneath):not(.leaving-spread) {
+  content-visibility: hidden;
+  visibility: hidden;
+}
+
+/* Shared fallback used by the small-screen branch on every page. */
+.book-spread.leaving-spread {
+  opacity: 0 !important;
+  visibility: visible !important;
+  content-visibility: visible !important;
+  pointer-events: none;
+  z-index: 12;
+}
+
+.book-spread.active-spread,
+.book-spread.leaving-spread {
+  transition: opacity 0.16s ease;
+}

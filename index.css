@@ -49,7 +49,7 @@ body {
   background-color: #19120c;
   background-image:
     linear-gradient(rgba(14, 9, 6, 0.42), rgba(14, 9, 6, 0.52)),
-    url('images/Library.png');
+    url('images/opt/Library.webp');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -277,6 +277,24 @@ body {
 .book-slot:nth-child(4) { z-index: 2; }
 .book-slot:nth-child(5) { z-index: 1; }
 
+/* Composited hover glow: the shadow is rasterised once and only opacity moves. */
+.book-slot::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 6px;
+  box-shadow: 0 0 24px 3px rgba(229, 185, 103, 0.38);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.book-slot:hover::after,
+.book-slot:focus-visible::after {
+  opacity: 1;
+}
+
 /* Individual Book Cards (Visual Animated Content) */
 .book-card {
   display: flex;
@@ -289,9 +307,7 @@ body {
   padding: 0.9rem 0.7rem 0.8rem 1.1rem;
   color: var(--gold-light);
   cursor: pointer;
-  transition:
-    transform 0.32s cubic-bezier(0.2, 0.8, 0.25, 1),
-    box-shadow 0.32s ease;
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.25, 1);
   user-select: none;
   transform-origin: bottom center;
   pointer-events: none;
@@ -403,27 +419,7 @@ body {
   box-shadow: 2px 5px 12px rgba(25, 10, 22, 0.3), inset 0 0 16px rgba(0, 0, 0, 0.45);
 }
 
-/* Hover glow shadows (scaled in place) */
-.book-slot:hover .book-burgundy, .book-slot:focus-visible .book-burgundy,
-.book-burgundy:hover, .book-burgundy:focus-visible {
-  box-shadow: 2px 8px 20px rgba(35, 8, 12, 0.45), 0 0 16px rgba(229, 185, 103, 0.35);
-}
-.book-slot:hover .book-forest, .book-slot:focus-visible .book-forest,
-.book-forest:hover, .book-forest:focus-visible {
-  box-shadow: 2px 8px 20px rgba(10, 30, 18, 0.45), 0 0 16px rgba(229, 185, 103, 0.35);
-}
-.book-slot:hover .book-navy, .book-slot:focus-visible .book-navy,
-.book-navy:hover, .book-navy:focus-visible {
-  box-shadow: 2px 8px 20px rgba(9, 22, 40, 0.45), 0 0 16px rgba(229, 185, 103, 0.35);
-}
-.book-slot:hover .book-leather, .book-slot:focus-visible .book-leather,
-.book-leather:hover, .book-leather:focus-visible {
-  box-shadow: 2px 8px 20px rgba(45, 20, 8, 0.45), 0 0 16px rgba(229, 185, 103, 0.35);
-}
-.book-slot:hover .book-plum, .book-slot:focus-visible .book-plum,
-.book-plum:hover, .book-plum:focus-visible {
-  box-shadow: 2px 8px 20px rgba(35, 12, 30, 0.45), 0 0 16px rgba(229, 185, 103, 0.35);
-}
+/* Hover glow is handled by .book-slot::after (opacity transition, compositor-friendly). */
 
 /* Gilded Frame Inset on Cover */
 .cover-inner-border {
@@ -463,20 +459,12 @@ body {
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
   z-index: 6;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
-  transition: height 0.3s ease;
 }
 
 .book-forest .ribbon-bookmark { background: #b08109; }
 .book-navy .ribbon-bookmark { background: #912727; }
 .book-leather .ribbon-bookmark { background: #264a3b; }
 .book-plum .ribbon-bookmark { background: #b88231; }
-
-.book-slot:hover .ribbon-bookmark,
-.book-slot:focus-visible .ribbon-bookmark,
-.book-card:hover .ribbon-bookmark,
-.book-card:focus-visible .ribbon-bookmark {
-  height: 30px;
-}
 
 /* Volume Tag */
 .volume-tag {
@@ -848,12 +836,6 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 70%, 0 100%);
   }
 
-  .book-card:hover .ribbon-bookmark,
-  .book-card:focus-visible .ribbon-bookmark,
-  .book-card:active .ribbon-bookmark {
-    height: 17px;
-  }
-
   /* Volume Tag along the side */
   .volume-tag {
     font-size: 0.75rem;
@@ -1016,7 +998,6 @@ body {
     0 2px 4px rgba(0, 0, 0, 0.2),
     inset 0 0 20px rgba(180, 150, 100, 0.28);
   overflow: hidden;
-  transition: box-shadow 0.3s ease;
 }
 
 /* Fold lines running from the bottom corners to the flap tip */
@@ -1371,7 +1352,7 @@ body.credits-open {
 
 .credits-source-url {
   display: block;
-  font-family: 'Courier Prime', 'Courier New', monospace;
+  font-family: 'Courier New', Courier, monospace;
   font-size: 0.66rem;
   line-height: 1.35;
   color: #7a5a34;
@@ -1463,5 +1444,13 @@ body.credits-open {
     font-size: 0.5rem;
     padding: 0.26rem 0.2rem;
   }
+}
+
+/* Lightweight mode: smaller background asset and no fixed-attachment repaint. */
+.perf-lite body {
+  background-image:
+    linear-gradient(rgba(14, 9, 6, 0.42), rgba(14, 9, 6, 0.52)),
+    url('images/opt/Library-lite.webp');
+  background-attachment: scroll;
 }
 

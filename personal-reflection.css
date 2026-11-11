@@ -159,7 +159,12 @@ body {
   display: flex;
   opacity: 0;
   pointer-events: none;
-  transform-style: preserve-3d;
+}
+
+/* Skip layout and paint for spreads that are not on screen. */
+.book-spread:not(.active-spread):not(.spread-underneath):not(.leaving-spread) {
+  content-visibility: hidden;
+  visibility: hidden;
 }
 
 .book-spread.active-spread {
@@ -188,6 +193,10 @@ body {
   pointer-events: none;
   z-index: 30;
   display: none;
+}
+
+.flipping-page-leaf.flip-forward,
+.flipping-page-leaf.flip-backward {
   will-change: transform;
 }
 
@@ -195,14 +204,14 @@ body {
   display: block;
   right: 0;
   transform-origin: left center;
-  animation: smoothFlipForward 0.76s forwards;
+  animation: smoothFlipForward 0.48s forwards;
 }
 
 .flipping-page-leaf.flip-backward {
   display: block;
   left: 0;
   transform-origin: right center;
-  animation: smoothFlipBackward 0.76s forwards;
+  animation: smoothFlipBackward 0.48s forwards;
 }
 
 .leaf-side {
@@ -259,7 +268,6 @@ body {
   pointer-events: none;
   z-index: 50;
   opacity: 0;
-  will-change: opacity;
 }
 
 .leaf-front::after {
@@ -271,19 +279,19 @@ body {
 }
 
 .flip-forward .leaf-front::after {
-  animation: frontSheenForward 0.76s forwards;
+  animation: frontSheenForward 0.48s forwards;
 }
 
 .flip-forward .leaf-back::after {
-  animation: backSheenForward 0.76s forwards;
+  animation: backSheenForward 0.48s forwards;
 }
 
 .flip-backward .leaf-front::after {
-  animation: frontSheenBackward 0.76s forwards;
+  animation: frontSheenBackward 0.48s forwards;
 }
 
 .flip-backward .leaf-back::after {
-  animation: backSheenBackward 0.76s forwards;
+  animation: backSheenBackward 0.48s forwards;
 }
 
 @keyframes smoothFlipForward {
@@ -383,6 +391,13 @@ body {
   pointer-events: none;
   z-index: 15;
   opacity: 0;
+}
+
+/* Promote the swaying layers only while the turn is actually running. */
+.flip-forward .leaf-side::after,
+.flip-backward .leaf-side::after,
+.flip-forward ~ .page-turning-shadow,
+.flip-backward ~ .page-turning-shadow {
   will-change: opacity;
 }
 
@@ -397,19 +412,19 @@ body {
 }
 
 .flip-forward ~ .shadow-right {
-  animation: shadowLift 0.76s forwards;
+  animation: shadowLift 0.48s forwards;
 }
 
 .flip-forward ~ .shadow-left {
-  animation: shadowLand 0.76s forwards;
+  animation: shadowLand 0.48s forwards;
 }
 
 .flip-backward ~ .shadow-left {
-  animation: shadowLift 0.76s forwards;
+  animation: shadowLift 0.48s forwards;
 }
 
 .flip-backward ~ .shadow-right {
-  animation: shadowLand 0.76s forwards;
+  animation: shadowLand 0.48s forwards;
 }
 
 @keyframes shadowLift {

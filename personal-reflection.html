@@ -6,16 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tome V - Personal Reflection</title>
 
+  <!-- Adaptive performance mode: decides before styles paint -->
+  <script src="perf.js"></script>
+
   <!-- Google Fonts for Classical Aesthetic (Identical to Tome II) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@700&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="nav.css">
   <link rel="stylesheet" href="personal-reflection.css">
   <link rel="stylesheet" href="desktop-notice.css">
+  <link rel="stylesheet" href="perf-lite.css">
 </head>
 
 <body>
@@ -426,21 +430,28 @@
   </article>
 
   <!-- Sound Effect on Page Turn -->
-  <audio id="page-turn-sound" src="assets/page turn.mp3" preload="auto"></audio>
+  <audio id="page-turn-sound" src="assets/page turn.mp3" preload="none"></audio>
 
   <!-- Interactive Spread Switcher: 3D Curved Flipping Animation Engine (Identical to Tome II) -->
   <script>
     let isTurning = false;
 
+    function prefersReducedMotion() {
+      return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
+    function isLiteMode() {
+      return document.documentElement.classList.contains('perf-lite');
+    }
+
     function playPageTurnSound() {
       const turnAudio = document.getElementById('page-turn-sound');
       if (!turnAudio) return;
       try {
-        const sound = turnAudio.cloneNode();
-        sound.volume = 0.85;
-        sound.play().catch(() => { });
-      } catch (e) {
         turnAudio.currentTime = 0;
+        turnAudio.volume = 0.85;
+        turnAudio.play().catch(() => { });
+      } catch (e) {
         turnAudio.play().catch(() => { });
       }
     }
@@ -470,15 +481,18 @@
         bookContainer.classList.add('turning-in-progress');
       }
 
-      // Fallback for mobile / small screens where pages stack vertically
-      if (window.innerWidth <= 768 || !flippingLeaf || !leafFront || !leafBack) {
+      // Reduced-motion users and small screens get a cheap crossfade.
+      // Lightweight desktops still get the 3D page turn (optimized & quicker).
+      if (window.innerWidth <= 768 || prefersReducedMotion() || !flippingLeaf || !leafFront || !leafBack) {
         isTurning = true;
+        currentSpreadEl.classList.add('leaving-spread');
         currentSpreadEl.classList.remove('active-spread');
         targetSpreadEl.classList.add('active-spread');
         setTimeout(() => {
+          currentSpreadEl.classList.remove('leaving-spread');
           if (bookContainer) bookContainer.classList.remove('turning-in-progress');
           isTurning = false;
-        }, 280);
+        }, 180);
         return;
       }
 
@@ -529,7 +543,8 @@
         });
       };
 
-      const timer = setTimeout(completeTurn, 780);
+      const turnMs = isLiteMode() ? 430 : 500;
+      const timer = setTimeout(completeTurn, turnMs + 30);
       flippingLeaf.addEventListener('animationend', () => {
         clearTimeout(timer);
         completeTurn();

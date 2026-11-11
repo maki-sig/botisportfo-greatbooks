@@ -6,16 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tome II - Literary Analyses</title>
 
+  <!-- Adaptive performance mode: decides before styles paint -->
+  <script src="perf.js"></script>
+
   <!-- Google Fonts for Classical & Typewriter Aesthetic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Caveat:wght@400;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@700&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="nav.css">
   <link rel="stylesheet" href="literary-analyses.css">
   <link rel="stylesheet" href="desktop-notice.css">
+  <link rel="stylesheet" href="perf-lite.css">
 </head>
 
 <body>
@@ -165,8 +169,8 @@
                 aria-label="Open Voice out the Whirlwind analysis"
                 title="Voice out the Whirlwind — Click to read analysis">
                 <span class="tape">Voice out the Whirlwind</span>
-                <img src="images/Voice of the Whirlwind.jpg" alt="Voice out the Whirlwind" class="postcard-img"
-                  onerror="this.style.display='none'" decoding="async">
+                <img src="images/opt/Voice of the Whirlwind.webp" alt="Voice out the Whirlwind" class="postcard-img"
+                  width="738" height="415" onerror="this.style.display='none'" decoding="async">
               </figure>
 
               <!-- pc-2: Ramayana — click to open -->
@@ -174,8 +178,8 @@
                 onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(3)" aria-label="Open Ramayana analysis"
                 title="Ramayana — Click to read analysis">
                 <span class="tape">Ramayana</span>
-                <img src="images/Ramayana.jpg" alt="Ramayana" class="postcard-img" onerror="this.style.display='none'"
-                  decoding="async">
+                <img src="images/opt/Ramayana.webp" alt="Ramayana" class="postcard-img" width="800" height="592"
+                  onerror="this.style.display='none'" decoding="async">
               </figure>
 
               <!-- pc-3: Mahabharata — click to open -->
@@ -183,7 +187,7 @@
                 onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(4)"
                 aria-label="Open Mahabharata analysis" title="Mahabharata — Click to read analysis">
                 <span class="tape">Mahabharata</span>
-                <img src="images/Mahabharata.jpg" alt="Mahabharata" class="postcard-img"
+                <img src="images/opt/Mahabharata.webp" alt="Mahabharata" class="postcard-img" width="655" height="468"
                   onerror="this.style.display='none'" decoding="async">
               </figure>
 
@@ -192,7 +196,7 @@
                 onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(5)" aria-label="Open The Iliad analysis"
                 title="The Iliad — Click to read analysis">
                 <span class="tape">The Iliad</span>
-                <img src="images/The Iliad.webp" alt="The Iliad" class="postcard-img"
+                <img src="images/opt/The Iliad.webp" alt="The Iliad" class="postcard-img" width="700" height="313"
                   onerror="this.style.display='none'" decoding="async">
               </figure>
 
@@ -201,7 +205,7 @@
                 onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(6)"
                 aria-label="Open The Odyssey analysis" title="The Odyssey — Click to read analysis">
                 <span class="tape">The Odyssey</span>
-                <img src="images/The Odyssey.jpg" alt="The Odyssey" class="postcard-img"
+                <img src="images/opt/The Odyssey.webp" alt="The Odyssey" class="postcard-img" width="800" height="391"
                   onerror="this.style.display='none'" decoding="async">
               </figure>
 
@@ -210,8 +214,8 @@
                 onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(7)"
                 aria-label="Open The Song of Roland analysis" title="The Song of Roland — Click to read analysis">
                 <span class="tape">The Song of Roland</span>
-                <img src="images/The Song of Roland.webp" alt="The Song of Roland" class="postcard-img"
-                  onerror="this.style.display='none'" decoding="async">
+                <img src="images/opt/The Song of Roland.webp" alt="The Song of Roland" class="postcard-img" width="600"
+                  height="402" onerror="this.style.display='none'" decoding="async">
               </figure>
 
               <!-- pc-7: The Tale of Genji — click to open -->
@@ -219,8 +223,8 @@
                 onkeydown="if(event.key==='Enter'||event.key===' ')switchSpread(8)"
                 aria-label="Open The Tale of Genji analysis" title="The Tale of Genji — Click to read analysis">
                 <span class="tape">The Tale of Genji</span>
-                <img src="images/The Tale of Genji.webp" alt="The Tale of Genji" class="postcard-img"
-                  onerror="this.style.display='none'" decoding="async">
+                <img src="images/opt/The Tale of Genji.webp" alt="The Tale of Genji" class="postcard-img" width="700"
+                  height="500" onerror="this.style.display='none'" decoding="async">
               </figure>
 
             </div>
@@ -251,10 +255,12 @@
               <div class="page-divider" aria-hidden="true">&#10045;</div>
             </header>
 
-            <!-- Book cover image — gallery card style (matches Tome 1 Page 2) -->
-            <figure class="analysis-cover-wrap">
-              <img src="images/Voice of the Whirlwind.jpg" alt="Voice out the Whirlwind book cover"
-                class="analysis-cover-img" onerror="this.style.display='none'" loading="lazy" decoding="async">
+            <!-- Story image — postcard style (matches Navigate Here gallery) -->
+            <figure class="postcard analysis-feature-postcard">
+              <span class="tape" aria-hidden="true"></span>
+              <img src="images/opt/Voice of the Whirlwind.webp" alt="Voice out the Whirlwind"
+                class="postcard-img" width="738" height="415" onerror="this.style.display='none'"
+                loading="lazy" decoding="async">
             </figure>
 
             <!-- Author & lens block structured with Tome 1 section-heading styling -->
@@ -345,14 +351,14 @@
             <div class="analysis-duo-gallery" aria-label="Maharishi Valmiki and Ramayana">
               <figure class="duo-card duo-author">
                 <span class="tape">Maharishi Valmiki</span>
-                <img src="images/Maharishi Valmiki.jpg" alt="Portrait of Maharishi Valmiki" class="duo-thumb"
-                  onerror="this.style.display='none'" loading="lazy" decoding="async">
+                <img src="images/opt/Maharishi Valmiki.webp" alt="Portrait of Maharishi Valmiki" class="duo-thumb"
+                  width="493" height="622" onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
 
               <figure class="duo-card duo-story">
                 <span class="tape" aria-hidden="true"></span>
-                <img src="images/Ramayana.jpg" alt="Ramayana epic illustration" class="duo-thumb"
-                  onerror="this.style.display='none'" loading="lazy" decoding="async">
+                <img src="images/opt/Ramayana.webp" alt="Ramayana epic illustration" class="duo-thumb"
+                  width="800" height="592" onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
             </div>
 
@@ -441,14 +447,14 @@
             <div class="analysis-duo-gallery" aria-label="Maharishi Ved Vyasa and Mahabharata">
               <figure class="duo-card duo-author">
                 <span class="tape">Maharishi Ved Vyasa</span>
-                <img src="images/Maharishi Veda Vyasa.webp" alt="Portrait of Maharishi Ved Vyasa" class="duo-thumb"
-                  onerror="this.style.display='none'" loading="lazy" decoding="async">
+                <img src="images/opt/Maharishi Veda Vyasa.webp" alt="Portrait of Maharishi Ved Vyasa" class="duo-thumb"
+                  width="450" height="681" onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
 
               <figure class="duo-card duo-story">
                 <span class="tape" aria-hidden="true"></span>
-                <img src="images/Mahabharata.jpg" alt="Mahabharata epic illustration" class="duo-thumb"
-                  onerror="this.style.display='none'" loading="lazy" decoding="async">
+                <img src="images/opt/Mahabharata.webp" alt="Mahabharata epic illustration" class="duo-thumb"
+                  width="655" height="468" onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
             </div>
 
@@ -537,14 +543,14 @@
             <div class="analysis-duo-gallery" aria-label="Homer and The Iliad">
               <figure class="duo-card duo-author">
                 <span class="tape">Homer</span>
-                <img src="images/Homer.webp" alt="Portrait of Homer" class="duo-thumb"
-                  onerror="this.style.display='none'" loading="lazy" decoding="async">
+                <img src="images/opt/Homer.webp" alt="Portrait of Homer" class="duo-thumb"
+                  width="600" height="742" onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
 
               <figure class="duo-card duo-story">
                 <span class="tape" aria-hidden="true"></span>
-                <img src="images/The Iliad.webp" alt="The Iliad epic illustration" class="duo-thumb"
-                  onerror="this.style.display='none'" loading="lazy" decoding="async">
+                <img src="images/opt/The Iliad.webp" alt="The Iliad epic illustration" class="duo-thumb"
+                  width="700" height="313" onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
             </div>
 
@@ -635,14 +641,14 @@
             <div class="analysis-duo-gallery" aria-label="Homer and The Odyssey">
               <figure class="duo-card duo-author">
                 <span class="tape">Homer</span>
-                <img src="images/Homer.webp" alt="Portrait of Homer" class="duo-thumb"
-                  onerror="this.style.display='none'" loading="lazy" decoding="async">
+                <img src="images/opt/Homer.webp" alt="Portrait of Homer" class="duo-thumb"
+                  width="600" height="742" onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
 
               <figure class="duo-card duo-story">
                 <span class="tape" aria-hidden="true"></span>
-                <img src="images/The Odyssey.jpg" alt="The Odyssey epic illustration" class="duo-thumb"
-                  onerror="this.style.display='none'" loading="lazy" decoding="async">
+                <img src="images/opt/The Odyssey.webp" alt="The Odyssey epic illustration" class="duo-thumb"
+                  width="800" height="391" onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
             </div>
 
@@ -728,9 +734,9 @@
 
             <!-- Book cover image — gallery card style (matches Voice out the Whirlwind) -->
             <figure class="analysis-cover-wrap roland-cover-wrap">
-              <img src="images/The Song of Roland.webp" alt="The Song of Roland book cover"
-                class="analysis-cover-img roland-cover-img" onerror="this.style.display='none'" loading="lazy"
-                decoding="async">
+              <img src="images/opt/The Song of Roland.webp" alt="The Song of Roland book cover"
+                class="analysis-cover-img roland-cover-img" width="600" height="402"
+                onerror="this.style.display='none'" loading="lazy" decoding="async">
             </figure>
 
             <!-- Lens block -->
@@ -817,14 +823,14 @@
             <div class="analysis-duo-gallery" aria-label="Murasaki Shikibu and The Tale of Genji">
               <figure class="duo-card duo-author">
                 <span class="tape">Murasaki Shikibu</span>
-                <img src="images/Murasaki Shikibu.webp" alt="Portrait of Murasaki Shikibu" class="duo-thumb"
-                  onerror="this.style.display='none'" loading="lazy" decoding="async">
+                <img src="images/opt/Murasaki Shikibu.webp" alt="Portrait of Murasaki Shikibu" class="duo-thumb"
+                  width="440" height="653" onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
 
               <figure class="duo-card duo-story">
                 <span class="tape" aria-hidden="true"></span>
-                <img src="images/The Tale of Genji.webp" alt="The Tale of Genji illustration" class="duo-thumb"
-                  onerror="this.style.display='none'" loading="lazy" decoding="async">
+                <img src="images/opt/The Tale of Genji.webp" alt="The Tale of Genji illustration" class="duo-thumb"
+                  width="700" height="500" onerror="this.style.display='none'" loading="lazy" decoding="async">
               </figure>
             </div>
 
@@ -952,21 +958,28 @@
   </article>
 
   <!-- Sound Effect on Page Turn -->
-  <audio id="page-turn-sound" src="assets/page turn.mp3" preload="auto"></audio>
+  <audio id="page-turn-sound" src="assets/page turn.mp3" preload="none"></audio>
 
   <!-- Interactive Spread Switcher: Text Fade-Out -> Curved Page Turn -> Text Fade-In -->
   <script>
     let isTurning = false;
 
+    function prefersReducedMotion() {
+      return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
+    function isLiteMode() {
+      return document.documentElement.classList.contains('perf-lite');
+    }
+
     function playPageTurnSound() {
       const turnAudio = document.getElementById('page-turn-sound');
       if (!turnAudio) return;
       try {
-        const sound = turnAudio.cloneNode();
-        sound.volume = 0.85;
-        sound.play().catch(() => { });
-      } catch (e) {
         turnAudio.currentTime = 0;
+        turnAudio.volume = 0.85;
+        turnAudio.play().catch(() => { });
+      } catch (e) {
         turnAudio.play().catch(() => { });
       }
     }
@@ -996,15 +1009,18 @@
         bookContainer.classList.add('turning-in-progress');
       }
 
-      // Fallback for mobile / small screens where pages stack vertically
-      if (window.innerWidth <= 768 || !flippingLeaf || !leafFront || !leafBack) {
+      // Reduced-motion users and small screens get a cheap crossfade.
+      // Lightweight desktops still get the 3D page turn (optimized & quicker).
+      if (window.innerWidth <= 768 || prefersReducedMotion() || !flippingLeaf || !leafFront || !leafBack) {
         isTurning = true;
+        currentSpreadEl.classList.add('leaving-spread');
         currentSpreadEl.classList.remove('active-spread');
         targetSpreadEl.classList.add('active-spread');
         setTimeout(() => {
+          currentSpreadEl.classList.remove('leaving-spread');
           if (bookContainer) bookContainer.classList.remove('turning-in-progress');
           isTurning = false;
-        }, 280);
+        }, 180);
         return;
       }
 
@@ -1055,7 +1071,8 @@
         });
       };
 
-      const timer = setTimeout(completeTurn, 780);
+      const turnMs = isLiteMode() ? 430 : 500;
+      const timer = setTimeout(completeTurn, turnMs + 30);
       flippingLeaf.addEventListener('animationend', () => {
         clearTimeout(timer);
         completeTurn();

@@ -9,7 +9,7 @@
   left: calc(14px + 0.75rem);
   z-index: 2;
   /* Sits on bulletin board behind the open book (z-index: 10) */
-  filter: drop-shadow(0 3px 7px rgba(35, 18, 8, 0.3)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.18));
+  filter: drop-shadow(0 2px 4px rgba(35, 18, 8, 0.35));
 }
 
 /* Torn Paper Scrap Container (Scaled Down & Behind Books) */
@@ -115,7 +115,7 @@
 /* Active Page with Dotted Underline Style */
 .nav-link.is-active {
   color: #1a0f07;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .nav-link.is-active .nav-icon {
@@ -182,7 +182,7 @@
       99.2% 8%, 100% 16%, 98.7% 24%, 99.8% 32%, 98.5% 40%, 100% 48%, 98.9% 56%, 99.7% 64%, 98.6% 72%, 100% 80%, 98.8% 88%, 99.5% 94%,
       100% calc(100% - 3px), 85% calc(100% - 1.5px), 70% calc(100% - 0.5px), 50% 100%, 30% calc(100% - 0.5px), 15% calc(100% - 1.5px), 0% calc(100% - 3px),
       0.8% 94%, 0% 88%, 1.4% 80%, 0.2% 72%, 1.3% 64%, 0% 56%, 1.2% 48%, 0.3% 40%, 1.4% 32%, 0% 24%, 1.1% 16%, 0.4% 8%);
-  filter: drop-shadow(0 8px 22px rgba(35, 18, 8, 0.42)) drop-shadow(0 2px 5px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0 4px 12px rgba(35, 18, 8, 0.4));
   opacity: 0;
   transform: translateY(22px) scale(0.96);
   pointer-events: none;
@@ -359,15 +359,4 @@
   font-size: 0.95rem;
   color: #2e1e12;
   font-weight: 600;
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-  .paper-toast,
-  .paper-toast.is-visible,
-  .paper-toast-tip,
-  .paper-toast-tip.is-visible {
-    transition-duration: 0.01ms;
-    transition-delay: 0s;
-  }
 }
