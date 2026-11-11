@@ -6,16 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tome I - Botis' Profile</title>
 
+  <!-- Adaptive performance mode: decides before styles paint -->
+  <script src="perf.js"></script>
+
   <!-- Google Fonts for Classical & Typewriter Aesthetic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@700&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="nav.css">
   <link rel="stylesheet" href="student-profile.css">
   <link rel="stylesheet" href="desktop-notice.css">
+  <link rel="stylesheet" href="perf-lite.css">
 </head>
 
 <body>
@@ -123,8 +127,8 @@
               <div class="photo-frame-wrapper" role="button" tabindex="0"
                 aria-label="Enlarge portrait photo of Marc Neljohn R. Botis" title="Click to enlarge portrait photo">
                 <span class="photo-corner top-left" aria-hidden="true"></span>
-                <img src="images/Profile.png" alt="Portrait photo of Marc Neljohn R. Botis" class="portrait-photo"
-                  onerror="this.style.display='none'" decoding="async">
+                <img src="images/opt/Profile.webp" alt="Portrait photo of Marc Neljohn R. Botis" class="portrait-photo"
+                  width="742" height="742" onerror="this.style.display='none'" decoding="async">
                 <span class="photo-corner bottom-right" aria-hidden="true"></span>
                 <span class="photo-zoom-hint" aria-hidden="true">
                   <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"
@@ -204,26 +208,26 @@
               <!-- Gallery of Works Taped to the Page -->
               <div class="manga-gallery" aria-label="Gallery of Takehiko Inoue and Works">
                 <figure class="gallery-card tape-1">
-                  <img src="images/Takehiko Inoue.webp" alt="Takehiko Inoue portrait" class="gallery-thumb"
-                    onerror="this.style.display='none'" decoding="async">
+                  <img src="images/opt/Takehiko Inoue.webp" alt="Takehiko Inoue portrait" class="gallery-thumb"
+                    width="350" height="419" onerror="this.style.display='none'" decoding="async">
                   <figcaption class="gallery-caption">Takehiko Inoue</figcaption>
                 </figure>
 
                 <figure class="gallery-card tape-2">
-                  <img src="images/Slam Dunk.webp" alt="Slam Dunk manga volume cover" class="gallery-thumb"
-                    onerror="this.style.display='none'" decoding="async">
+                  <img src="images/opt/Slam Dunk.webp" alt="Slam Dunk manga volume cover" class="gallery-thumb"
+                    width="400" height="624" onerror="this.style.display='none'" decoding="async">
                   <figcaption class="gallery-caption">Slam Dunk</figcaption>
                 </figure>
 
                 <figure class="gallery-card tape-3">
-                  <img src="images/Vagabond Cover.png" alt="Vagabond manga volume cover" class="gallery-thumb"
-                    onerror="this.style.display='none'" decoding="async">
+                  <img src="images/opt/Vagabond Cover.webp" alt="Vagabond manga volume cover" class="gallery-thumb"
+                    width="232" height="332" onerror="this.style.display='none'" decoding="async">
                   <figcaption class="gallery-caption">Vagabond</figcaption>
                 </figure>
 
                 <figure class="gallery-card tape-4">
-                  <img src="images/Real Cover.jpg" alt="Real manga volume cover" class="gallery-thumb"
-                    onerror="this.style.display='none'" decoding="async">
+                  <img src="images/opt/Real Cover.webp" alt="Real manga volume cover" class="gallery-thumb"
+                    width="480" height="686" onerror="this.style.display='none'" decoding="async">
                   <figcaption class="gallery-caption">Real</figcaption>
                 </figure>
               </div>
@@ -259,7 +263,8 @@
       <div class="photo-modal-frame">
         <span class="photo-corner top-left" aria-hidden="true"></span>
         <span class="photo-corner top-right" aria-hidden="true"></span>
-        <img src="images/Profile.png" alt="Enlarged portrait photo of Marc Neljohn R. Botis" class="modal-portrait-img">
+        <img src="images/opt/Profile.webp" alt="Enlarged portrait photo of Marc Neljohn R. Botis" class="modal-portrait-img"
+          width="742" height="742" decoding="async">
         <span class="photo-corner bottom-left" aria-hidden="true"></span>
         <span class="photo-corner bottom-right" aria-hidden="true"></span>
       </div>

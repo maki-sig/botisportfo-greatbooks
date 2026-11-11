@@ -6,15 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Great Books Portfolio of Botis</title>
 
+  <!-- Adaptive performance mode: decides before styles paint -->
+  <script src="perf.js"></script>
+
   <!-- Google Fonts for Classical & Typewriter Scrapbook Aesthetic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@700&display=swap"
     rel="stylesheet">
 
+  <link rel="preload" as="image" href="images/opt/Library.webp" fetchpriority="high">
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="desktop-notice.css">
+  <link rel="stylesheet" href="perf-lite.css">
 </head>
 
 <body>
@@ -379,8 +384,8 @@
   </div>
 
   <!-- Sound Effects -->
-  <audio id="book-hover-sound" src="assets/book.mp3" preload="auto"></audio>
-  <audio id="book-slide-sound" src="assets/book slide.mp3" preload="auto"></audio>
+  <audio id="book-hover-sound" src="assets/book.mp3" preload="none"></audio>
+  <audio id="book-slide-sound" src="assets/book slide.mp3" preload="none"></audio>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -399,13 +404,10 @@
         hoverSoundTimeout = setTimeout(() => {
           if (suppressHover) return;
           try {
-            const sound = hoverAudio.cloneNode();
-            sound.volume = 0.75;
-            sound.play().catch(() => { });
-          } catch (e) {
             hoverAudio.currentTime = 0;
+            hoverAudio.volume = 0.75;
             hoverAudio.play().catch(() => { });
-          }
+          } catch (e) { /* audio is a progressive enhancement */ }
         }, 80);
       }
 
@@ -416,19 +418,20 @@
 
         // Hover sound already suppressed by mousedown; play only the slide SFX
         try {
-          const sound = slideAudio.cloneNode();
-          sound.volume = 0.85;
-          sound.play().catch(() => { });
+          slideAudio.currentTime = 0;
+          slideAudio.volume = 0.85;
+          slideAudio.play().catch(() => { });
           // Guard flag: only navigate once, whichever fires first
           let navigated = false;
           const navigate = () => {
             if (navigated) return;
             navigated = true;
             clearTimeout(timer);
+            slideAudio.removeEventListener('ended', navigate);
             window.location.href = href;
           };
-          sound.addEventListener('ended', navigate);
           const timer = setTimeout(navigate, 420);
+          slideAudio.addEventListener('ended', navigate, { once: true });
         } catch (err) {
           window.location.href = href;
         }
@@ -461,14 +464,14 @@
         ? creditsOverlay.querySelector('.credits-letter-close')
         : null;
       const pageTurnAudio = new Audio('assets/page turn.mp3');
-      pageTurnAudio.preload = 'auto';
+      pageTurnAudio.preload = 'none';
       let lastFocusedElement = null;
 
       function playLetterSound() {
         try {
-          const sound = pageTurnAudio.cloneNode();
-          sound.volume = 0.55;
-          sound.play().catch(() => { });
+          pageTurnAudio.currentTime = 0;
+          pageTurnAudio.volume = 0.55;
+          pageTurnAudio.play().catch(() => { });
         } catch (err) {
           // Audio is a progressive enhancement only.
         }

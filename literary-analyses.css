@@ -155,7 +155,12 @@ body {
   display: flex;
   opacity: 0;
   pointer-events: none;
-  transform-style: preserve-3d;
+}
+
+/* Skip layout and paint for spreads that are not on screen. */
+.book-spread:not(.active-spread):not(.spread-underneath):not(.leaving-spread) {
+  content-visibility: hidden;
+  visibility: hidden;
 }
 
 .book-spread.active-spread {
@@ -185,6 +190,10 @@ body {
   pointer-events: none;
   z-index: 30;
   display: none;
+}
+
+.flipping-page-leaf.flip-forward,
+.flipping-page-leaf.flip-backward {
   will-change: transform;
 }
 
@@ -192,14 +201,14 @@ body {
   display: block;
   right: 0;
   transform-origin: left center;
-  animation: smoothFlipForward 0.76s forwards;
+  animation: smoothFlipForward 0.48s forwards;
 }
 
 .flipping-page-leaf.flip-backward {
   display: block;
   left: 0;
   transform-origin: right center;
-  animation: smoothFlipBackward 0.76s forwards;
+  animation: smoothFlipBackward 0.48s forwards;
 }
 
 /* Two-sided page leaf faces */
@@ -258,7 +267,6 @@ body {
   pointer-events: none;
   z-index: 50;
   opacity: 0;
-  will-change: opacity;
 }
 
 .leaf-front::after {
@@ -270,19 +278,19 @@ body {
 }
 
 .flip-forward .leaf-front::after {
-  animation: frontSheenForward 0.76s forwards;
+  animation: frontSheenForward 0.48s forwards;
 }
 
 .flip-forward .leaf-back::after {
-  animation: backSheenForward 0.76s forwards;
+  animation: backSheenForward 0.48s forwards;
 }
 
 .flip-backward .leaf-front::after {
-  animation: frontSheenBackward 0.76s forwards;
+  animation: frontSheenBackward 0.48s forwards;
 }
 
 .flip-backward .leaf-back::after {
-  animation: backSheenBackward 0.76s forwards;
+  animation: backSheenBackward 0.48s forwards;
 }
 
 /* Continuous 2-Phase Physical Motion Curve (Zero intermediate velocity bumps) */
@@ -384,6 +392,13 @@ body {
   pointer-events: none;
   z-index: 15;
   opacity: 0;
+}
+
+/* Promote the two swaying layers only while the turn is actually running. */
+.flip-forward .leaf-side::after,
+.flip-backward .leaf-side::after,
+.flip-forward ~ .page-turning-shadow,
+.flip-backward ~ .page-turning-shadow {
   will-change: opacity;
 }
 
@@ -398,19 +413,19 @@ body {
 }
 
 .flip-forward ~ .shadow-right {
-  animation: shadowLift 0.76s forwards;
+  animation: shadowLift 0.48s forwards;
 }
 
 .flip-forward ~ .shadow-left {
-  animation: shadowLand 0.76s forwards;
+  animation: shadowLand 0.48s forwards;
 }
 
 .flip-backward ~ .shadow-left {
-  animation: shadowLift 0.76s forwards;
+  animation: shadowLift 0.48s forwards;
 }
 
 .flip-backward ~ .shadow-right {
-  animation: shadowLand 0.76s forwards;
+  animation: shadowLand 0.48s forwards;
 }
 
 @keyframes shadowLift {
@@ -958,6 +973,28 @@ body {
   display: block;
   margin: 0 auto 0.25rem;
   border-radius: 1px;
+}
+
+/* Featured postcard on analysis pages (e.g. Voice out the Whirlwind) */
+.analysis-feature-postcard {
+  width: min(100%, 240px);
+  margin: 0.35rem auto 1.25rem;
+  flex-shrink: 0;
+  transform: rotate(-1.2deg);
+  z-index: 2;
+}
+
+.analysis-feature-postcard .tape {
+  transform: translateX(-50%) rotate(-1.5deg);
+  min-width: 58px;
+  height: 16px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.analysis-feature-postcard:hover,
+.analysis-feature-postcard:focus-visible {
+  transform: rotate(0deg) scale(1.04) translateY(-4px);
 }
 
 /* PAGE 13 — The Song of Roland cover image scaled down */

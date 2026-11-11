@@ -17,9 +17,9 @@
     'personal-reflection.html'
   ];
 
-  // Preload paper slide audio
+  // Paper slide audio is loaded on demand (first navigation / key press).
   const slideAudio = new Audio('assets/book slide.mp3');
-  slideAudio.preload = 'auto';
+  slideAudio.preload = 'none';
 
   let isNavigating = false;
 
