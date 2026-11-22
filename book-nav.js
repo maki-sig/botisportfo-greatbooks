@@ -95,7 +95,7 @@
   // Handle Escape key to return to the bookshelf landing page
   function initEscapeNavigation() {
     document.addEventListener('keydown', function (e) {
-      if (e.key !== 'Escape' || e.repeat) return;
+      if (e.key !== 'Escape' || e.repeat || e.defaultPrevented) return;
 
       // Don't intercept if user is typing in an input, textarea, or contentEditable element
       if (

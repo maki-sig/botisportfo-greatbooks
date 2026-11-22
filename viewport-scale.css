@@ -1,0 +1,46 @@
+/* Lay out the board and books at desktop dimensions before scaling them. */
+:root.is-scaled {
+  --layout-width: max(var(--design-width), 100vw);
+  --layout-height: max(var(--design-height), 100dvh);
+  overflow: hidden !important;
+  overflow: clip !important;
+}
+
+.is-scaled :is(.bulletin-board, .open-book-container) {
+  position: fixed;
+  inset: 50% auto auto 50%;
+  margin: 0;
+  translate: -50% -50%;
+  transform-origin: center;
+}
+
+.is-scaled .bulletin-board {
+  --board-vw: calc(var(--layout-width) / 100);
+  --board-vh: calc(var(--layout-height) / 100);
+  width: calc(var(--layout-width) - 2rem);
+  max-height: calc(var(--layout-height) - 1.6rem);
+  transform: scale(var(--view-scale, 1));
+}
+
+.is-scaled .open-book-container {
+  /* Leave cork space for the torn-paper menu and fore-edge flags. */
+  --book-gutter: 9rem;
+  width: calc(var(--layout-width) - 2 * var(--book-gutter));
+  height: calc(var(--layout-height) - 4.4rem);
+  transition: none;
+}
+
+.is-scaled .board-top-nav {
+  top: calc((100% - (var(--layout-height) - 2.2rem) * var(--view-scale)) / 2);
+  left: calc((100% - (var(--layout-width) - 1.5rem) * var(--view-scale)) / 2);
+  width: max-content;
+  transform: scale(var(--view-scale, 1));
+  transform-origin: top left;
+}
+
+.is-scaled .paper-toast-tip {
+  bottom: calc(26px * var(--view-scale));
+  right: calc(30px * var(--view-scale));
+  scale: var(--view-scale, 1);
+  transform-origin: bottom right;
+}

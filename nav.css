@@ -129,7 +129,7 @@
 
 /* Responsive Navigation for Narrow / Mobile Screens */
 @media (max-width: 768px) {
-  .board-top-nav {
+  :where(:root:not(.is-scaled)) .board-top-nav {
     position: relative;
     top: auto;
     left: auto;
@@ -140,16 +140,16 @@
     z-index: 2;
   }
 
-  .torn-paper-menu {
+  :where(:root:not(.is-scaled)) .torn-paper-menu {
     padding: 0.5rem 0.85rem;
     min-width: 105px;
   }
 
-  .nav-menu-list {
+  :where(:root:not(.is-scaled)) .nav-menu-list {
     gap: 0.22rem;
   }
 
-  .nav-link {
+  :where(:root:not(.is-scaled)) .nav-link {
     font-size: 0.62rem;
     letter-spacing: 0.08em;
   }

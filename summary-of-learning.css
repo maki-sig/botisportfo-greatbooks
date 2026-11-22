@@ -92,7 +92,8 @@ body {
   padding: 10px 14px 14px;
 
   /* Natural Realistic Scrapbook Tilt matching homepage book-4 */
-  transform: rotate(1.2deg);
+  --book-rotate: 1.2deg;
+  transform: rotate(var(--book-rotate)) scale(var(--view-scale, 1));
   box-shadow:
     4px 20px 45px rgba(0, 0, 0, 0.58),
     -2px 10px 25px rgba(0, 0, 0, 0.35),
@@ -354,16 +355,16 @@ body {
    ========================================================================== */
 
 @media (max-width: 900px) {
-  .open-book-container {
+  :where(:root:not(.is-scaled)) .open-book-container {
     transform: rotate(0deg);
   }
-  .page-title {
+  :where(:root:not(.is-scaled)) .page-title {
     font-size: 1.45rem;
   }
 }
 
 @media (max-width: 768px) {
-  body {
+  :where(:root:not(.is-scaled)) body {
     padding: 0.6rem 0.4rem;
     border-width: 8px;
     align-items: flex-start;
@@ -372,14 +373,14 @@ body {
     min-height: 100vh;
   }
 
-  .open-book-container {
+  :where(:root:not(.is-scaled)) .open-book-container {
     height: auto;
     max-height: none;
     transform: rotate(0deg);
     margin-top: 3.2rem;
   }
 
-  .center-silk-ribbon {
+  :where(:root:not(.is-scaled)) .center-silk-ribbon {
     left: 20px;
     transform: none;
     top: -8px;
@@ -390,25 +391,25 @@ body {
     z-index: 1;
   }
 
-  .book-spread {
+  :where(:root:not(.is-scaled)) .book-spread {
     flex-direction: column;
     position: relative;
     height: auto;
   }
 
-  .book-spreads-wrapper::before {
+  :where(:root:not(.is-scaled)) .book-spreads-wrapper::before {
     display: none;
   }
 
-  .book-page {
+  :where(:root:not(.is-scaled)) .book-page {
     height: auto;
     min-height: auto;
     padding: 1.1rem 1rem;
     margin-bottom: 1rem;
   }
 
-  .page-left::after,
-  .page-right::after {
+  :where(:root:not(.is-scaled)) .page-left::after,
+  :where(:root:not(.is-scaled)) .page-right::after {
     display: none;
   }
 }

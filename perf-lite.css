@@ -44,10 +44,6 @@
   background: rgba(14, 9, 6, 0.95) !important;
 }
 
-.perf-lite .desktop-only-overlay {
-  background: rgba(14, 9, 6, 0.98) !important;
-}
-
 /* Drop-shadow filters re-rasterise on every paint; use plain shadows instead. */
 .perf-lite .board-top-nav {
   filter: drop-shadow(0 1px 3px rgba(35, 18, 8, 0.35)) !important;

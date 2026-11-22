@@ -90,7 +90,8 @@ body {
   padding: 10px 14px 14px;
 
   /* Natural Realistic Scrapbook Tilt — matches Tome II (book-2) on homepage */
-  transform: rotate(2deg);
+  --book-rotate: 2deg;
+  transform: rotate(var(--book-rotate)) scale(var(--view-scale, 1));
   box-shadow:
     4px 20px 45px rgba(0, 0, 0, 0.58),
     -2px 10px 25px rgba(0, 0, 0, 0.35),
@@ -1132,14 +1133,14 @@ body {
 }
 
 @media (max-width: 440px) {
-  .analysis-duo-gallery {
+  :where(:root:not(.is-scaled)) .analysis-duo-gallery {
     gap: 0.6rem;
   }
-  .duo-author {
+  :where(:root:not(.is-scaled)) .duo-author {
     width: 105px;
     height: 140px;
   }
-  .duo-story {
+  :where(:root:not(.is-scaled)) .duo-story {
     width: 195px;
     height: 140px;
   }
@@ -1150,46 +1151,46 @@ body {
    ========================================================================== */
 
 @media (max-width: 900px) {
-  .open-book-container {
+  :where(:root:not(.is-scaled)) .open-book-container {
     transform: rotate(0deg);
   }
 }
 
 @media (max-width: 768px) {
-  body {
+  :where(:root:not(.is-scaled)) body {
     padding: 0.6rem 0.4rem;
     border-width: 8px;
     align-items: flex-start;
   }
 
-  .open-book-container {
+  :where(:root:not(.is-scaled)) .open-book-container {
     height: auto;
     max-height: none;
     transform: rotate(0deg);
   }
 
-  .book-spread {
+  :where(:root:not(.is-scaled)) .book-spread {
     flex-direction: column;
     position: relative;
     height: auto;
   }
 
-  .book-spreads-wrapper::before {
+  :where(:root:not(.is-scaled)) .book-spreads-wrapper::before {
     display: none;
   }
 
-  .book-page {
+  :where(:root:not(.is-scaled)) .book-page {
     height: auto;
     min-height: auto;
     padding: 1.1rem 1rem;
   }
 
-  .page-left {
+  :where(:root:not(.is-scaled)) .page-left {
     border-right: none;
     border-bottom: 1px solid rgba(160, 140, 110, 0.35);
   }
 
-  .center-silk-ribbon {
+  :where(:root:not(.is-scaled)) .center-silk-ribbon {
     left: 20px;
     transform: none;
     top: -8px;
@@ -1326,14 +1327,14 @@ body {
 /* Reserve cork margin for the flags only on screens where the pages still
    have enough room for the longest analysis text. */
 @media (min-width: 1280px) and (min-height: 700px) {
-  .open-book-container {
+  :where(:root:not(.is-scaled)) .open-book-container {
     max-width: min(1220px, calc(100vw - 230px));
   }
 }
 
 /* A side flag rail does not work when the book is narrow, short, or stacked */
 @media (max-width: 1279px), (max-height: 699px) {
-  .book-flag-rail {
+  :where(:root:not(.is-scaled)) .book-flag-rail {
     display: none;
   }
 }
